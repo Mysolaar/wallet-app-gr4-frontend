@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import css from "./PrimaryButton.module.css";
 
-function PrimaryButton({ text, click }) {
+function PrimaryButton({ text, onclick }) {
   return (
     <button
       type="submit"
       className={css.primaryButton}
       aria-label={text}
-      onClick={click}
+      onClick={onclick}
     >
       {text}
     </button>
@@ -16,7 +16,7 @@ function PrimaryButton({ text, click }) {
 
 PrimaryButton.propTypes = {
   text: PropTypes.string,
-  click: PropTypes.func,
+  onclick: PropTypes.func,
 };
 
 export default PrimaryButton;

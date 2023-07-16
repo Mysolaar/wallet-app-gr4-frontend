@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import css from "./SecondaryButton.module.css";
-function SecondaryButton({ text, click }) {
+function SecondaryButton({ text, onclick }) {
   return (
     <button
       type="button"
       className={css.secondaryButton}
       aria-label={text}
-      onClick={click}
+      onClick={onclick}
     >
       {text}
     </button>
@@ -15,7 +15,7 @@ function SecondaryButton({ text, click }) {
 
 SecondaryButton.propTypes = {
   text: PropTypes.string,
-  click: PropTypes.func,
+  onclick: PropTypes.func,
 };
 
 export default SecondaryButton;
