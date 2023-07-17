@@ -1,0 +1,70 @@
+.header {
+    height: 60px;
+    margin: 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerBox {
+    display: flex;
+    align-items: center;
+}
+
+.headerBoxNext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    padding-left: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.headerUser {
+    padding-right: 8px;
+    color: rgba(189, 189, 189, 1);
+    font-size: 18px;
+    line-height: 0.67;
+    margin: 0;
+}
+
+.headerButton {
+    border: none;
+    background-color: #ffffff;
+    display: flex;
+    cursor: pointer;
+}
+
+.headerExit {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        border: 1px solid rgba(255, 255, 255, 1);
+        height: 80px;
+        margin: 0 30px;
+    }
+    .headerExit {
+        display: block;
+        color: rgba(189, 189, 189, 1);
+        font-size: 18px;
+        margin: 0;
+        padding-left: 8px;
+    }
+    .logo {
+        font-size: 30px;
+        padding-left: 20px;
+    }
+    .headerButton {
+        border-left: 1px solid rgba(189, 189, 189, 1);
+        padding-left: 10px;
+    }
+    .iconWallet {
+        width: 40px;
+        height: 40px;
+    }
+}
