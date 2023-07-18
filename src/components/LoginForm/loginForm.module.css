@@ -1,0 +1,28 @@
+.form,
+.label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 533px;
+  height: 468px;
+  background-color: white;
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form {
+  flex-direction: column;
+  gap: 10px;
+}
+.input {
+  border: none;
+  border-bottom: 1px solid grey;
+  height: 40px;
+  width: 80%;
+  padding-left: 50px;
+}

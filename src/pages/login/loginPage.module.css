@@ -1,0 +1,38 @@
+.a,
+.b,
+.c {
+  display: flex;
+}
+.b,
+.c {
+  justify-content: center;
+  height: 100%;
+}
+.a {
+  height: 720px;
+  width: 1280px;
+  margin: 0 auto;
+}
+.b {
+  width: 40%;
+  align-items: end;
+  background-color: #e7eaf2;
+  background-image: url(/src/img/Frame.png), url(/src/img/Ellipse1.png);
+  background-repeat: no-repeat;
+  background-position: center center, bottom left;
+  background-size: 80%;
+}
+.b > p {
+  color: black;
+  font-size: 36px;
+  margin-bottom: 100px;
+}
+.c {
+  align-items: center;
+  background-color: #f3f5fa;
+  background-image: url(/src/img/Ellipse2.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+
+  width: 60%;
+}
