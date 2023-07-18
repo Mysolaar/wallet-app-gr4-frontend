@@ -3,7 +3,7 @@ import ReactWallet from "../../icons/wallet-icon.svg";
 import { IoExitOutline } from "react-icons/io5";
 
 const handleClik = () => {
-    // add logic IoExitOutline
+    // add logic
 }
 
 function Header() {
