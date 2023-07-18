@@ -5,6 +5,12 @@ import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton"
 export const LoginForm = () => {
   return (
     <div className={css.container}>
+      <h2 className={css.title}>
+        <svg className={css.wallet}>
+          <use xlinkHref="/src/img/icons.svg#logo6"></use>
+        </svg>
+        Wallet
+      </h2>
       <form className={css.form} autoComplete="off">
         <label className={css.label}>
           <input
