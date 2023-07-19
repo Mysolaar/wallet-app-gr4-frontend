@@ -142,7 +142,7 @@ const RegistrationForm = () => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 35 35"
-                className={css.padlock__svg}
+                className={css.name__svg}
               >
                 <path
                   fill="#e0e0e0"
@@ -161,8 +161,8 @@ const RegistrationForm = () => {
               {touched.name && errors.name ? <div>{errors.name}</div> : null}
             </label>
 
-            <PrimaryButton text={"LOG IN"} />
-            <SecondaryButton text={"REGISTER"} />
+            <PrimaryButton text={"REGISTER"} />
+            <SecondaryButton text={"LOG IN"} />
           </Form>
         </div>
       )}

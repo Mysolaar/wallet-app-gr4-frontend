@@ -1,3 +1,16 @@
+.container {
+  width: 320px;
+  height: 468px;
+  background-color: white;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+
 .logo__container {
   display: flex;
   justify-content: center;
@@ -14,10 +27,12 @@
   gap: 25px;
   margin-bottom: 50px;
 }
+
 .label {
-  width: 100%;
-  position: relative;
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
   justify-content: center;
 }
 
@@ -26,17 +41,6 @@
   font-weight: 700;
 }
 
-.container {
-  width: 533px;
-  height: 468px;
-  background-color: white;
-  border-radius: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
 .input {
   border: none;
   border-bottom: 1px solid #e0e0e0;
@@ -44,23 +48,48 @@
   width: 80%;
   padding-left: 60px;
   color: #e0e0e0;
-  font-size: 18px;
+  font-size: 16px;
+  position: relative;
 }
+
 .input:is(:focus, :active) {
   outline: none;
 }
-.padlock,
-.envelope {
+
+.padlock__svg,
+.envelope__svg {
   position: absolute;
   width: 25px;
   height: auto;
   z-index: 1;
 }
-.padlock {
+
+.padlock_svg {
   left: 67px;
   top: 12px;
 }
-.envelope {
+
+.envelope_svg {
   left: 64px;
   top: 17px;
+}
+
+@media (min-width: 767px) {
+  .container {
+    position: absolute;
+    bottom: 200px;
+    width: 533px;
+    height: 468px;
+  }
+
+  .input {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    position: absolute;
+    bottom: 135px;
+  }
 }

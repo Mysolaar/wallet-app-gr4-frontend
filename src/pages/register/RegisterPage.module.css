@@ -22,7 +22,7 @@
     position: relative;
     align-items: end;
     background-color: #f3f5fa;
-    background-image: url(/src/img/Login.png), url(/src/img/Ellipse2.png);
+    background-image: url(/src/img/Register.png), url(/src/img/Ellipse2.png);
     background-repeat: no-repeat;
     background-position: 114px 60px, 410px 0px;
     background-size: 35%, 75%;
@@ -64,7 +64,7 @@
     width: 40%;
     align-items: end;
     background-color: #e7eaf2;
-    background-image: url(/src/img/Login.png), url(/src/img/Ellipse1.png);
+    background-image: url(/src/img/Register.png), url(/src/img/Ellipse1.png);
     background-repeat: no-repeat;
     background-position: center center, bottom left;
     background-size: 80%;

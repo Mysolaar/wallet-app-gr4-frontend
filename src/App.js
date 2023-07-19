@@ -1,8 +1,8 @@
 // import { Layout } from "./Layout";
 // // import { useDispatch } from "react-redux";
 // import { Route, Routes } from "react-router-dom";
-// import LoginPage from "./pages/login/LoginPage";
-import RegisterPage from "./pages/login/RegisterPage";
+import LoginPage from "./pages/login/LoginPage";
+import RegisterPage from "./pages/register/RegisterPage";
 
 function App() {
   return (

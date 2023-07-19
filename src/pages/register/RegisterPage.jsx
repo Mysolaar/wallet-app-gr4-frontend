@@ -1,13 +1,12 @@
-import { LoginLayout } from "./LoginLayout";
-import { LoginForm } from "../../components/LoginForm/loginForm";
+import { RegisterLayout } from "./RegisterLayout";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 export default function RegisterPage() {
   return (
     <div>
-      <LoginLayout>
+      <RegisterLayout>
         <RegisterForm />
-      </LoginLayout>
+      </RegisterLayout>
     </div>
   );
 }

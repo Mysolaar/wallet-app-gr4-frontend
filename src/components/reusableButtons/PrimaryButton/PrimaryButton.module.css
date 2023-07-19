@@ -17,3 +17,20 @@
 .primaryButton:is(:hover, :focus) {
   background-color: rgb(29, 175, 143);
 }
+@media (max-width: 767px) {
+  .primaryButton {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1.8px;
+    width: 80%;
+    max-width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(36, 204, 167, 1);
+    background-color: rgba(36, 204, 167, 1);
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 350ms ease-in-out;
+  }
+}
