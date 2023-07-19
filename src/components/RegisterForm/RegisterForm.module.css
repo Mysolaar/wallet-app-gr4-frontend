@@ -15,9 +15,11 @@
   margin-bottom: 50px;
 }
 .label {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   position: relative;
-  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -28,7 +30,7 @@
 
 .container {
   width: 533px;
-  height: 468px;
+  height: 615px;
   background-color: white;
   border-radius: 5%;
   display: flex;
@@ -49,18 +51,18 @@
 .input:is(:focus, :active) {
   outline: none;
 }
-.padlock,
-.envelope {
+.padlock__svg,
+.envelope__svg {
   position: absolute;
   width: 25px;
   height: auto;
   z-index: 1;
 }
-.padlock {
+.padlock__svg {
   left: 67px;
   top: 12px;
 }
-.envelope {
+.envelope__svg {
   left: 64px;
   top: 17px;
 }
