@@ -1,4 +1,4 @@
-import css from "./loginPage.module.css";
+import css from "./LoginPage.module.css";
 
 export const LoginLayout = (props) => {
   return (
