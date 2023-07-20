@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       {/* <ModalLogout /> */}
-      <Loader />
+      {/* <Loader /> */}
       <Header />
       <Navigate />
       Lets get it started!!!
