@@ -1,7 +1,7 @@
 import { RegisterLayout } from "./RegisterLayout";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import RegisterForm from "../../components/register/RegisterForm";
 
-export default function RegisterPage() {
+function RegisterPage() {
   return (
     <div>
       <RegisterLayout>
@@ -10,3 +10,5 @@ export default function RegisterPage() {
     </div>
   );
 }
+
+export default RegisterPage;

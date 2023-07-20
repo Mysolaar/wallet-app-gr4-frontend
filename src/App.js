@@ -1,13 +1,14 @@
 import Header from "./components/Header/Header";
 import ModalLogout from "./components/ModalLogout/ModalLogout";
 import Loader from "./components/Loader/Loader";
-
+import RegisterPage from "./pages/register/RegisterPage";
 function App() {
   return (
     <div>
-      <ModalLogout />
+      <RegisterPage />
+      {/* <ModalLogout />
       <Loader />
-      <Header />
+      <Header /> */}
       Lets get it started!!!
     </div>
   );

@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
-import css from "./loginForm.module.css";
+import css from "./loginForm.module.csss";
 
 const LoginForm = () => {
   const initialValues = {
