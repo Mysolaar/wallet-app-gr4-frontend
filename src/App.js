@@ -6,7 +6,7 @@ import LoginPage from "./pages/login/LoginPage";
 function App() {
   return (
     <div>
-      <LoginPage />
+      <RegisterPage />
       {/* <ModalLogout />
       <Loader />
       <Header /> */}
