@@ -1,0 +1,87 @@
+@media (max-width: 767px) {
+  .b > p {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .a,
+  .b,
+  .c {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+  .a {
+    height: 1024px;
+    width: 768px;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .b {
+    position: relative;
+    align-items: end;
+    background-color: #f3f5fa;
+    background-image: url(/src/img/Login.png), url(/src/img/Ellipse2.png);
+    background-repeat: no-repeat;
+    background-position: 114px 60px, 410px 0px;
+    background-size: 35%, 75%;
+  }
+  .b > p {
+    color: black;
+    font-size: 36px;
+    position: absolute;
+    top: 140px;
+    left: 440px;
+  }
+  .c {
+    position: relative;
+    align-items: center;
+    background-color: #f3f5fa;
+    background-image: url(/src/img/Ellipse1.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 60%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .a,
+  .b,
+  .c {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+  .a {
+    height: 720px;
+    width: 1280px;
+    margin: 0 auto;
+    flex-direction: row;
+  }
+  .b {
+    position: relative;
+    width: 40%;
+    align-items: end;
+    background-color: #e7eaf2;
+    background-image: url(/src/img/Login.png), url(/src/img/Ellipse1.png);
+    background-repeat: no-repeat;
+    background-position: center center, bottom left;
+    background-size: 80%;
+  }
+  .b > p {
+    color: black;
+    font-size: 36px;
+    position: absolute;
+    top: 550px;
+    left: 155px;
+  }
+  .c {
+    align-items: center;
+    background-color: #f3f5fa;
+    background-image: url(/src/img/Ellipse2.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    width: 60%;
+  }
+}
