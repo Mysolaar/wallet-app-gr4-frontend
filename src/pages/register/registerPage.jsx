@@ -1,5 +1,5 @@
 import { RegisterLayout } from "./RegisterLayout";
-import RegisterForm from "../../components/register/RegisterForm";
+import RegisterForm from "../../components/Register/RegisterForm";
 
 function RegisterPage() {
   return (
