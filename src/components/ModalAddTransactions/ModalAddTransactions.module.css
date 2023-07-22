@@ -1,0 +1,194 @@
+.relative {
+  position: relative;
+}
+
+.modalOverlay {
+  background-color: "transparent";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  align-items: flex-start;
+  justify-content: stretch;
+}
+
+.modalContainer {
+  margin-top: 60px;
+  padding: 20px 20px 37px;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.modalForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+  gap: 20px;
+  justify-items: center;
+}
+
+.modalHeading {
+  font-size: 24px;
+  margin: 0;
+}
+
+.inputLabel {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  padding-inline: 20px;
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+.inputLabelError {
+  color: red;
+  font-weight: 700;
+  outline: 2px solid red;
+}
+
+.input {
+  background-color: none;
+  border: none;
+  width: 100%;
+}
+
+.modalSwitch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  border: 1px solid #e0e0e0;
+  margin-inline: 10px;
+  border-radius: 30px;
+}
+
+.modalCheckboxLabel {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.modalCheckboxInput {
+  position: absolute;
+  left: -99em;
+}
+
+.modalCheckbox {
+  position: relative;
+  color: #e0e0e0;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.modalCheckbox::before {
+  content: "Income";
+}
+.modalCheckbox::after {
+  content: "Expense";
+}
+
+.modalCheckboxInput:checked + .modalCheckbox::before {
+  color: #24cca7;
+}
+.modalCheckboxInput:not(:checked) + .modalCheckbox::after {
+  color: #ff6596;
+}
+
+.modalSlash {
+  display: inline-block;
+  height: 30px;
+  font-size: 25px;
+}
+
+.modalButtonContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.button {
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(36, 204, 167, 1);
+  box-shadow: 0px 5px 5px rgba(36, 204, 167, 0.4);
+  transition: background-color 350ms ease-in-out;
+  position: absolute;
+  top: -4px;
+  left: 0;
+  padding-top: 6px;
+  color: #fff;
+  font-size: 30px;
+  transition: all 350ms ease-in-out;
+  pointer-events: none;
+}
+
+.button:is(:focus, :hover) {
+  background-color: rgb(29, 175, 143);
+}
+
+.modalCheckboxInput:not(:checked) + .modalCheckbox .button {
+  background-color: rgb(255, 102, 150);
+  box-shadow: 0px 5px 5px rgba(255, 102, 150, 0.4);
+  left: 50%;
+}
+
+.calendarIcon {
+  position: absolute;
+  top: 40%;
+  right: 20px;
+  pointer-events: none;
+}
+
+.commentField {
+  height: 80px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.modalGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .modalOverlay {
+    background-color: rgba(0, 0, 0, 0.25);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modalContainer {
+    padding: 40px 73px 60px;
+    max-width: 540px;
+    max-height: 603px;
+    border-radius: 20px;
+  }
+
+  .modalDividedInput {
+    width: 50%;
+  }
+
+  .modalGroup {
+    flex-direction: row;
+    gap: 32px;
+  }
+  .commentField {
+    height: auto;
+  }
+}

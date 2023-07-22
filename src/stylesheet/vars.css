@@ -12,3 +12,16 @@ h6 {
   font-family: Poppins;
   font-weight: 700;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 2px solid rgba(36, 204, 167, 1);
+}
