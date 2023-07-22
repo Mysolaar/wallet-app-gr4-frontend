@@ -20,8 +20,6 @@ ul {
 
 button:focus,
 input:focus,
-textarea:focus,
-select:focus,
-a:focus {
-  outline: 2px solid rgba(36, 204, 167, 1);
+textarea:focus {
+  outline: none;
 }
