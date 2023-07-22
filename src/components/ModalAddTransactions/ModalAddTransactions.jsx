@@ -181,6 +181,7 @@ function ModalAddTransactions({ type }) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               rows="1"
+              maxlength="45"
               className={`${css.input} ${css.commentField}`}
             />
           </label>

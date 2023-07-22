@@ -8,5 +8,5 @@ export const modalAddTransactionsSchema = Yup.object().shape({
   }),
   price: Yup.string().required("Required"),
   date: Yup.string().required("Required"),
-  comment: Yup.string().max(70),
+  comment: Yup.string().max(45),
 });

@@ -155,8 +155,7 @@
 
 .commentField {
   height: 80px;
-  word-wrap: break-word;
-  word-break: break-all;
+  resize: none;
 }
 
 .modalGroup {
