@@ -25,14 +25,6 @@ function ModalAddTransactions({ type }) {
   const [checked, setChecked] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   const date = new Date();
   let dateToText = date.toLocaleDateString();
 
@@ -50,7 +42,9 @@ function ModalAddTransactions({ type }) {
     },
   });
 
-  console.log(`checked: ${checked} , formik ${formik.values.toggle}`);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
   return (
     <>
       <button onClick={openModal}>Open Modal</button>
@@ -69,7 +63,7 @@ function ModalAddTransactions({ type }) {
           <h3 className={css.modalHeading}>
             {type.charAt(0).toUpperCase() + type.slice(1)} transaction
           </h3>
-          <label className={css.modalCheckboxLabel} name="icome or expense">
+          <label className={css.modalCheckboxLabel} name="income or expense">
             <input
               name="toggle"
               type="checkbox"
