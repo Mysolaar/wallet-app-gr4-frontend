@@ -5,7 +5,9 @@ table.table {
 
   width: 280px;
   margin: auto;
-  background-color: var(--background-gray);
+  background-color: var(
+    --background-gray
+  ); /*TODO do usuniecia jak bedzie dobry bg color na stronie */
 }
 
 .table thead {
