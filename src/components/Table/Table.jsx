@@ -25,13 +25,13 @@ const Table = () => {
               <td>{formatNumber(item.sum)}</td>
             </tr>
           ))}
-          <tr>
+          <tr className={styles.expenses}>
             <td>Expenses:</td>
-            <td className={styles.expenses}>{formatNumber(totalSum)}</td>
+            <td>{formatNumber(totalSum)}</td>
           </tr>
-          <tr>
+          <tr className={styles.income}>
             <td>Income:</td>
-            <td className={styles.income}>{formatNumber(100000)}</td>
+            <td>{formatNumber(100000)}</td>
           </tr>
         </tbody>
       </table>

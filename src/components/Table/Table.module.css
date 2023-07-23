@@ -38,24 +38,61 @@ table.table thead tr:last-child th:last-child {
   border-bottom-right-radius: 30px;
 }
 
-.table td {
+/* .table td {
   padding: 15px;
-}
+} */
 
 .table .data-row td {
+  position: relative;
   border-bottom: 1px solid var(--row-divider);
+  box-shadow: 0px 1px 0px 0px #ffffff99;
 }
 
 .table tbody tr:first-child {
   text-align: left;
+
+  /* line-height: 24px; */
 }
+
 .table tbody tr td:last-child {
   text-align: right;
 }
 
-.expenses {
+.expenses td:last-child {
   color: var(--pink300);
 }
-.income {
+.income td:last-child {
   color: var(--green300);
+}
+
+.table tr td:first-child {
+  padding: 15px 0 15px 20px;
+}
+
+.table tr td:last-child {
+  padding: 15px 20px 15px 0px;
+}
+
+.expenses td:first-child {
+  padding: 15px 0 0 15px;
+}
+
+.expenses td:last-child {
+  padding: 15px 15px 0 0;
+}
+.table .data-row td:first-child {
+  padding: 15px 0 15px 56px;
+}
+
+.data-row td:first-child:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  background-color: teal;
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
 }
