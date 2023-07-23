@@ -1,3 +1,25 @@
+:root {
+  --black: #000000;
+  --blue200: #81e1ff;
+  --gray300: #e0e0e0;
+  --gray400: #bdbdbd;
+  --gray500: #a6a6a6;
+  --green300: #24cca7;
+  --green300-transparent50: #24cca780;
+  --indigo300: #6e78e8;
+  --indigo500-transparent50: #4b58e280;
+  --indigo500: #4a56e2;
+  --orange100: #ffd8d0;
+  --pink300: #ff6596;
+  --pink300-tansparent50: #ff659680;
+  --purple200: #c5baff;
+  --purple50: #efeffc;
+  --teal400: #00ad84;
+  --white: #ffffff;
+  --white-transparent40: #ffffff66;
+  --yellow300: #fed057;
+}
+
 body {
   font-family: Circe;
   font-weight: 400;
