@@ -13,3 +13,14 @@ h6 {
   font-weight: 700;
   color: #ffffff66;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+}
