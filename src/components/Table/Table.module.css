@@ -1,0 +1,61 @@
+table.table {
+  border-collapse: separate;
+
+  border-spacing: 1px;
+
+  width: 280px;
+  margin: auto;
+  background-color: var(--background-gray);
+}
+
+.table thead {
+  height: 58px;
+  background-color: var(--white);
+}
+
+table.table th {
+  border: 0;
+  box-shadow: 0 0 0 1px var(--white);
+}
+
+table.table thead tr:first-child th:first-child {
+  border-top-left-radius: 30px;
+  padding: 15px 0 15px 20px;
+  text-align: left;
+}
+
+table.table thead tr:last-child th:first-child {
+  border-bottom-left-radius: 30px;
+}
+
+table.table thead tr:first-child th:last-child {
+  border-top-right-radius: 30px;
+  padding: 15px 20px 15px 0;
+  text-align: right;
+}
+
+table.table thead tr:last-child th:last-child {
+  border-bottom-right-radius: 30px;
+}
+
+.table td {
+  padding: 15px;
+}
+
+.table .data-row td {
+  border-bottom: 1px solid var(--row-divider);
+}
+
+.table tbody tr:first-child {
+  text-align: left;
+}
+.table tbody tr td:last-child {
+  text-align: right;
+}
+
+.expenses {
+  color: var(--pink300);
+}
+.income {
+  color: var(--green300);
+}

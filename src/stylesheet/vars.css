@@ -18,6 +18,8 @@
   --white: #ffffff;
   --white-transparent40: #ffffff66;
   --yellow300: #fed057;
+  --background-gray: #e7eaf2;
+  --row-divider: #dcdcdf;
 }
 
 body {
