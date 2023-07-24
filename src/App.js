@@ -1,16 +1,15 @@
-// import { useEffect, lazy } from "react";
+// import { useEffect} from "react";
 // import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 // import { RestrictedRoute } from "./redux/routes/restrictedRoute";
 // import { PrivateRoute } from "./redux/routes/privateRoute";
-import { fetchCurrentUser } from "./redux/auth/authOperations";
+// import { fetchCurrentUser } from "./redux/auth/authOperations";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-// import { fetchCurrentUser } from "./redux/auth/authOperations";
 import Loader from "./components/Loader/Loader";
 // import { useAuth } from "./hooks/useAuth";
-// import { useDispatch } from "react-redux";
+
 //LAZY LOADING:
 
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
