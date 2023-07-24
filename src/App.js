@@ -18,6 +18,10 @@ const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 // const StatisticsPage = lazy(() => import("./pages/Statistics/StatisticsPage"));
 // const CurrencyPage = lazy(() => import("./pages/Currency/CurrencyPage"));
 
+// import Header from "./components/Header/Header";
+// import ModalLogout from "./components/ModalLogout/ModalLogout";
+// import ModalAddTransactions from "./components/ModalAddTransactions/ModalAddTransactions";
+
 function App() {
   // const dispatch = useDispatch();
   // const { isRefreshing } = useAuth();
@@ -34,6 +38,7 @@ function App() {
         <Route path="*" element={<LoginPage />} />
       </Routes>
     </Suspense>
+
   );
 }
 
