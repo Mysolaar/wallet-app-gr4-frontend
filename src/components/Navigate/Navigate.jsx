@@ -6,14 +6,16 @@ function Navigate() {
     return (
         <div className={css.navBox}>
             <ul className={css.nav}>
-                <li className={css.navItem}>
-                    <MdHome color="rgba(255, 255, 255, 1)" size={40} />
+                <li>
+                    <MdHome color="rgba(255, 255, 255, 1)" size={40} className={css.navItem} />
+                    <p className={css.navTitle}>Home</p>
                 </li>
-                <li className={css.navItem}>
-                    <MdTimeline color="rgba(255, 255, 255, 1)" size={30} />
+                <li>
+                    <MdTimeline color="rgba(255, 255, 255, 1)" size={30} className={css.navItem} />
+                    <p className={css.navTitle}>Statistics</p>
                 </li>
-                <li className={css.navItem}>
-                    <FaDollarSign color="rgba(255, 255, 255, 1)" size={25} />
+                <li className={css.dollarIcon}>
+                    <FaDollarSign color="rgba(255, 255, 255, 1)" size={25} className={css.navItem} />
                 </li>
             </ul>
             
