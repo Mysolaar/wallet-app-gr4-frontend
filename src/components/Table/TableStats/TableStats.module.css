@@ -66,21 +66,33 @@
   color: var(--green300);
 }
 
-.table tr td:first-child {
+.table .data-row td:first-child {
   padding: 15px 0 15px 20px;
 }
 
-.table tr td:last-child {
+.data-row td:last-child {
   padding: 15px 20px 15px 0px;
 }
 
 .expenses td:first-child {
-  padding: 15px 0 0 15px;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
-.expenses td:last-child {
-  padding: 15px 15px 0 0;
+.table .expenses td:last-child {
+  padding-right: 15px;
+  padding-top: 15px;
 }
+.income td:first-child {
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
+.table .income td:last-child {
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
 .table .data-row td:first-child {
   padding: 15px 0 15px 56px;
 }
