@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import loginValidationSchema from "../../schemas/loginSchema";
 import { useDispatch } from "react-redux";
 import css from "./LoginForm.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
@@ -16,12 +16,6 @@ const LoginForm = () => {
     password: "",
   };
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("This field is required"),
-    password: Yup.string().required("This field is required"),
-  });
   const dispatch = useDispatch();
   const handleSubmit = (values) => {
     const email = values.email;
@@ -33,7 +27,7 @@ const LoginForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={loginValidationSchema}
       onSubmit={handleSubmit}
     >
       {({ values, errors, touched, handleChange }) => (

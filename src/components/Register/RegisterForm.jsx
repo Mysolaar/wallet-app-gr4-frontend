@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import registerValidationSchema from "../../schemas/registerSchema";
 import PasswordStrengthMeter from "./PasswordStreghtMeter";
 import css from "./RegisterForm.module.css";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
@@ -18,17 +18,6 @@ const RegistrationForm = () => {
     confirmPassword: "",
   };
 
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().required("This field is required"),
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("This field is required"),
-    password: Yup.string().required("This field is required"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords should match")
-      .required("This field is required"),
-  });
-
   const handleSubmit = (values) => {
     console.log(values);
   };
@@ -36,7 +25,7 @@ const RegistrationForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={registerValidationSchema}
       onSubmit={handleSubmit}
     >
       {({ values, errors, touched, handleChange }) => (
