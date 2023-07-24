@@ -3,7 +3,7 @@ import {
   selectName,
   selectIsFetchingCurrentUser,
   selectIsAuth,
-} from "./redux/auth/authSelectors";
+} from "../redux/auth/authSelectors";
 
 export const useAuth = () => {
   const isAuth = useSelector(selectIsAuth);

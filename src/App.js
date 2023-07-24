@@ -1,36 +1,40 @@
 // import { useEffect, lazy } from "react";
 // import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-
+import { useEffect, lazy, Suspense } from "react";
+// import { RestrictedRoute } from "./redux/routes/restrictedRoute";
+// import { PrivateRoute } from "./redux/routes/privateRoute";
+import { fetchCurrentUser } from "./redux/auth/authOperations";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-// import { PrivateRoute } from "./HOC/PrivateRoute";
-// import { PublicRoute } from "./HOC/PublicRoute";
-
 // import { fetchCurrentUser } from "./redux/auth/authOperations";
-
-// import Loader from "./components/Loader/Loader";
-import RegisterPage from "./pages/Register/RegisterPage";
-import LoginPage from "./pages/Login/LoginPage";
-
+import Loader from "./components/Loader/Loader";
 // import { useAuth } from "./hooks/useAuth";
-
+// import { useDispatch } from "react-redux";
 //LAZY LOADING:
 
-// const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
-// const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
+const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 // const DashboardPage = lazy(() => import("./pages/DashboardDashboardPage"));
 // const StatisticsPage = lazy(() => import("./pages/Statistics/StatisticsPage"));
 // const CurrencyPage = lazy(() => import("./pages/Currency/CurrencyPage"));
 
 function App() {
-  return (
-    <Routes>
-      <Route index element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
+  // const dispatch = useDispatch();
+  // const { isRefreshing } = useAuth();
 
-      <Route path="*" element={<LoginPage />} />
-    </Routes>
+  // useEffect(() => {
+  //   dispatch(fetchCurrentUser());
+  // }, [dispatch]);
+
+  return (
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<LoginPage />} />
+      </Routes>
+    </Suspense>
   );
 }
 
