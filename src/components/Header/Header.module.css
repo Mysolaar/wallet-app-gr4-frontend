@@ -50,8 +50,7 @@
         height: 80px;
         margin: 0 30px;
     }
-    .headerExit {
-        
+    .headerExit { 
         display: block;
         color: rgba(189, 189, 189, 1);
         font-size: 18px;

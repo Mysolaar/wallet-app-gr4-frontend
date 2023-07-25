@@ -1,6 +1,6 @@
 import css from "./Header.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
-import ReactExit from "../../icons/exit-icon.svg";
+import { IoExitOutline } from "react-icons/io5";
 
 const handleClik = () => {
     // add logic
@@ -22,10 +22,7 @@ function Header() {
                 type="button" 
                 className={css.headerButton}
                 onClick={handleClik}>
-                    <img 
-                    src={ReactExit} 
-                    alt="exit icon" width={18} height={18}
-                    className={css.iconExit} />    
+                    <IoExitOutline color="rgba(189, 189, 189, 1)" size={18} />
                     <p className={css.headerExit}>Exit</p>
                 </button>
             </div>
