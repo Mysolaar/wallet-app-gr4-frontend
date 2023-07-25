@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styles from "./Transactions.module.css";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
@@ -27,24 +28,44 @@ const mockdata = [
 ];
 
 const Transactions = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const data = mockdata; //TODO fetch data
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
   const deleteFunction = () => {
     console.log("Add delete logic");
   };
   const openEdit = () => {
     console.log("Add Edit logic");
   };
-  const data = mockdata; //TODO fetch data
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <TransactionsTable
-      data={data}
-      deleteFunction={deleteFunction}
-      openEdit={openEdit}
-    />
-    // <TransactionsMobile
-    //   data={data}
-    //   deleteFunction={deleteFunction}
-    //   openEdit={openEdit}
-    // />
+    <>
+      {!isMobile ? (
+        <TransactionsTable
+          data={data}
+          deleteFunction={deleteFunction}
+          openEdit={openEdit}
+        />
+      ) : (
+        <TransactionsMobile
+          data={data}
+          deleteFunction={deleteFunction}
+          openEdit={openEdit}
+        />
+      )}
+    </>
   );
 };
 
