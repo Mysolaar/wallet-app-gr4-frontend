@@ -1,12 +1,14 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
-import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
+import loginValidationSchema from "../../schemas/loginSchema";
+import { useDispatch } from "react-redux";
 import css from "./LoginForm.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import ReactPadlock from "../../icons/padlock-icon.svg";
 import ReactEnvelope from "../../icons/envelope-icon.svg";
+import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
+import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
+import { login } from "../../redux/auth/authOperations";
 
 const LoginForm = () => {
   const initialValues = {
@@ -14,21 +16,18 @@ const LoginForm = () => {
     password: "",
   };
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("This field is required"),
-    password: Yup.string().required("This field is required"),
-  });
-
+  const dispatch = useDispatch();
   const handleSubmit = (values) => {
-    console.log(values);
+    const email = values.email;
+    const password = values.password;
+    console.log(email, password);
+    dispatch(login({ email, password }));
   };
 
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={loginValidationSchema}
       onSubmit={handleSubmit}
     >
       {({ values, errors, touched, handleChange }) => (
@@ -87,8 +86,8 @@ const LoginForm = () => {
               ) : null}
             </label>
 
-            <PrimaryButton text={"REGISTER"} />
-            <SecondaryButton text={"LOG IN"} />
+            <PrimaryButton text={"LOG IN"} />
+            <SecondaryButton text={"REGISTER"} />
           </Form>
         </div>
       )}

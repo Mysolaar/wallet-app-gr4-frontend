@@ -14,12 +14,13 @@
   --pink300-tansparent50: #ff659680;
   --purple200: #c5baff;
   --purple50: #efeffc;
+  --red200: #fd9498;
   --teal400: #00ad84;
   --white: #ffffff;
   --white-transparent40: #ffffff66;
   --yellow300: #fed057;
-  --background-gray: #e7eaf2;
   --gray-row-divider: #dcdcdf;
+  --background-gray: #e7eaf2;
 }
 
 body {

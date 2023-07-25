@@ -1,0 +1,70 @@
+.navBox {
+    background-color: rgb(231, 234, 242, 1);
+}
+
+.navItem {
+    padding: 5px;
+    background-color: rgba(110, 120, 232, 1);
+    width: 44px;
+    height: 44px;
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navItem:active {
+    background-color: rgba(74, 86, 226, 1);
+    box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5), -3px 5px 8px rgba(74, 86, 226, 0.5);
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navTitle {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .navBox {
+        padding: 10px 0;
+    }
+    .dollarIcon {
+        display: none;
+    }
+    .navItem {
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+    .nav {
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        margin: 20px 0 15px 30px;
+        padding: 0;
+
+    }
+    .navTitle {
+        display: block;
+        font-family: "Poppins";
+        font-size: 18px;
+        color: rgba(0, 0, 0, 1);
+        line-height: 0.67;
+        padding-left: 15px;
+    }
+    .navItem:active .navTitle {
+        font-weight: 700;
+    }
+    li {
+        display: flex;
+        align-items: center;
+    }
+}

@@ -14,6 +14,7 @@ export const COLORS = {
   pink300Transparent50: "#FF659680",
   purple200: "#C5BAFF",
   purple50: "#EFEFFC",
+  red200: "#FD9498",
   teal400: "#00AD84",
   white: "#FFFFFF",
   whiteTransparent40: "#FFFFFF66",

@@ -26,8 +26,7 @@ const rootReducer = combineReducers({
   transactions: transactionsReducer,
   user: userReducer,
 });
-
-export const store = configureStore({
+const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -42,3 +41,5 @@ export const persistor = persistStore(store, null, () => {
     store.getState().auth.token
   }`;
 });
+
+export default store;
