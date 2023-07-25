@@ -1,5 +1,6 @@
 import styles from "./Transactions.module.css";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
+import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
 
 const mockdata = [
   {
@@ -34,11 +35,16 @@ const Transactions = () => {
   };
   const data = mockdata; //TODO fetch data
   return (
-    <TransactionsMobile
+    <TransactionsTable
       data={data}
       deleteFunction={deleteFunction}
       openEdit={openEdit}
     />
+    // <TransactionsMobile
+    //   data={data}
+    //   deleteFunction={deleteFunction}
+    //   openEdit={openEdit}
+    // />
   );
 };
 

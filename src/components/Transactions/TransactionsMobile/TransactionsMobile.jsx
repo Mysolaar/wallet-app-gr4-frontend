@@ -1,6 +1,7 @@
 import PrimaryButton from "../../reusableButtons/PrimaryButton/PrimaryButton.jsx";
 import styles from "./TransactionsMobile.module.css";
 import { HiOutlinePencil } from "react-icons/hi";
+import PropTypes from "prop-types";
 
 const TransactionsMobile = ({ data, deleteFunction, openEdit }) => {
   return (
@@ -48,6 +49,12 @@ const TransactionsMobile = ({ data, deleteFunction, openEdit }) => {
       })}
     </div>
   );
+};
+
+TransactionsMobile.protoTypes = {
+  data: PropTypes.array,
+  deleteFunction: PropTypes.func,
+  openEdit: PropTypes.func,
 };
 
 export default TransactionsMobile;
