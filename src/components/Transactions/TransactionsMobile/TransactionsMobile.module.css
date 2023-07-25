@@ -1,0 +1,90 @@
+.transaction {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.transactions-container {
+  margin: auto;
+  width: 280px;
+
+  background-color: lightgrey; /*TODO to be deleted*/
+
+  margin-top: 30px; /*TODO to be deleted*/
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.transaction-row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+
+  /* border: 1px solid pink; */
+  overflow: hidden;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.transaction-row::before {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 100%;
+  background-color: grey;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pink::before {
+  background-color: var(--pink300);
+}
+
+.green::before {
+  background-color: var(--green300);
+}
+
+.pink-font {
+  color: var(--pink300);
+}
+
+.green-font {
+  color: var(--green300);
+}
+
+.transaction-row span:first-child {
+  font-family: "Circe", sans-serif;
+  font-weight: 700; /*TODO Nie działa */
+}
+
+.transaction .transaction-row:nth-last-child(n + 2) {
+  border-bottom: 1px solid var(--gray-row-divider);
+}
+
+.transaction-row button {
+  width: 67px;
+  height: 26px;
+
+  border-radius: 18px;
+
+  font-family: "Circe";
+  font-size: 14px;
+  font-weight: 400;
+
+  letter-spacing: 0em;
+  text-align: center;
+  text-transform: none;
+}
+
+.edit {
+  width: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
