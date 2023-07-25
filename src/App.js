@@ -8,6 +8,7 @@ import { lazy, Suspense } from "react";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader/Loader";
+import Transaction from "./components/Transactions/Transactions.jsx";
 // import { useAuth } from "./hooks/useAuth";
 
 //LAZY LOADING:
@@ -34,11 +35,11 @@ function App() {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Transaction />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<LoginPage />} />
       </Routes>
     </Suspense>
-
   );
 }
 
