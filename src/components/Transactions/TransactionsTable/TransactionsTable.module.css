@@ -19,6 +19,9 @@
 .table thead {
   height: 58px;
   background-color: var(--white);
+
+  font-family: "Circe";
+  font-weight: 700;
 }
 
 .table th {
@@ -28,6 +31,9 @@
 
   padding-right: 20px;
   padding-left: 25px;
+
+  font-family: "Circe";
+  font-weight: 700;
 }
 
 .table td {
