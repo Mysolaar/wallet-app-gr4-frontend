@@ -39,24 +39,25 @@
   border-bottom-right-radius: 30px;
 }
 
-/* .table td {
-  padding: 15px;
-} */
-
 .table .data-row td {
   position: relative;
-  border-bottom: 1px solid var(--row-divider);
+  border-bottom: 1px solid var(--gray-row-divider);
   box-shadow: 0px 1px 0px 0px #ffffff99;
 }
 
 .table tbody tr:first-child {
   text-align: left;
-
-  /* line-height: 24px; */
 }
 
 .table tbody tr td:last-child {
   text-align: right;
+}
+
+.expenses {
+  font-weight: 700;
+}
+.income {
+  font-weight: 700;
 }
 
 .expenses td:last-child {

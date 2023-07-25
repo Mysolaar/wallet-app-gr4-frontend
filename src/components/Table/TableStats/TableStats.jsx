@@ -1,3 +1,4 @@
+import formatNumber from "../../../utils/formatNumber.js";
 import styles from "./TableStats.module.css";
 
 const data = [
@@ -35,11 +36,6 @@ const TableStats = () => {
       </tbody>
     </table>
   );
-};
-
-const formatNumber = (number) => {
-  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$& ");
-  // .replace(".", ",");
 };
 
 export default TableStats;
