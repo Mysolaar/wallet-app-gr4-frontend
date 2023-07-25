@@ -1,0 +1,35 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  width: 280px;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .table-container {
+    width: 336px;
+  }
+
+  .filters {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .table-container {
+    width: 395px;
+  }
+
+  .filters {
+    width: 100%;
+
+    gap: 32px;
+  }
+}

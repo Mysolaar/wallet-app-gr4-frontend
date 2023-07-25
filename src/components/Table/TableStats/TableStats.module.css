@@ -1,0 +1,112 @@
+.table {
+  border-collapse: separate;
+  width: 100%;
+  border-spacing: 1px;
+
+  margin: auto;
+  background-color: var(
+    --background-gray
+  ); /*TODO do usuniecia jak bedzie dobry bg color na stronie */
+}
+
+.table thead {
+  height: 58px;
+  background-color: var(--white);
+}
+
+.table th {
+  border: 0;
+  box-shadow: 0 0 0 1px var(--white);
+}
+
+.table thead tr:first-child th:first-child {
+  border-top-left-radius: 30px;
+  padding: 15px 0 15px 20px;
+  text-align: left;
+}
+
+.table thead tr:last-child th:first-child {
+  border-bottom-left-radius: 30px;
+}
+
+.table thead tr:first-child th:last-child {
+  border-top-right-radius: 30px;
+  padding: 15px 20px 15px 0;
+  text-align: right;
+}
+
+.table thead tr:last-child th:last-child {
+  border-bottom-right-radius: 30px;
+}
+
+.table .data-row td {
+  position: relative;
+  border-bottom: 1px solid var(--gray-row-divider);
+  box-shadow: 0px 1px 0px 0px #ffffff99;
+}
+
+.table tbody tr:first-child {
+  text-align: left;
+}
+
+.table tbody tr td:last-child {
+  text-align: right;
+}
+
+.expenses {
+  font-weight: 700;
+}
+.income {
+  font-weight: 700;
+}
+
+.expenses td:last-child {
+  color: var(--pink300);
+}
+.income td:last-child {
+  color: var(--green300);
+}
+
+.table .data-row td:first-child {
+  padding: 15px 0 15px 20px;
+}
+
+.data-row td:last-child {
+  padding: 15px 20px 15px 0px;
+}
+
+.expenses td:first-child {
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.table .expenses td:last-child {
+  padding-right: 15px;
+  padding-top: 15px;
+}
+.income td:first-child {
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
+.table .income td:last-child {
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.table .data-row td:first-child {
+  padding: 15px 0 15px 56px;
+}
+
+.data-row td:first-child:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  background-color: teal;
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
