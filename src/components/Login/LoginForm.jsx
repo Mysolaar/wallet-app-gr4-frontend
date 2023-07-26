@@ -22,6 +22,7 @@ const LoginForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(login({ email: values.email, password: values.password }));
+      console.log(values.email, values.password);
       resetForm();
     } catch (error) {
       console.error(error);

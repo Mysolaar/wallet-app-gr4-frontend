@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com/api/users/";
 
 const token = {
   set(token) {
