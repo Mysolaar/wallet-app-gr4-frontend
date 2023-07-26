@@ -1,23 +1,42 @@
 import styles from "./Mainpage.module.css";
 import Navigate from "../../../../components/Navigate/Navigate.jsx";
 import Transactions from "../../../../components/Transactions/Transactions.jsx";
+import StatisticsDesktop from "../Statistics/Statistics.jsx";
 
-const MainpageDesktop = () => {
+const MainpageDesktop = ({
+  page,
+  setHomePage,
+  setStatisticsPage,
+  setCurrencyPage,
+}) => {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <div className={styles.box1}>
         <div className={styles.wrapper}>
           <div className={styles.navigate}>
-            <Navigate />
+            <Navigate
+              setHomePage={setHomePage}
+              setStatisticsPage={setStatisticsPage}
+              setCurrencyPage={setCurrencyPage}
+            />
           </div>
           <div className={styles.balance}>BALANCE PLACEHOLDER</div>
         </div>
         <div className={styles.currency}>CURRENCY PLACEHOLDER</div>
       </div>
       <div className={styles["transactions-box"]}>
-        <Transactions />
+        {(() => {
+          switch (page) {
+            case "Home":
+              return <Transactions />;
+            case "Statistics":
+              return <StatisticsDesktop />;
+            default:
+              return <div>Sorry, something went wrong</div>;
+          }
+        })()}
       </div>
-    </main>
+    </div>
   );
 };
 

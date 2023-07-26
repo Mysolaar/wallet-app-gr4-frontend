@@ -1,5 +1,5 @@
 .balance {
-  width: 280px;
+  width: 336px;
   height: 80px;
   border-radius: 30px;
   background-color: aquamarine;
@@ -9,7 +9,7 @@
 } /* TODO to be deleted once balance component is created*/
 
 .currency {
-  width: 280px;
+  width: 336px;
   height: 174px;
   margin: 0 auto;
   padding-top: 30px;
@@ -22,6 +22,8 @@
 } /* TODO to be deleted once currency component is created*/
 
 .main {
+  width: 704px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -34,6 +36,11 @@
   align-items: flex-end;
   flex-wrap: wrap;
   margin: auto;
+  gap: 32px;
+}
+
+.wrapper {
+  width: 336px;
 }
 .transactions-box {
   margin: auto;
@@ -45,19 +52,17 @@
     align-items: flex-start;
     align-content: flex-start;
     gap: 30px;
-    width: 390px;
+    width: 475px;
     padding-top: 6px;
     margin: 0;
     padding-left: 16px;
     padding-right: 69px;
 
     border-right: 1px solid var(--gray-row-divider);
-
-    /* flex-basis: 480%; */
   }
 
   .wrapper {
-    width: 100%;
+    width: 393px;
   }
 
   .currency,
@@ -71,11 +76,15 @@
 
   .main {
     flex-direction: row;
+    gap: 0;
+    width: fit-content;
+    /* width: 1280px; */
   }
 
   .transactions-box {
     padding-right: 16px;
     padding-top: 46px;
     padding-left: 69px;
+    margin: 0;
   }
 }

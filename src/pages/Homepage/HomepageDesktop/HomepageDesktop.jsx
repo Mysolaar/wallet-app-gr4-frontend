@@ -1,10 +1,20 @@
 import styles from "./HomepageDesktop.module.css";
 import MainpageDesktop from "./Mainpage/Mainpage.jsx";
 
-const HomepageDesktop = () => {
+const HomepageDesktop = ({
+  page,
+  setHomePage,
+  setStatisticsPage,
+  setCurrencyPage,
+}) => {
   return (
     <>
-      <MainpageDesktop />
+      <MainpageDesktop
+        page={page}
+        setHomePage={setHomePage}
+        setStatisticsPage={setStatisticsPage}
+        setCurrencyPage={setCurrencyPage}
+      />
     </>
   );
 };
