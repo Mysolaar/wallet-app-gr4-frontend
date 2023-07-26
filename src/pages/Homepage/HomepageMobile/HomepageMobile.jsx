@@ -2,7 +2,7 @@ import Navigate from "../../../components/Navigate/Navigate.jsx";
 import Transactions from "../../../components/Transactions/Transactions.jsx";
 import Currency from "./Currency/Currency.jsx";
 import styles from "./HomepageMobile.module.css";
-import Mainpage from "./MainPage/Mainpage.jsx";
+import MainpageMobile from "./MainPage/Mainpage.jsx";
 
 const HomepageMobile = ({
   page,
@@ -20,7 +20,7 @@ const HomepageMobile = ({
       {(() => {
         switch (page) {
           case "Home":
-            return <Mainpage />;
+            return <MainpageMobile />;
           case "Currency":
             return <Currency />;
           default:

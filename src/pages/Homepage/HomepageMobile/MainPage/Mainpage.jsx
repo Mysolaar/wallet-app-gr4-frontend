@@ -1,7 +1,7 @@
 import styles from "./Mainpage.module.css";
 import Transactions from "../../../../components/Transactions/Transactions.jsx";
 
-const Mainpage = () => {
+const MainpageMobile = () => {
   return (
     <>
       <div className={styles.balance}>BALANCE PLACEHOLDER</div>
@@ -10,4 +10,4 @@ const Mainpage = () => {
   );
 };
 
-export default Mainpage;
+export default MainpageMobile;
