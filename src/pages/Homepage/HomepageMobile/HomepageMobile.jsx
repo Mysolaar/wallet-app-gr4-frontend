@@ -3,6 +3,7 @@ import Transactions from "../../../components/Transactions/Transactions.jsx";
 import Currency from "./Currency/Currency.jsx";
 import styles from "./HomepageMobile.module.css";
 import MainpageMobile from "./MainPage/Mainpage.jsx";
+import StatisticsMobile from "./Statistics/StatisticsMobile.jsx";
 
 const HomepageMobile = ({
   page,
@@ -23,6 +24,8 @@ const HomepageMobile = ({
             return <MainpageMobile />;
           case "Currency":
             return <Currency />;
+          case "Statistics":
+            return <StatisticsMobile />;
           default:
             return <div>Sorry, something went wrong</div>;
         }

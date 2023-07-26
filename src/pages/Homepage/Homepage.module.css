@@ -1,3 +1,12 @@
 .main {
   background-color: var(--background-gray);
 }
+
+@media screen and (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
