@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import loginValidationSchema from "../../schemas/loginSchema";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import css from "./LoginForm.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import ReactPadlock from "../../icons/padlock-icon.svg";
@@ -87,7 +88,9 @@ const LoginForm = () => {
             </label>
 
             <PrimaryButton text={"LOG IN"} />
-            <SecondaryButton text={"REGISTER"} />
+            <Link to={"/register"}>
+              <SecondaryButton text={"REGISTER"} />
+            </Link>
           </Form>
         </div>
       )}

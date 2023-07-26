@@ -2,13 +2,14 @@ import React from "react";
 import { Formik, Form } from "formik";
 import registerValidationSchema from "../../schemas/registerSchema";
 import PasswordStrengthMeter from "./PasswordStreghtMeter";
-import css from "./RegisterForm.module.css";
+import { Link } from "react-router-dom";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import ReactPadlock from "../../icons/padlock-icon.svg";
 import ReactEnvelope from "../../icons/envelope-icon.svg";
 import ReactPortrait from "../../icons/portrait-icon.svg";
+import css from "./RegisterForm.module.css";
 
 const RegistrationForm = () => {
   const initialValues = {
@@ -121,7 +122,9 @@ const RegistrationForm = () => {
             </label>
 
             <PrimaryButton text={"REGISTER"} />
-            <SecondaryButton text={"LOG IN"} />
+            <Link to={"/login"}>
+              <SecondaryButton text={"LOG IN"} />
+            </Link>
           </Form>
         </div>
       )}

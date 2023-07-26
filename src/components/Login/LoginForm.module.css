@@ -38,8 +38,10 @@
 }
 
 .title {
-  font-size: 28px;
-  font-weight: bold;
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 1);
 }
 
 .input {
