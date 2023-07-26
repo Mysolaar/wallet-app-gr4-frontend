@@ -21,9 +21,8 @@ import PrimaryButton from "./../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "./../reusableButtons/SecondaryButton/SecondaryButton";
 
 Modal.setAppElement("#root");
-function ModalAddTransactions({ type }) {
+function ModalAddTransactions({ type, handleClose }) {
   const [checked, setChecked] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
 
   const date = new Date();
   let dateToText = date.toLocaleDateString();
@@ -42,15 +41,11 @@ function ModalAddTransactions({ type }) {
     },
   });
 
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-
   return (
     <>
-      <button onClick={openModal}>Open Modal</button>
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen
+        onRequestClose={handleClose}
         className={css.modalContainer}
         overlayClassName={css.modalOverlay}
         contentLabel="Transaction modal"
@@ -175,13 +170,13 @@ function ModalAddTransactions({ type }) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               rows="1"
-              maxlength="45"
+              maxLength="45"
               className={`${css.input} ${css.commentField}`}
             />
           </label>
           <div className={css.modalButtonContainer}>
             <PrimaryButton text={type === "add" ? "add" : "save"} />
-            <SecondaryButton text="cancel" />
+            <SecondaryButton text="cancel" onclick={handleClose} />
           </div>
         </form>
       </Modal>
@@ -191,6 +186,7 @@ function ModalAddTransactions({ type }) {
 
 ModalAddTransactions.propTypes = {
   type: PropTypes.oneOf(["add", "edit"]),
+  handleClose: PropTypes.func,
 };
 
 export default ModalAddTransactions;
