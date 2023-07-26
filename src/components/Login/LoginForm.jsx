@@ -18,11 +18,14 @@ const LoginForm = () => {
   };
 
   const dispatch = useDispatch();
-  const handleSubmit = (values) => {
-    const email = values.email;
-    const password = values.password;
-    console.log(email, password);
-    dispatch(login({ email, password }));
+
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await dispatch(login({ email: values.email, password: values.password }));
+      resetForm();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
