@@ -122,9 +122,8 @@ const RegistrationForm = () => {
             </label>
 
             <PrimaryButton text={"REGISTER"} />
-            <Link to={"/login"}>
-              <SecondaryButton text={"LOG IN"} />
-            </Link>
+
+            <SecondaryButton text={"LOG IN"} />
           </Form>
         </div>
       )}
