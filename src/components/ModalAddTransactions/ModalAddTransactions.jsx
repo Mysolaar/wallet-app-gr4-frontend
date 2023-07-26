@@ -10,7 +10,7 @@ import { useFormik } from "formik";
 import { MdDateRange } from "react-icons/md";
 import { BsPlusLg } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
-import { RxSlash } from "react-icons/rx";
+import { RxSlash, RxCross1 } from "react-icons/rx";
 
 import css from "./ModalAddTransactions.module.css";
 import { colorStyles } from "./colorStyles.js";
@@ -46,7 +46,7 @@ function ModalAddTransactions({ type, handleClose }) {
       <Modal
         isOpen
         onRequestClose={handleClose}
-        className={css.modalContainer}
+        className={`${css.modalContainer} ${css.relative}`}
         overlayClassName={css.modalOverlay}
         contentLabel="Transaction modal"
       >
@@ -55,6 +55,9 @@ function ModalAddTransactions({ type, handleClose }) {
           autoComplete="off"
           className={css.modalForm}
         >
+          <button class={css.closeIconContainer} onClick={handleClose}>
+            <RxCross1 size={20} />
+          </button>
           <h3 className={css.modalHeading}>
             {type.charAt(0).toUpperCase() + type.slice(1)} transaction
           </h3>

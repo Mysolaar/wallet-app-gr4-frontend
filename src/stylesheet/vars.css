@@ -1,5 +1,6 @@
 :root {
   --black: #000000;
+  --black-transparent25: #00000040;
   --blue200: #81e1ff;
   --gray300: #e0e0e0;
   --gray400: #bdbdbd;
@@ -11,10 +12,11 @@
   --indigo500: #4a56e2;
   --orange100: #ffd8d0;
   --pink300: #ff6596;
-  --pink300-tansparent50: #ff659680;
-  --purple200: #c5baff;
+  --pink300-transparent50: #ff659680;
   --purple50: #efeffc;
+  --purple200: #c5baff;
   --red200: #fd9498;
+  --red700: #ff0000;
   --teal400: #00ad84;
   --white: #ffffff;
   --white-transparent40: #ffffff66;
@@ -36,7 +38,6 @@ h5,
 h6 {
   font-family: Poppins;
   font-weight: 700;
-  color: #ffffff66;
 }
 
 ul {
@@ -44,8 +45,11 @@ ul {
   padding: 0;
 }
 
-button:focus,
-input:focus,
-textarea:focus {
+input:focus-visible,
+textarea:focus-visible {
   outline: none;
+}
+
+button:focus-visible {
+  outline: 1px solid var(--indigo300);
 }
