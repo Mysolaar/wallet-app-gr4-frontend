@@ -26,7 +26,7 @@
 }
 
 body {
-  font-family: Circe;
+  font-family: Poppins;
   font-weight: 400;
 }
 
@@ -52,4 +52,9 @@ textarea:focus-visible {
 
 button:focus-visible {
   outline: 1px solid var(--indigo300);
+}
+
+table {
+  font-family: Circe;
+  font-weight: 400;
 }
