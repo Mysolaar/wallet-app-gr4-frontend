@@ -2,7 +2,9 @@ import React from "react";
 import { Formik, Form } from "formik";
 import registerValidationSchema from "../../schemas/registerSchema";
 import PasswordStrengthMeter from "./PasswordStreghtMeter";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { register } from "../../redux/auth/authOperations";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
 import ReactWallet from "../../icons/wallet-icon.svg";
@@ -19,8 +21,20 @@ const RegistrationForm = () => {
     confirmPassword: "",
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await dispatch(
+        register({
+          username: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
+      // resetForm();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -122,8 +136,9 @@ const RegistrationForm = () => {
             </label>
 
             <PrimaryButton text={"REGISTER"} />
-
-            <SecondaryButton text={"LOG IN"} />
+            <Link className={css.link} to={"/login"}>
+              <SecondaryButton text={"LOG IN"} />
+            </Link>
           </Form>
         </div>
       )}

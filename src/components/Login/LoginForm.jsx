@@ -92,7 +92,7 @@ const LoginForm = () => {
             </label>
 
             <PrimaryButton text={"LOG IN"} />
-            <Link to={"/register"}>
+            <Link to={"/register"} className={css.link}>
               <SecondaryButton text={"REGISTER"} />
             </Link>
           </Form>

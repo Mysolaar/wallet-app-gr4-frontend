@@ -18,12 +18,16 @@ export const register = createAsyncThunk(
   "auth/register",
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/auth/register", credentials);
+      const { data } = await axios.post(
+        "https://wallet-app-x3a3.onrender.com/api/users/auth/register",
+        credentials
+      );
       toast.success("Registration is successful!");
       token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error("Email is already in use"));
+      // return rejectWithValue(toast.error("Email is already in use"));
+      throw error;
     }
   }
 );
@@ -32,7 +36,10 @@ export const login = createAsyncThunk(
   "auth/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/auth/login", credentials);
+      const { data } = await axios.post(
+        "https://wallet-app-x3a3.onrender.com/api/users/auth/login",
+        credentials
+      );
       token.set(data.token);
       toast.success(`Welcome, ${data.user.name}!`);
       return data;
