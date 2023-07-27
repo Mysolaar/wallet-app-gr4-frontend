@@ -2,11 +2,7 @@ import { BsPlusLg } from "react-icons/bs";
 
 import css from "./ButtonAddTransactions.module.css";
 
-const handleClick = () => {
-  console.log("button works");
-  //TODO - add logic once redux store is available
-};
-function ButtonAddTransactions() {
+function ButtonAddTransactions({ handleClick }) {
   return (
     <button
       type="button"
