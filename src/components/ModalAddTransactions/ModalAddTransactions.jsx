@@ -10,7 +10,7 @@ import { useFormik } from "formik";
 import { MdDateRange } from "react-icons/md";
 import { BsPlusLg } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
-import { RxSlash } from "react-icons/rx";
+import { RxSlash, RxCross1 } from "react-icons/rx";
 
 import css from "./ModalAddTransactions.module.css";
 import { colorStyles } from "./colorStyles.js";
@@ -21,9 +21,8 @@ import PrimaryButton from "./../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "./../reusableButtons/SecondaryButton/SecondaryButton";
 
 Modal.setAppElement("#root");
-function ModalAddTransactions({ type }) {
+function ModalAddTransactions({ type, handleClose }) {
   const [checked, setChecked] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
 
   const date = new Date();
   let dateToText = date.toLocaleDateString();
@@ -42,16 +41,12 @@ function ModalAddTransactions({ type }) {
     },
   });
 
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-
   return (
     <>
-      <button onClick={openModal}>Open Modal</button>
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        className={css.modalContainer}
+        isOpen
+        onRequestClose={handleClose}
+        className={`${css.modalContainer} ${css.relative}`}
         overlayClassName={css.modalOverlay}
         contentLabel="Transaction modal"
       >
@@ -60,6 +55,9 @@ function ModalAddTransactions({ type }) {
           autoComplete="off"
           className={css.modalForm}
         >
+          <button class={css.closeIconContainer} onClick={handleClose}>
+            <RxCross1 size={20} />
+          </button>
           <h3 className={css.modalHeading}>
             {type.charAt(0).toUpperCase() + type.slice(1)} transaction
           </h3>
@@ -175,13 +173,13 @@ function ModalAddTransactions({ type }) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               rows="1"
-              maxlength="45"
+              maxLength="45"
               className={`${css.input} ${css.commentField}`}
             />
           </label>
           <div className={css.modalButtonContainer}>
             <PrimaryButton text={type === "add" ? "add" : "save"} />
-            <SecondaryButton text="cancel" />
+            <SecondaryButton text="cancel" onclick={handleClose} />
           </div>
         </form>
       </Modal>
@@ -191,6 +189,7 @@ function ModalAddTransactions({ type }) {
 
 ModalAddTransactions.propTypes = {
   type: PropTypes.oneOf(["add", "edit"]),
+  handleClose: PropTypes.func,
 };
 
 export default ModalAddTransactions;
