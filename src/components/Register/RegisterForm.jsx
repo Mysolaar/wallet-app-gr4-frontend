@@ -11,6 +11,7 @@ import ReactWallet from "../../icons/wallet-icon.svg";
 import ReactPadlock from "../../icons/padlock-icon.svg";
 import ReactEnvelope from "../../icons/envelope-icon.svg";
 import ReactPortrait from "../../icons/portrait-icon.svg";
+import { Notify } from "notiflix";
 import css from "./RegisterForm.module.css";
 
 const RegistrationForm = () => {
@@ -31,8 +32,10 @@ const RegistrationForm = () => {
           password: values.password,
         })
       );
-      // resetForm();
+      Notify.success("Check your mailbox for email address verification");
+      resetForm();
     } catch (error) {
+      Notify.failure("Somethin went wrong");
       console.error(error);
     }
   };
