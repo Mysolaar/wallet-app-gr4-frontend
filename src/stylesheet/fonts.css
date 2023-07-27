@@ -27,5 +27,5 @@
   font-style: normal;
   font-weight: 700;
   src: local("CRC65"),
-    url("./../../src/assets/fonts/Circe/Circe-Regular.woff") format("woff");
+    url("./../../src/assets/fonts/Circe/Circe-Bold.woff") format("woff");
 }
