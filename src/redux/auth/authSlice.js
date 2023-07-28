@@ -2,10 +2,11 @@ import { register, login, logout, fetchCurrentUser } from "./authOperations";
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: { email: "", name: "" },
+  user: { email: "", username: "" },
   token: null,
   isLoading: false,
   isAuth: false,
+  isLoggedIn: false,
   isFetchingCurrentUser: false,
   error: null,
 };
@@ -21,6 +22,7 @@ const authSlice = createSlice({
         state.token = null;
         state.user = { name: "", email: "" };
         state.isAuth = false;
+        state.isLoggedIn = false;
       })
       .addCase(logout.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -37,10 +39,11 @@ const authSlice = createSlice({
         state.isFetchingCurrentUser = false;
         state.token = null;
       })
-      .addCase(login.fulfilled, (state, { payload: { user, token } }) => {
-        state.user = user;
-        state.token = token;
+      .addCase(login.fulfilled, (state, payload) => {
+        state.user = payload.user;
+        state.token = payload.token;
         state.isAuth = true;
+        state.isLoggedIn = true;
       })
       .addMatcher(
         isAnyOf(register.fulfilled, login.fulfilled),

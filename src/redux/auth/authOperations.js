@@ -2,6 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { useAuth } from "../../hooks/useAuth";
 
 axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com/api/users/";
 
@@ -24,6 +25,7 @@ export const register = createAsyncThunk(
       );
       toast.success("Registration is successful!");
       token.set(data.token);
+      console.log(data);
       return data;
     } catch (error) {
       // return rejectWithValue(toast.error("Email is already in use"));
@@ -40,6 +42,9 @@ export const login = createAsyncThunk(
         "https://wallet-app-x3a3.onrender.com/api/users/auth/login",
         credentials
       );
+      console.log(data);
+      const { isLoggedIn } = useAuth();
+      console.log(isLoggedIn);
       token.set(data.token);
       toast.success(`Welcome, ${data.user.name}!`);
       return data;
@@ -73,7 +78,9 @@ export const fetchCurrentUser = createAsyncThunk(
     }
     token.set(tokenLS);
     try {
-      const { data } = await axios.get("/api/users/current");
+      const { data } = await axios.get(
+        "https://wallet-app-x3a3.onrender.com/api/users/current"
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error);
