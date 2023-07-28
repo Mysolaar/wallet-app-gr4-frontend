@@ -11,6 +11,7 @@
     "chart.js": "^4.3.0",
     "formik": "^2.4.2",
     "indicative": "^7.4.4",
+    "js-cookie": "^3.0.5",
     "modern-normalize": "^2.0.0",
     "notiflix": "^3.2.6",
     "prop-types": "^15.8.1",
