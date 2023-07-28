@@ -39,7 +39,7 @@ function App() {
   }, [dispatch]);
 
   return isLoggedIn ? (
-    <Loader />
+    !(<Loader />)
   ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
