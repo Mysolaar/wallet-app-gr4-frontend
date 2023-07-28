@@ -22,7 +22,7 @@ const authSlice = createSlice({
         state.token = null;
         state.user = { name: "", email: "" };
         state.isAuth = false;
-        state.isLoggedIn = true;
+        state.isLoggedIn = false;
       })
       .addCase(logout.rejected, (state, { payload }) => {
         state.isLoading = false;

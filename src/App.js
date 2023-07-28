@@ -5,12 +5,13 @@ import { RestrictedRoute } from "./redux/routes/restrictedRoute";
 import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
 import { login } from "./redux/auth/authOperations";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader/Loader";
 import Transaction from "./components/Transactions/Transactions.jsx";
 import Header from "./components/Header/Header";
 import { useAuth } from "./hooks/useAuth";
+
 // import { useAuth } from "./hooks/useAuth";
 
 //LAZY LOADING:
@@ -30,29 +31,46 @@ function App() {
   const { isLoggedIn } = useAuth();
   console.log(isLoggedIn);
 
-  // useEffect(() => {
-  //   dispatch(fetchCurrentUser());
-  // }, [dispatch]);
-
   useEffect(() => {
-    dispatch(login());
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
+  console.log(isLoggedIn);
+
   return isLoggedIn ? (
-    !(<Loader />)
+    <Loader />
   ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-
+        <Route path="/" element={<RegisterPage />} />
         <Route
-          path="/"
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/homepage"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/homepage"
           element={<PrivateRoute redirectTo="/login" component={<Header />} />}
         />
-        <Route path="/dashboard" element={<Transaction />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Transaction />} />
+          }
+        />
+        <Route path="*" element={<RegisterPage />} />
       </Routes>
+      <ToastContainer position="bottom-right" />
     </Suspense>
   );
   // <Suspense fallback={<Loader />}>
