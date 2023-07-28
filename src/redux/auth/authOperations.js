@@ -2,6 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { useState, useEffect } from "react";
 
 axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
 
@@ -41,9 +42,16 @@ export const login = createAsyncThunk(
         "https://wallet-app-x3a3.onrender.com/api/users/auth/login",
         credentials
       );
-      console.log(data[0]);
-      token.set(data.token);
-      toast.success(`Welcome, ${data.user}!`);
+
+      token.set(data.data.token);
+
+      const [Token, setToken] = useState("");
+
+      useEffect(() => {
+        localStorage.setItem("Token", Token);
+      }, [Token]);
+      setToken(data.data.token);
+      toast.success(`Welcome, ${data.data.user.username}!`);
       return data;
     } catch (error) {
       return rejectWithValue(toast.error(`${error}`));

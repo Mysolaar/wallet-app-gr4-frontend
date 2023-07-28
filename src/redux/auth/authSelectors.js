@@ -1,7 +1,6 @@
-export const selectToken = (state) => state.token;
+export const selectToken = (state) => state.auth.token;
 export const selectName = (state) => state.user.username;
 export const selectId = (state) => state.user._id;
-console.log(selectToken);
 
 export const selectIsFetchingCurrentUser = (state) =>
   state.auth.isFetchingCurrentUser;

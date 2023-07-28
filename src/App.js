@@ -29,13 +29,10 @@ const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 function App() {
   const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-
-  console.log(isLoggedIn);
 
   return isLoggedIn ? (
     <Loader />
@@ -62,12 +59,7 @@ function App() {
           path="/homepage"
           element={<PrivateRoute redirectTo="/login" component={<Header />} />}
         />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Transaction />} />
-          }
-        />
+
         <Route path="*" element={<RegisterPage />} />
       </Routes>
       <ToastContainer position="bottom-right" />

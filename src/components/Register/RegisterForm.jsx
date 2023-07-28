@@ -33,7 +33,7 @@ const RegistrationForm = () => {
         })
       );
       Notify.success("Check your mailbox for email address verification");
-      // resetForm();
+      resetForm();
     } catch (error) {
       Notify.failure("Somethin went wrong");
       console.error(error);
