@@ -48,6 +48,8 @@ export const login = createAsyncThunk(
       cookie.set("cookie_token", data.data.token, {
         expires: 7,
         secure: true,
+        sameSite: "strict",
+        // sameSite: "none",
       });
       token.set(data.data.token);
 
