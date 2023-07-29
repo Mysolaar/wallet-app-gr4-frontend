@@ -31,15 +31,14 @@ const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const data = mockdata; //TODO fetch data
 
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
   const deleteFunction = () => {
     console.log("Add delete logic");
   };
   const openEdit = () => {
     console.log("Add Edit logic");
+  };
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
   };
 
   useEffect(() => {
