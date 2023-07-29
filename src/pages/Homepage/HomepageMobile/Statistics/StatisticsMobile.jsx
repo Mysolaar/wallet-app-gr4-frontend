@@ -4,7 +4,7 @@ import styles from "./StatisticsMobile.module.css";
 const StatisticsMobile = () => {
   return (
     <div className={styles.statistics}>
-      <h1 className={styles["statistics-header"]}>Statistics</h1>
+      <h2 className={styles["statistics-header"]}>Statistics!</h2>
       <div className={styles.chart}>CHART PLACEHOLDER</div>
       <Table />
     </div>
