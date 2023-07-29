@@ -2,8 +2,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+// import Cookies from "js-cookie";
+import cookie from "../../utils/cookie";
+// import { useState, useEffect } from "react";
 
 axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
 
@@ -43,20 +44,20 @@ export const login = createAsyncThunk(
         "https://wallet-app-x3a3.onrender.com/api/users/auth/login",
         credentials
       );
-
       
-      token.set(data.data.token);
-      Cookies.save("cookie_token", data.data.token, {
+      cookie.set("cookie_token", data.data.token, {
         expires: 7,
+        secure: true,
       });
+      token.set(data.data.token);
 
-      const [Token, setToken] = useState("");
+      // const [Token, setToken] = useState("");
 
-      useEffect(() => {
-        localStorage.setItem("Token", Token);
-      }, [Token]);
+      // useEffect(() => {
+      //   localStorage.setItem("Token", Token);
+      // }, [Token]);
 
-      setToken(data.data.token);
+      // setToken(data.data.token);
       toast.success(`Welcome, ${data.data.user.username}!`);
       return data;
     } catch (error) {
@@ -71,7 +72,7 @@ export const logout = createAsyncThunk(
     try {
       await axios.get("https://wallet-app-x3a3.onrender.com/api/users/logout");
       token.unset();
-      Cookies.remove("cookie_token");
+      cookie.remove("cookie_token");
       toast.success("You have been successfully logged out");
     } catch (error) {
       return rejectWithValue(
@@ -85,7 +86,7 @@ export const fetchCurrentUser = createAsyncThunk(
   "auth/refresh",
   async (_, { rejectWithValue, getState }) => {
     const tokenLS = getState().auth.token;
-    const refreshToken = Cookies.get("cookie_token");
+    const refreshToken = cookie.get("cookie_token");
     const persistedAccessToken = getState().auth.token;
 
     if (!tokenLS) {
