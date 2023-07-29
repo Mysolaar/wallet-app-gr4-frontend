@@ -15,6 +15,7 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/authSlice";
 import transactionsReducer from "./transactions/transactionsSlice";
 import userReducer from "./user/userSlice";
+import globalReducer from "./global/globalSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   transactions: transactionsReducer,
   user: userReducer,
+  global: globalReducer,
 });
 const store = configureStore({
   reducer: rootReducer,
