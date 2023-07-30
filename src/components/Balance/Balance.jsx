@@ -24,7 +24,7 @@ export default function Balance() {
   return (
     <div className={styles.balance}>
       <div className={styles.balance__text}>Your balance</div>
-      <div className={styles.balance__amount}>₴ 150 000.00</div>
+      <div className={styles.balance__amount}>€ 150 000.00</div>
       {/* <div className={styles.balance__amount}>{currencySymbol} {balance}
       </div> */}
     </div>
