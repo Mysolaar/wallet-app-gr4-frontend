@@ -33,8 +33,8 @@ const authSlice = createSlice({
         state.error = null;
         state.user = payload;
         state.isFetchingCurrentUser = false;
+        state.isLoggedIn = true;
         state.isAuth = true;
-        state.token = payload.token;
       })
       .addCase(fetchCurrentUser.rejected, (state) => {
         state.isFetchingCurrentUser = false;
@@ -74,6 +74,7 @@ const authSlice = createSlice({
         ),
         (state) => {
           state.isLoading = true;
+          state.isFetchingCurrentUser = true;
         }
       )
       .addMatcher(

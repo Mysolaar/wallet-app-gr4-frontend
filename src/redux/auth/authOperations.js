@@ -47,8 +47,8 @@ export const login = createAsyncThunk(
       cookie.set("cookie_token", data.data.token, {
         expires: 7,
         secure: true,
-        sameSite: "strict",
-        // sameSite: "none",
+        // sameSite: "strict",
+        sameSite: "none",
       });
       token.set(data.data.token);
 
@@ -88,8 +88,9 @@ export const logout = createAsyncThunk(
 export const fetchCurrentUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    const storedToken = cookie.get("cookie_token");
-    console.log("storedToken", storedToken);
+    const cookies = document.cookie;
+    const cookie = cookies.split("=");
+    const storedToken = cookie[1];
 
     if (storedToken) {
       token.set(storedToken);
@@ -101,6 +102,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get(
         "https://wallet-app-x3a3.onrender.com/api/users/current"
       );
+
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

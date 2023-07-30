@@ -10,7 +10,6 @@ import ReactEnvelope from "../../icons/envelope-icon.svg";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
 import { login } from "../../redux/auth/authOperations";
-import { useAuth } from "../../hooks/useAuth";
 
 const LoginForm = () => {
   const initialValues = {
@@ -19,14 +18,11 @@ const LoginForm = () => {
   };
 
   const dispatch = useDispatch();
-  const { isToken } = useAuth();
-  console.log("token", isToken);
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(login({ email: values.email, password: values.password }));
-      console.log(values.email, values.password);
-      localStorage.setItem("token", isToken);
+
       resetForm();
     } catch (error) {
       console.error(error);
