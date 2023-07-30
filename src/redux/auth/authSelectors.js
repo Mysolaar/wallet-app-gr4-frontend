@@ -1,4 +1,5 @@
-export const selectName = (state) => state.auth.user;
+export const selectName = (state) => state.user.username;
+console.log(selectName);
 export const selectId = (state) => state.user._id;
 
 export const selectIsFetchingCurrentUser = (state) =>
