@@ -15,6 +15,7 @@ import Transaction from "./components/Transactions/Transactions.jsx";
 
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
+const PageNotFound = lazy(() => import("./pages/404/PageNotFound.jsx"));
 // const DashboardPage = lazy(() => import("./pages/DashboardDashboardPage"));
 // const StatisticsPage = lazy(() => import("./pages/Statistics/StatisticsPage"));
 // const CurrencyPage = lazy(() => import("./pages/Currency/CurrencyPage"));
@@ -37,7 +38,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/dashboard" element={<Transaction />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<LoginPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>
   );
