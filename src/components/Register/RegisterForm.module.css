@@ -80,6 +80,12 @@
   top: 10px;
   width: 30px;
 }
+.link {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+}
 
 @media (max-width: 767px) {
   .container {

@@ -2,13 +2,17 @@ import React from "react";
 import { Formik, Form } from "formik";
 import registerValidationSchema from "../../schemas/registerSchema";
 import PasswordStrengthMeter from "./PasswordStreghtMeter";
-import css from "./RegisterForm.module.css";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { register } from "../../redux/auth/authOperations";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import ReactPadlock from "../../icons/padlock-icon.svg";
 import ReactEnvelope from "../../icons/envelope-icon.svg";
 import ReactPortrait from "../../icons/portrait-icon.svg";
+import { Notify } from "notiflix";
+import css from "./RegisterForm.module.css";
 
 const RegistrationForm = () => {
   const initialValues = {
@@ -18,8 +22,22 @@ const RegistrationForm = () => {
     confirmPassword: "",
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await dispatch(
+        register({
+          username: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
+      Notify.success("Check your mailbox for email address verification");
+      resetForm();
+    } catch (error) {
+      Notify.failure("Somethin went wrong");
+      console.error(error);
+    }
   };
 
   return (
@@ -121,7 +139,9 @@ const RegistrationForm = () => {
             </label>
 
             <PrimaryButton text={"REGISTER"} />
-            <SecondaryButton text={"LOG IN"} />
+            <Link className={css.link} to={"/login"}>
+              <SecondaryButton text={"LOG IN"} />
+            </Link>
           </Form>
         </div>
       )}
