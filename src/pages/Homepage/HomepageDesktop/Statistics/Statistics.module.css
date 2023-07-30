@@ -1,0 +1,34 @@
+.statistics-header {
+  color: black;
+}
+
+.chart {
+  width: 336px;
+  height: 336px;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  background: linear-gradient(
+    to bottom right,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+} /* TODO To be removed */
+
+.statistics {
+  display: flex;
+  gap: 32px;
+}
+
+@media screen and (min-width: 1280px) {
+  .chart {
+    width: 288px;
+    height: 288px;
+  } /* TODO To be removed */
+}

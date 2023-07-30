@@ -38,8 +38,10 @@
 }
 
 .title {
-  font-size: 28px;
-  font-weight: bold;
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 1);
 }
 
 .input {
@@ -72,6 +74,12 @@
 .envelope__svg {
   left: 44px;
   top: 17px;
+}
+.link {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
 }
 
 @media (min-width: 767px) {

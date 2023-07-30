@@ -1,0 +1,27 @@
+@import '../../stylesheet/vars.css';
+@import '../../stylesheet/fonts.css';
+
+.balance {
+  background-color: var(--white);
+  border-radius: 30px;
+  padding: 8px 32px;
+  max-width: 395px;
+}
+
+.balance__text {
+  color: var(--gray500);
+  font-family: "Circe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.balance__amount {
+  color: var(--black);
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+}

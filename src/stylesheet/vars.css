@@ -26,7 +26,7 @@
 }
 
 body {
-  font-family: Poppins;
+  font-family: Circe;
   font-weight: 400;
 }
 
@@ -54,7 +54,16 @@ button:focus-visible {
   outline: 1px solid var(--indigo300);
 }
 
-table {
-  font-family: Circe;
+table,
+button,
+textarea,
+input {
+  font-family: inherit;
   font-weight: 400;
 }
+
+#root {
+  margin: 0;
+  height: min(100vh, 1000px);
+}
+
