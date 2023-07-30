@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import loginValidationSchema from "../../schemas/loginSchema";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import css from "./LoginForm.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import ReactPadlock from "../../icons/padlock-icon.svg";
@@ -9,6 +10,7 @@ import ReactEnvelope from "../../icons/envelope-icon.svg";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
 import { login } from "../../redux/auth/authOperations";
+import { useAuth } from "../../hooks/useAuth";
 
 const LoginForm = () => {
   const initialValues = {
@@ -17,11 +19,18 @@ const LoginForm = () => {
   };
 
   const dispatch = useDispatch();
-  const handleSubmit = (values) => {
-    const email = values.email;
-    const password = values.password;
-    console.log(email, password);
-    dispatch(login({ email, password }));
+  const { isToken } = useAuth();
+  console.log("token", isToken);
+
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await dispatch(login({ email: values.email, password: values.password }));
+      console.log(values.email, values.password);
+      localStorage.setItem("token", isToken);
+      resetForm();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -87,7 +96,9 @@ const LoginForm = () => {
             </label>
 
             <PrimaryButton text={"LOG IN"} />
-            <SecondaryButton text={"REGISTER"} />
+            <Link to={"/register"} className={css.link}>
+              <SecondaryButton text={"REGISTER"} />
+            </Link>
           </Form>
         </div>
       )}
