@@ -6,15 +6,22 @@ import tokenAuth from "../../pages/Homepage/token.js";
 
 axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
 
+const token2 = tokenAuth; //TODO to be deleted
+
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
   async (_id, { rejectWithValue }) => {
     try {
-      await axios.delete(`/api/transactions/${_id}`);
+      console.log("attempting delete");
+      await axios.delete(`/api/transactions/${_id}`, {
+        headers: {
+          Authorization: `Bearer ${token2}`,
+        },
+      });
       toast.success("Your transaction is deleted!");
       return _id;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -35,7 +42,6 @@ export const addTransaction = createAsyncThunk(
 export const getTransactions = createAsyncThunk(
   "categories/getAllTransactions",
   async ({ token }, { rejectWithValue }) => {
-    const token2 = tokenAuth; //TODO to be deleted
     console.log(token);
     try {
       const response = await axios.get("/api/transactions", {

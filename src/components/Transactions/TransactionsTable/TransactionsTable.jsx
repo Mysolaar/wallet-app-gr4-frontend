@@ -11,31 +11,31 @@ import {
 import { useEffect } from "react";
 import LoaderComponent from "../../Loader/Loader.js";
 
-const TransactionsTable = ({ openEdit }) => {
+const TransactionsTable = ({ handleDelete, openEdit }) => {
   const data = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
   console.log("data TransactionsTable", data);
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [data]);
 
   return (
     <div className={styles["transactions-container"]}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className="table-header">Date</th>
-            <th className={styles["header-cell"]}>Type</th>
-            <th className="table-header">Category</th>
-            <th className="table-header">Comment</th>
-            <th className="table-header">Sum</th>
-            <th className="table-header"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {isLoading ? (
-            <LoaderComponent />
-          ) : (
-            data.transactions.map((transaction, index) => {
+      {isLoading ? (
+        <LoaderComponent />
+      ) : (
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className="table-header">Date</th>
+              <th className={styles["header-cell"]}>Type</th>
+              <th className="table-header">Category</th>
+              <th className="table-header">Comment</th>
+              <th className="table-header">Sum</th>
+              <th className="table-header"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.transactions.map((transaction, index) => {
               const color =
                 transaction.typeOfTransaction === "Expense"
                   ? styles.pink
@@ -60,15 +60,15 @@ const TransactionsTable = ({ openEdit }) => {
                     />
                     <PrimaryButton
                       text="Delete"
-                      onClick={() => console.log("Hello World")}
+                      onclick={() => handleDelete(transaction._id)}
                     />
                   </td>
                 </tr>
               );
-            })
-          )}
-        </tbody>
-      </table>
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

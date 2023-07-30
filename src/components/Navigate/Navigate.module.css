@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.navItem:active {
+.active {
   background-color: rgba(74, 86, 226, 1);
   box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5),
     -3px 5px 8px rgba(74, 86, 226, 0.5);

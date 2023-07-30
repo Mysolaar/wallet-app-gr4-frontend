@@ -3,16 +3,23 @@ import styles from "./TransactionsMobile.module.css";
 import { HiOutlinePencil } from "react-icons/hi";
 import PropTypes from "prop-types";
 import changeDateFormat from "../../../utils/changeDateFormat.js";
-import { useSelector } from "react-redux";
-import { selectTransactions } from "../../../redux/transactions/transactionsSelectors.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectIsLoading,
+  selectTransactions,
+} from "../../../redux/transactions/transactionsSelectors.js";
 import LoaderComponent from "../../Loader/Loader.js";
+import { deleteTransaction } from "../../../redux/transactions/transactionsOperations.js";
 
-const TransactionsMobile = ({ deleteFunction, openEdit }) => {
+const TransactionsMobile = ({ handleDelete, openEdit }) => {
   const data = useSelector(selectTransactions);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <div className={styles["transactions-container"]}>
-      {data.transactions.length > 0 ? (
+      {isLoading ? (
+        <LoaderComponent />
+      ) : (
         data.transactions.map((transaction, index) => {
           const color =
             transaction.typeOfTransaction === "Expense"
@@ -54,7 +61,10 @@ const TransactionsMobile = ({ deleteFunction, openEdit }) => {
               </div>
 
               <div className={`${styles["transaction-row"]} ${color}`}>
-                <PrimaryButton text="Delete" onclick={deleteFunction} />
+                <PrimaryButton
+                  text="Delete"
+                  onclick={() => handleDelete(transaction._id)}
+                />
                 <span className={styles.edit} onClick={openEdit}>
                   <HiOutlinePencil />
                   Edit
@@ -63,8 +73,6 @@ const TransactionsMobile = ({ deleteFunction, openEdit }) => {
             </div>
           );
         })
-      ) : (
-        <LoaderComponent />
       )}
     </div>
   );
