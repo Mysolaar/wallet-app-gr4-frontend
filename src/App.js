@@ -26,7 +26,6 @@ const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 
 function App() {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     dispatch(fetchCurrentUser());

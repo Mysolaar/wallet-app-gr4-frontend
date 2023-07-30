@@ -9,7 +9,7 @@ import { logout } from "../../redux/auth/authOperations";
 function Header() {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  console.log(user);
+
   const handleLogOut = async () => {
     try {
       await dispatch(logout());
