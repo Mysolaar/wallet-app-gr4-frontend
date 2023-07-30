@@ -32,6 +32,7 @@ const Transactions = () => {
 
   const handleDelete = (_id) => {
     dispatch(deleteTransaction(_id));
+    // dispatch(getTransactions());
   };
 
   return (

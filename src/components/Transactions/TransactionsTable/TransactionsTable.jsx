@@ -14,7 +14,7 @@ import LoaderComponent from "../../Loader/Loader.js";
 const TransactionsTable = ({ handleDelete, openEdit }) => {
   const data = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
-  console.log("data TransactionsTable", data);
+  console.log("data TransactionsTable", data.transactions);
 
   useEffect(() => {}, [data]);
 
@@ -48,7 +48,7 @@ const TransactionsTable = ({ handleDelete, openEdit }) => {
                 <tr key={index} className={styles["data-row"]}>
                   <td>{changeDateFormat(transaction.transactionDate)}</td>
                   <td>{type}</td>
-                  <td>{`Car`}</td>
+                  <td>{transaction.category}</td>
                   <td>{transaction.comment}</td>
                   <td className={color}>
                     {formatNumber(transaction.amountOfTransaction)}

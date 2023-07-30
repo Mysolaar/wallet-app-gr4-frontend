@@ -12,7 +12,6 @@ export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
   async (_id, { rejectWithValue }) => {
     try {
-      console.log("attempting delete");
       await axios.delete(`/api/transactions/${_id}`, {
         headers: {
           Authorization: `Bearer ${token2}`,

@@ -24,21 +24,19 @@ const transactionsSlice = createSlice({
         state.error = null;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
-        // console.log("state: ", state.transactions);
         state.isLoading = false;
         state.error = null;
-        console.log(state.transactions.transactions);
-        state.transactions = state.transactions.transactions.splice(
-          state.transactions.transactions.findIndex(
-            (transaction) => transaction.id === payload
-          ),
-          1
-        );
+
+        state.transactions.transactions =
+          state.transactions.transactions.filter((transaction) => {
+            return transaction._id !== payload;
+          });
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
+
       .addCase(addTransaction.pending, (state) => {
         state.isLoading = true;
         state.error = null;
