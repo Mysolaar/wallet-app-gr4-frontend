@@ -62,5 +62,4 @@ table {
 #root {
   margin: 0;
   height: min(100vh, 1000px);
-  background-color: #f3f5fa;
 }
