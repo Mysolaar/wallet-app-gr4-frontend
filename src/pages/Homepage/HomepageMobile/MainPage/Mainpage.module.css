@@ -1,0 +1,10 @@
+.balance {
+  width: 280px;
+  height: 80px;
+  border-radius: 30px;
+  background-color: aquamarine;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin: auto;
+} /* TODO to be deleted once balance component is created*/

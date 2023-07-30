@@ -1,0 +1,12 @@
+.currency {
+  width: 280px;
+  height: 174px;
+  margin: auto;
+  padding-top: 30px;
+  text-align: center;
+  color: white;
+
+  border-radius: 30px;
+
+  background-color: #4a56e2;
+} /* TODO to be deleted once currency component is created*/

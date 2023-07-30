@@ -1,0 +1,34 @@
+.statistics {
+  width: 280px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-content: flex-start;
+}
+
+.chart {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  background: linear-gradient(
+    to right,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+  margin: 0 auto;
+} /* TODO To be removed */
+
+.statistics-header {
+  /* margin: 0 auto; */
+  width: fit-content;
+  color: black;
+} /* TODO To be removed */
