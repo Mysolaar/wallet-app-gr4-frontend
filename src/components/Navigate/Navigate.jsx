@@ -2,7 +2,11 @@ import css from "../Navigate/Navigate.module.css";
 import { MdHome, MdTimeline } from "react-icons/md";
 import { FaDollarSign } from "react-icons/fa";
 
-function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
+function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
+  const isActivePage = (pageName) => {
+    return pageName === page ? css.active : "";
+  };
+
   return (
     <div className={css.navBox}>
       <ul className={css.nav}>
@@ -10,7 +14,7 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
           <MdHome
             color="rgba(255, 255, 255, 1)"
             size={40}
-            className={css.navItem}
+            className={`${css.navItem} ${isActivePage("Home")}`}
             onClick={setHomePage}
           />
           <p className={css.navTitle}>Home</p>
@@ -19,7 +23,7 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
           <MdTimeline
             color="rgba(255, 255, 255, 1)"
             size={30}
-            className={css.navItem}
+            className={`${css.navItem} ${isActivePage("Statistics")}`}
             onClick={setStatisticsPage}
           />
           <p className={css.navTitle}>Statistics</p>
@@ -28,7 +32,7 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
           <FaDollarSign
             color="rgba(255, 255, 255, 1)"
             size={25}
-            className={css.navItem}
+            className={`${css.navItem} ${isActivePage("Currency")}`}
             onClick={setCurrencyPage}
           />
         </li>

@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import { RestrictedRoute } from "./redux/routes/restrictedRoute";
@@ -11,6 +11,8 @@ import Loader from "./components/Loader/Loader";
 import Transaction from "./components/Transactions/Transactions.jsx";
 import Header from "./components/Header/Header";
 import { useAuth } from "./hooks/useAuth";
+import store from "./redux/store.js";
+import Homepage from "./pages/Homepage/Homepage.jsx";
 
 // import { useAuth } from "./hooks/useAuth";
 
@@ -36,35 +38,36 @@ function App() {
 
   return isLoggedIn ? (
     <Loader />
-    
   ) : (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<RegisterPage />} />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/homepage"
-              component={<RegisterPage />}
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
-          }
-        />
-        <Route
-          path="/homepage"
-          element={<PrivateRoute redirectTo="/login" component={<Header />} />}
-        />
+    <Provider store={store}>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<RegisterPage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/homepage"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/homepage"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route path="/homepage" element={<Homepage />} />
 
-        <Route path="*" element={<RegisterPage />} />
-      </Routes>
-      <ToastContainer position="bottom-right" />
-    </Suspense>
+          <Route path="*" element={<RegisterPage />} />
+        </Routes>
+        <ToastContainer position="bottom-right" />
+      </Suspense>
+    </Provider>
   );
   // <Suspense fallback={<Loader />}>
   //   <Routes>

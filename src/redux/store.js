@@ -22,12 +22,14 @@ const authPersistConfig = {
   storage,
   whitelist: ["token"],
 };
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   transactions: transactionsReducer,
   user: userReducer,
   global: globalReducer,
 });
+
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
