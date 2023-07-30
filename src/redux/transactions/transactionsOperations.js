@@ -2,8 +2,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import tokenAuth from "../../pages/Homepage/token.js";
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com/";
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
@@ -34,12 +35,15 @@ export const addTransaction = createAsyncThunk(
 export const getTransactions = createAsyncThunk(
   "categories/getAllTransactions",
   async ({ token }, { rejectWithValue }) => {
+    const token2 = tokenAuth; //TODO to be deleted
+
     try {
       const response = await axios.get("/api/transactions", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token2}`,
         },
       });
+      console.log("Redux getT: ", response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);

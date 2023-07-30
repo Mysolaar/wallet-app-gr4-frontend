@@ -9,13 +9,12 @@ import { lazy, Suspense } from "react";
 // import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader/Loader";
 import Homepage from "./pages/Homepage/Homepage.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
 // import Transaction from "./components/Transactions/Transactions.jsx";
 // import { useAuth } from "./hooks/useAuth";
 
 //LAZY LOADING:
-const Transaction = lazy(() =>
-  import("./components/Transactions/Transactions.jsx")
-);
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 // const DashboardPage = lazy(() => import("./pages/DashboardDashboardPage"));
@@ -35,15 +34,16 @@ function App() {
   // }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Transaction />} />
-        <Route path="/homepage" element={<Homepage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<LoginPage />} />
-      </Routes>
-    </Suspense>
+    <Provider store={store}>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Suspense>
+    </Provider>
   );
 }
 
