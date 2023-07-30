@@ -6,7 +6,7 @@ import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
 import { login } from "./redux/auth/authOperations";
 import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader/Loader";
 import Transaction from "./components/Transactions/Transactions.jsx";
 import Header from "./components/Header/Header";
