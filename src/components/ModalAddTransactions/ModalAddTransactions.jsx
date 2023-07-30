@@ -6,6 +6,7 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 
 import { MdDateRange } from "react-icons/md";
 import { BsPlusLg } from "react-icons/bs";
@@ -16,13 +17,19 @@ import css from "./ModalAddTransactions.module.css";
 import { colorStyles } from "./colorStyles.js";
 import { modalAddTransactionsSchema } from "./../../schemas/index";
 import { options } from "./expenseOptions/expenseOptions";
+import { closeModal } from "./../../redux/global/globalSlice";
 import DropdownIndicator from "./../reusableButtons/DropdownIndicator/DropdownIndicator";
 import PrimaryButton from "./../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "./../reusableButtons/SecondaryButton/SecondaryButton";
 
 Modal.setAppElement("#root");
-function ModalAddTransactions({ type, handleClose }) {
+function ModalAddTransactions({ type }) {
   const [checked, setChecked] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(closeModal("isModalAddTransactionsOpen"));
+  };
 
   const date = new Date();
   let dateToText = date.toLocaleDateString();

@@ -8,11 +8,14 @@ import { lazy, Suspense } from "react";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader/Loader";
-import Transaction from "./components/Transactions/Transactions.jsx";
+import Homepage from "./pages/Homepage/Homepage.jsx";
+// import Transaction from "./components/Transactions/Transactions.jsx";
 // import { useAuth } from "./hooks/useAuth";
 
 //LAZY LOADING:
-
+const Transaction = lazy(() =>
+  import("./components/Transactions/Transactions.jsx")
+);
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 const PageNotFound = lazy(() => import("./pages/404/PageNotFound.jsx"));
@@ -37,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/dashboard" element={<Transaction />} />
+        <Route path="/homepage" element={<Homepage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

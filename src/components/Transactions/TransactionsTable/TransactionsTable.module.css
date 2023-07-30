@@ -1,8 +1,5 @@
 .transactions-container {
   width: 704px;
-  margin: auto; /*TODO to be removed */
-  margin-top: 30px; /*TODO to be removed */
-  background-color: lightgrey; /*TODO to be removed */
 }
 
 .table {
@@ -11,9 +8,6 @@
   border-spacing: 1px;
 
   margin: auto;
-  background-color: var(
-    --gray300
-  ); /*TODO do usuniecia jak bedzie dobry bg color na stronie */
 }
 
 .table thead {
