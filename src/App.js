@@ -10,6 +10,7 @@ import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader";
 import Transaction from "./components/Transactions/Transactions.jsx";
 // import { useAuth } from "./hooks/useAuth";
+import Currency from "./components/Currency/Currency";
 
 //LAZY LOADING:
 
@@ -30,16 +31,17 @@ function App() {
   // useEffect(() => {
   //   dispatch(fetchCurrentUser());
   // }, [dispatch]);
-
+  
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Transaction />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<LoginPage />} />
-      </Routes>
-    </Suspense>
+    <Currency />
+    // <Suspense fallback={<Loader />}>
+    //   <Routes>
+    //     <Route path="/" element={<LoginPage />} />
+    //     <Route path="/dashboard" element={<Transaction />} />
+    //     <Route path="/register" element={<RegisterPage />} />
+    //     <Route path="*" element={<LoginPage />} />
+    //   </Routes>
+    // </Suspense>
   );
 }
 
