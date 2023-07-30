@@ -2,44 +2,21 @@ import { HiOutlinePencil } from "react-icons/hi";
 import formatNumber from "../../../utils/formatNumber.js";
 import PrimaryButton from "../../reusableButtons/PrimaryButton/PrimaryButton.jsx";
 import styles from "./TransactionsTable.module.css";
-import { useContext, useEffect } from "react";
-import { HomePageDataContext } from "../../../pages/Homepage/Homepage.jsx";
 import changeDateFormat from "../../../utils/changeDateFormat.js";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTransactions } from "../../../redux/transactions/transactionsSelectors.js";
-import { getTransactions } from "../../../redux/transactions/transactionsOperations.js";
+import { useSelector } from "react-redux";
+import {
+  selectIsLoading,
+  selectTransactions,
+} from "../../../redux/transactions/transactionsSelectors.js";
+import { useEffect } from "react";
+import LoaderComponent from "../../Loader/Loader.js";
 
-const mockdata = [
-  {
-    date: "04.01.19",
-    type: "-",
-    category: "Other",
-    comment: "Gift for your wife",
-    sum: 300,
-  },
-  {
-    date: "05.01.19",
-    type: "+",
-    category: "Car",
-    comment: "Fixing gear",
-    sum: 5300,
-  },
-  {
-    date: "06.01.19",
-    type: "-",
-    category: "Food",
-    comment: "Pepperoni Pizza",
-    sum: 30,
-  },
-];
-
-const TransactionsTable = ({ deleteFunction, openEdit }) => {
+const TransactionsTable = ({ openEdit }) => {
   const data = useSelector(selectTransactions);
-  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  console.log("data TransactionsTable", data);
 
-  useEffect(() => {
-    dispatch(getTransactions({ token: "your_token_here" }));
-  }, [dispatch]);
+  useEffect(() => {}, []);
 
   return (
     <div className={styles["transactions-container"]}>
@@ -55,34 +32,41 @@ const TransactionsTable = ({ deleteFunction, openEdit }) => {
           </tr>
         </thead>
         <tbody>
-          {data.transactions.map((transaction, index) => {
-            const color =
-              transaction.typeOfTransaction === "Expense"
-                ? styles.pink
-                : styles.green;
+          {isLoading ? (
+            <LoaderComponent />
+          ) : (
+            data.transactions.map((transaction, index) => {
+              const color =
+                transaction.typeOfTransaction === "Expense"
+                  ? styles.pink
+                  : styles.green;
 
-            const type =
-              transaction.typeOfTransaction === "Expense" ? "-" : "+";
+              const type =
+                transaction.typeOfTransaction === "Expense" ? "-" : "+";
 
-            return (
-              <tr key={index} className={styles["data-row"]}>
-                <td>{transaction.transactionDate}</td>
-                <td>{type}</td>
-                <td>{`Car`}</td>
-                <td>{transaction.comment}</td>
-                <td className={color}>
-                  {formatNumber(transaction.amountOfTransaction)}
-                </td>
-                <td>
-                  <HiOutlinePencil onClick={openEdit} className={styles.edit} />
-                  <PrimaryButton
-                    text="Delete"
-                    onClick={() => deleteFunction(transaction._id)}
-                  />
-                </td>
-              </tr>
-            );
-          })}
+              return (
+                <tr key={index} className={styles["data-row"]}>
+                  <td>{changeDateFormat(transaction.transactionDate)}</td>
+                  <td>{type}</td>
+                  <td>{`Car`}</td>
+                  <td>{transaction.comment}</td>
+                  <td className={color}>
+                    {formatNumber(transaction.amountOfTransaction)}
+                  </td>
+                  <td>
+                    <HiOutlinePencil
+                      onClick={openEdit}
+                      className={styles.edit}
+                    />
+                    <PrimaryButton
+                      text="Delete"
+                      onClick={() => console.log("Hello World")}
+                    />
+                  </td>
+                </tr>
+              );
+            })
+          )}
         </tbody>
       </table>
     </div>

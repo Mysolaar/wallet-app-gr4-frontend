@@ -1,4 +1,4 @@
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzU3ZWJlMjhlYzczN2EzZTUxMzhkZSIsImlhdCI6MTY5MDcxNTUxOCwiZXhwIjoxNjkwODAxOTE4fQ.fj-jMegb4-imkrSeLqVa0NeZ-2FGp92ZJiI1Zl6zMHA";
+const tokenAuth =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzU3ZWJlMjhlYzczN2EzZTUxMzhkZSIsImlhdCI6MTY5MDcyOTMyMCwiZXhwIjoxNjkwODE1NzIwfQ.n5Jwmbb2F18KhFSojz4iadHA0VyXwDB57-zgD4UaePM";
 
-export default token;
+export default tokenAuth;

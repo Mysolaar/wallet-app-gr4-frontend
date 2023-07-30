@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import tokenAuth from "../../pages/Homepage/token.js";
 
-axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com/";
+axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
@@ -36,7 +36,7 @@ export const getTransactions = createAsyncThunk(
   "categories/getAllTransactions",
   async ({ token }, { rejectWithValue }) => {
     const token2 = tokenAuth; //TODO to be deleted
-
+    console.log(token);
     try {
       const response = await axios.get("/api/transactions", {
         headers: {

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
+import tokenAuth from "../../pages/Homepage/token.js";
+
+const token = tokenAuth; //TODO Get token from cookies
 
 const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  const deleteFunction = () => {
-    console.log("Add delete logic");
-  };
   const openEdit = () => {
     console.log("Add Edit logic");
   };
@@ -22,6 +22,10 @@ const Transactions = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const deleteFunction = () => {
+    console.log("Delete");
+  };
 
   return (
     <>

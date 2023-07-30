@@ -8,7 +8,14 @@ import {
 
 const transactionsSlice = createSlice({
   name: "transactions",
-  initialState: { transactions: [], balance: 0, isLoading: false, error: null },
+  initialState: {
+    transactions: {
+      transactions: [],
+    },
+    balance: 0,
+    isLoading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) =>
     builder

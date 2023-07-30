@@ -1,30 +1,28 @@
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header.jsx";
 
 import styles from "./Homepage.module.css";
 import HomepageMobile from "./HomepageMobile/HomepageMobile.jsx";
 import HomepageDesktop from "./HomepageDesktop/HomepageDesktop.jsx";
-import tokenAuth from "./token.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTransactions } from "../../redux/transactions/transactionsSelectors.js";
 import { getTransactions } from "../../redux/transactions/transactionsOperations.js";
 
-export const HomePageDataContext = createContext([]);
-const TransactionsContext = createContext();
-
 const Homepage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [page, setPage] = useState("Home");
-  // const [transactionsData, setTransactionsData] = useState([]);
+
   const transactionsData = useSelector(selectTransactions);
   const dispatch = useDispatch();
 
   const setHomePage = () => {
     setPage("Home");
   };
+
   const setStatisticsPage = () => {
     setPage("Statistics");
   };
+
   const setCurrencyPage = () => {
     setPage("Currency");
   };
@@ -50,7 +48,7 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <div>{transactionsData[1]}</div>
+      <div></div>
       <main className={styles.main}>
         {isMobile ? (
           <HomepageMobile
