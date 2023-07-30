@@ -61,3 +61,9 @@ input {
   font-family: inherit;
   font-weight: 400;
 }
+
+#root {
+  margin: 0;
+  height: min(100vh, 1000px);
+}
+
