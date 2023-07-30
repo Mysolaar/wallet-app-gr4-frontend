@@ -3,9 +3,12 @@ import ReactWallet from "../../icons/wallet-icon.svg";
 import { IoExitOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { openModal } from "./../../redux/global/globalSlice";
+import { useAuth } from "../../hooks/useAuth";
 
 function Header() {
   const dispatch = useDispatch();
+  const { user } = useAuth();
+  console.log(user);
 
   return (
     <header className={css.header}>
@@ -20,7 +23,7 @@ function Header() {
         <p className={css.logo}>Wallet</p>
       </div>
       <div className={css.headerBoxNext}>
-        <p className={css.headerUser}>Name</p>
+        <p className={css.headerUser}>{user}</p>
         <button
           type="button"
           className={css.headerButton}

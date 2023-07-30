@@ -4,14 +4,12 @@ import { lazy, Suspense, useEffect } from "react";
 import { RestrictedRoute } from "./redux/routes/restrictedRoute";
 import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
-import { login } from "./redux/auth/authOperations";
 import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader/Loader";
 import Transaction from "./components/Transactions/Transactions.jsx";
 import Header from "./components/Header/Header";
 import { useAuth } from "./hooks/useAuth";
-
+import Homepage from "./pages/Homepage/Homepage";
 // import { useAuth } from "./hooks/useAuth";
 
 //LAZY LOADING:
@@ -35,8 +33,11 @@ function App() {
   }, [dispatch]);
 
   return isLoggedIn ? (
-    <Loader />
-    
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <RestrictedRoute redirectTo="/homepage" component={<Homepage />} />
+      </Routes>
+    </Suspense>
   ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
