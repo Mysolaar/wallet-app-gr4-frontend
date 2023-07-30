@@ -32,16 +32,15 @@ function App() {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  return isLoggedIn ? (
+  return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <RestrictedRoute redirectTo="/homepage" component={<Homepage />} />
-      </Routes>
-    </Suspense>
-  ) : (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<RegisterPage />} />
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
+          }
+        />
         <Route
           path="/register"
           element={
@@ -59,7 +58,9 @@ function App() {
         />
         <Route
           path="/homepage"
-          element={<PrivateRoute redirectTo="/login" component={<Header />} />}
+          element={
+            <PrivateRoute redirectTo="/login" component={<Homepage />} />
+          }
         />
 
         <Route path="*" element={<RegisterPage />} />
@@ -67,14 +68,6 @@ function App() {
       <ToastContainer position="bottom-right" />
     </Suspense>
   );
-  // <Suspense fallback={<Loader />}>
-  //   <Routes>
-  //     <Route path="/" element={<LoginPage />} />
-  //     <Route path="/dashboard" element={<Transaction />} />
-  //     <Route path="/register" element={<RegisterPage />} />
-  //     <Route path="*" element={<LoginPage />} />
-  //   </Routes>
-  // </Suspense>
 }
 
 export default App;
