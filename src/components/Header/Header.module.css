@@ -23,12 +23,12 @@
   padding-left: 15px;
   font-weight: 700;
   font-size: 18px;
-  color: rgba(0, 0, 0, 1);
+  color: var(--black);
 }
 
 .headerUser {
   padding-right: 8px;
-  color: rgba(189, 189, 189, 1);
+  color: var(--gray400);
   font-size: 18px;
   line-height: 0.67;
   margin: 0;
@@ -36,7 +36,7 @@
 
 .headerButton {
   border: none;
-  background-color: #ffffff;
+  background-color: var(--white);
   display: flex;
   cursor: pointer;
 }
@@ -47,14 +47,14 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid var(--white);
     height: 80px;
     margin: 0 auto;
     max-width: 1280px;
   }
   .headerExit {
     display: block;
-    color: rgba(189, 189, 189, 1);
+    color: var(--gray400);
     font-size: 18px;
     margin: 0;
     padding-left: 8px;
@@ -64,7 +64,7 @@
     padding-left: 20px;
   }
   .headerButton {
-    border-left: 1px solid rgba(189, 189, 189, 1);
+    border-left: 1px solid var(--gray400);
     padding-left: 10px;
   }
   .iconWallet {
