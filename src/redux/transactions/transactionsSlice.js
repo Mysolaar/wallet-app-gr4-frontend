@@ -8,7 +8,14 @@ import {
 
 const transactionsSlice = createSlice({
   name: "transactions",
-  initialState: { transactions: [], balance: 0, isLoading: false, error: null },
+  initialState: {
+    transactions: {
+      transactions: [],
+    },
+    balance: 0,
+    isLoading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) =>
     builder
@@ -16,14 +23,20 @@ const transactionsSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(deleteTransaction.fulfilled, (state) => {
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+
+        state.transactions.transactions =
+          state.transactions.transactions.filter((transaction) => {
+            return transaction._id !== payload;
+          });
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
+
       .addCase(addTransaction.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -44,9 +57,7 @@ const transactionsSlice = createSlice({
         state.error = null;
       })
       .addCase(getTransactions.fulfilled, (state, { payload }) => {
-        state.transactions = payload.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
-        });
+        state.transactions = payload;
         state.isLoading = false;
         state.error = null;
       })

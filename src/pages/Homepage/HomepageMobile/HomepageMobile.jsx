@@ -17,6 +17,7 @@ const HomepageMobile = ({
         setHomePage={setHomePage}
         setStatisticsPage={setStatisticsPage}
         setCurrencyPage={setCurrencyPage}
+        page={page}
       />
       {(() => {
         switch (page) {

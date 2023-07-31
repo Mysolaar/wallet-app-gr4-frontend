@@ -18,6 +18,7 @@ const MainpageDesktop = ({
               setHomePage={setHomePage}
               setStatisticsPage={setStatisticsPage}
               setCurrencyPage={setCurrencyPage}
+              page={page}
             />
           </div>
           <div className={styles.balance}>BALANCE PLACEHOLDER</div>

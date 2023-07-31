@@ -1,39 +1,20 @@
 import { useEffect, useState } from "react";
-import styles from "./Transactions.module.css";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
+import tokenAuth from "../../pages/Homepage/token.js";
+import { useDispatch } from "react-redux";
+import {
+  deleteTransaction,
+  getTransactions,
+} from "../../redux/transactions/transactionsOperations.js";
 
-const mockdata = [
-  {
-    date: "04.01.19",
-    type: "-",
-    category: "Other",
-    comment: "Gift for your wife",
-    sum: 300,
-  },
-  {
-    date: "05.01.19",
-    type: "+",
-    category: "Car",
-    comment: "Fixing gear",
-    sum: 5300,
-  },
-  {
-    date: "06.01.19",
-    type: "-",
-    category: "Food",
-    comment: "Pepperoni Pizza",
-    sum: 30,
-  },
-];
+const token = tokenAuth; //TODO Get token from cookies
 
 const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const data = mockdata; //TODO fetch data
 
-  const deleteFunction = () => {
-    console.log("Add delete logic");
-  };
+  const dispatch = useDispatch();
+
   const openEdit = () => {
     console.log("Add Edit logic");
   };
@@ -49,20 +30,17 @@ const Transactions = () => {
     };
   }, []);
 
+  const handleDelete = (_id) => {
+    dispatch(deleteTransaction(_id));
+    // dispatch(getTransactions());
+  };
+
   return (
     <>
       {!isMobile ? (
-        <TransactionsTable
-          data={data}
-          deleteFunction={deleteFunction}
-          openEdit={openEdit}
-        />
+        <TransactionsTable handleDelete={handleDelete} openEdit={openEdit} />
       ) : (
-        <TransactionsMobile
-          data={data}
-          deleteFunction={deleteFunction}
-          openEdit={openEdit}
-        />
+        <TransactionsMobile handleDelete={handleDelete} openEdit={openEdit} />
       )}
     </>
   );
