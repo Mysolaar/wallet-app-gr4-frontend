@@ -41,8 +41,6 @@ const LoginForm = () => {
             <img
               src={ReactWallet}
               alt="wallet icon"
-              width={40}
-              height={40}
               className={css.iconWallet}
             />
             <p className={css.title}>Wallet</p>

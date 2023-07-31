@@ -49,7 +49,11 @@ const RegistrationForm = () => {
       {({ values, errors, touched, handleChange }) => (
         <div className={css.container}>
           <div className={css.logo__container}>
-            <img src={ReactWallet} alt="wallet icon" width={40} height={40} />
+            <img
+              src={ReactWallet}
+              className={css.iconWallet}
+              alt="wallet icon"
+            />
             <p className={css.title}>Wallet</p>
           </div>
           <Form className={css.form}>

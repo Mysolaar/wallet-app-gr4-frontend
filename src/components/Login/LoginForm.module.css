@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
 }
 
 .form {
@@ -42,11 +42,15 @@
   font-size: 12px;
   padding-top: 5px;
 }
+.iconWallet {
+  height: 30px;
+  width: 100%;
+}
 
 .title {
   font-family: Poppins;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 22px;
   color: var(--black);
 }
 
@@ -95,7 +99,16 @@
     width: 533px;
     height: 468px;
   }
-
+  .logo__container {
+    gap: 20px;
+  }
+  .iconWallet {
+    height: 40px;
+    width: 100%;
+  }
+  .title {
+    font-size: 30px;
+  }
   .input {
     font-size: 18px;
   }
