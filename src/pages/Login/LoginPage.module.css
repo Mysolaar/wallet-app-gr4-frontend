@@ -28,8 +28,9 @@
     background-size: 35%, 75%;
   }
   .b > p {
+    font-family: poppins;
     color: black;
-    font-size: 36px;
+    font-size: 30px;
     position: absolute;
     top: 140px;
     left: 440px;
@@ -38,6 +39,7 @@
     position: relative;
     align-items: center;
     background-color: #f3f5fa;
+
     background-image: url(/src/img/Ellipse1.png);
     background-repeat: no-repeat;
     background-position: bottom left;
@@ -58,6 +60,7 @@
     width: 1280px;
     margin: 0 auto;
     flex-direction: row;
+    backdrop-filter: blur(25px);
   }
   .b {
     position: relative;
@@ -82,6 +85,9 @@
     background-image: url(/src/img/Ellipse2.png);
     background-repeat: no-repeat;
     background-position: top right;
+
+    /* filter: blur(8px); */
+
     width: 60%;
   }
 }

@@ -2,13 +2,22 @@ import css from "./Header.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import { IoExitOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { useAuth } from "../../hooks/useAuth";
 import { openModal } from "./../../redux/global/globalSlice";
+import { useAuth } from "../../hooks/useAuth";
+import { logout } from "../../redux/auth/authOperations";
 
 function Header() {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  
+
+  const handleLogOut = async () => {
+    try {
+      await dispatch(logout());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <header className={css.header}>
       <div className={css.headerBox}>
@@ -29,7 +38,9 @@ function Header() {
           onClick={() => dispatch(openModal("isModalLogoutOpen"))}
         >
           <IoExitOutline color="rgba(189, 189, 189, 1)" size={18} />
-          <p className={css.headerExit}>Exit</p>
+          <p className={css.headerExit} onClick={handleLogOut}>
+            Exit
+          </p>
         </button>
       </div>
     </header>
