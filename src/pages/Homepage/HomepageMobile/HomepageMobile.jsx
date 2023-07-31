@@ -1,6 +1,6 @@
+import Currency from "../../../components/Currency/Currency.jsx";
 import Navigate from "../../../components/Navigate/Navigate.jsx";
 import Transactions from "../../../components/Transactions/Transactions.jsx";
-import Currency from "./Currency/Currency.jsx";
 import styles from "./HomepageMobile.module.css";
 import MainpageMobile from "./MainPage/Mainpage.jsx";
 import StatisticsMobile from "./Statistics/StatisticsMobile.jsx";

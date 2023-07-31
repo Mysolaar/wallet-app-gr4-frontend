@@ -6,6 +6,8 @@ import HomepageMobile from "./HomepageMobile/HomepageMobile.jsx";
 import HomepageDesktop from "./HomepageDesktop/HomepageDesktop.jsx";
 import { useDispatch } from "react-redux";
 import { getTransactions } from "../../redux/transactions/transactionsOperations.js";
+import ButtonAddTransactions from "../../components/ButtonAddTransaction/ButtonAddTransactions.jsx";
+import ModalAddTransactions from "../../components/ModalAddTransactions/ModalAddTransactions.jsx";
 
 const Homepage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -44,7 +46,6 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <div></div>
       <main className={styles.main}>
         {isMobile ? (
           <HomepageMobile
@@ -61,6 +62,8 @@ const Homepage = () => {
             setCurrencyPage={setCurrencyPage}
           />
         )}
+        <ButtonAddTransactions />
+        {/* <ModalAddTransactions /> */}
       </main>
     </>
   );

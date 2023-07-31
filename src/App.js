@@ -44,6 +44,7 @@ function App() {
             <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
           }
         />
+
         <Route
           path="/homepage"
           element={<PrivateRoute redirectTo="/" component={<HomePage />} />}

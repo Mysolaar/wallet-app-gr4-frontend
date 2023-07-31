@@ -14,7 +14,6 @@ import LoaderComponent from "../../Loader/Loader.js";
 const TransactionsTable = ({ handleDelete, openEdit }) => {
   const data = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
-  console.log("data TransactionsTable", data.transactions);
 
   useEffect(() => {}, [data]);
 

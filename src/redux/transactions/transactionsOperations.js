@@ -41,14 +41,12 @@ export const addTransaction = createAsyncThunk(
 export const getTransactions = createAsyncThunk(
   "categories/getAllTransactions",
   async ({ token }, { rejectWithValue }) => {
-    console.log(token);
     try {
       const response = await axios.get("/api/transactions", {
         headers: {
           Authorization: `Bearer ${token2}`,
         },
       });
-      console.log("Redux getT: ", response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);
