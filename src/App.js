@@ -6,16 +6,14 @@ import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
 import { ToastContainer } from "react-toastify";
 import Loader from "./components/Loader/Loader";
-import Transaction from "./components/Transactions/Transactions.jsx";
-import Header from "./components/Header/Header";
-import { useAuth } from "./hooks/useAuth";
-import Homepage from "./pages/Homepage/Homepage";
+
 // import { useAuth } from "./hooks/useAuth";
 
 //LAZY LOADING:
 
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
+const HomePage = lazy(() => import("./pages/Homepage/Homepage"));
 // const DashboardPage = lazy(() => import("./pages/DashboardDashboardPage"));
 // const StatisticsPage = lazy(() => import("./pages/Statistics/StatisticsPage"));
 // const CurrencyPage = lazy(() => import("./pages/Currency/CurrencyPage"));
@@ -58,7 +56,7 @@ function App() {
         <Route
           path="/homepage"
           element={
-            <PrivateRoute redirectTo="/login" component={<Homepage />} />
+            <PrivateRoute redirectTo="/login" component={<HomePage />} />
           }
         />
 

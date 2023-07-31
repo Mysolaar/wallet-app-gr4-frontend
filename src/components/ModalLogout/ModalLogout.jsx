@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux";
 import css from "../ModalLogout/ModalLogout.module.css";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
+
 import { closeModal } from "./../../redux/global/globalSlice";
+import { logout } from "../../redux/auth/authOperations";
 
 Modal.setAppElement("#root");
 
@@ -14,8 +16,12 @@ const ModalLogout = () => {
     dispatch(closeModal("isModalLogoutOpen"));
   };
 
-  const handleClick = () => {
-    console.log("button clicked");
+  const handleClick = async () => {
+    try {
+      await dispatch(logout());
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <Modal
