@@ -10,6 +10,7 @@ const PasswordStrengthMeter = ({ password }) => {
     marginTop: "8px",
     borderRadius: "5px",
     backgroundColor: "#E5F1EF",
+    position: "relative",
   };
 
   const fillStyle = {
@@ -18,7 +19,10 @@ const PasswordStrengthMeter = ({ password }) => {
     borderRadius: "5px",
     backgroundColor: "#24CCA7",
     boxShadow: "0px 1px 8px rgba(36, 204, 167, 0.50)",
-    position: "relative",
+    position: "absolute", // Change position to "absolute"
+    top: 0, // Add top 0
+    left: 0, // Add left 0
+    zIndex: 1, // Add z-index 1
   };
 
   return (
