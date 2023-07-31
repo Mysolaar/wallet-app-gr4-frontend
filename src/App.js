@@ -11,7 +11,7 @@ import Loader from "./components/Loader/Loader";
 
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
-const Homepage = lazy(() => import("./pages/Homepage/Homepage"));
+const HomePage = lazy(() => import("./pages/Homepage/Homepage"));
 
 function App() {
   const dispatch = useDispatch();
