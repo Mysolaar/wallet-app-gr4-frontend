@@ -60,7 +60,6 @@
     width: 1280px;
     margin: 0 auto;
     flex-direction: row;
-    backdrop-filter: blur(25px);
   }
   .b {
     position: relative;

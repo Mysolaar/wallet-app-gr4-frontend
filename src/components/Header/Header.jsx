@@ -3,16 +3,16 @@ import ReactWallet from "../../icons/wallet-icon.svg";
 import { IoExitOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { openModal } from "./../../redux/global/globalSlice";
-import { useAuth } from "../../hooks/useAuth";
-import { logout } from "../../redux/auth/authOperations";
+import ModalLogout from "../ModalLogout/ModalLogout";
+import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
+import { useSelector } from "react-redux";
 
-function Header() {
+function Header(user) {
   const dispatch = useDispatch();
-  const { user } = useAuth();
-
+  const isModalOpen = useSelector(selectIsModalLogoutOpen);
   const handleLogOut = async () => {
     try {
-      await dispatch(logout());
+      dispatch(openModal("isModalLogoutOpen"));
     } catch (error) {
       console.error(error);
     }
@@ -31,7 +31,7 @@ function Header() {
         <p className={css.logo}>Wallet</p>
       </div>
       <div className={css.headerBoxNext}>
-        <p className={css.headerUser}>{user}</p>
+        <p className={css.headerUser}></p>
         <button
           type="button"
           className={css.headerButton}
@@ -42,6 +42,7 @@ function Header() {
             Exit
           </p>
         </button>
+        {isModalOpen ? <ModalLogout /> : <></>}
       </div>
     </header>
   );
