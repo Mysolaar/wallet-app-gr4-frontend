@@ -24,7 +24,7 @@
   background-color: var(--white);
 
   padding-right: 20px;
-  padding-left: 25px;
+  padding-left: 10px;
 
   font-family: "Circe";
   font-weight: 700;
@@ -32,7 +32,7 @@
 
 .table td {
   padding-right: 20px;
-  padding-left: 25px;
+  padding-left: 10px;
 }
 
 .table thead tr:first-child th:first-child {

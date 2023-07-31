@@ -2,51 +2,78 @@ import PrimaryButton from "../../reusableButtons/PrimaryButton/PrimaryButton.jsx
 import styles from "./TransactionsMobile.module.css";
 import { HiOutlinePencil } from "react-icons/hi";
 import PropTypes from "prop-types";
+import changeDateFormat from "../../../utils/changeDateFormat.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectIsLoading,
+  selectTransactions,
+} from "../../../redux/transactions/transactionsSelectors.js";
+import LoaderComponent from "../../Loader/Loader.js";
+import { deleteTransaction } from "../../../redux/transactions/transactionsOperations.js";
 
-const TransactionsMobile = ({ data, deleteFunction, openEdit }) => {
+const TransactionsMobile = ({ handleDelete, openEdit }) => {
+  const data = useSelector(selectTransactions);
+  const isLoading = useSelector(selectIsLoading);
+
   return (
     <div className={styles["transactions-container"]}>
-      {data.map((transaction, index) => {
-        const color = transaction.type === "-" ? styles.pink : styles.green;
-        const fontColor =
-          transaction.type === "-" ? styles["pink-font"] : styles["green-font"];
-        return (
-          <div className={styles.transaction} key={index}>
-            <div className={`${styles["transaction-row"]} ${color}`}>
-              <span>Date:</span>
-              <span>{transaction.date}</span>
-            </div>
+      {isLoading ? (
+        <LoaderComponent />
+      ) : (
+        data.transactions.map((transaction, index) => {
+          const color =
+            transaction.typeOfTransaction === "Expense"
+              ? styles.pink
+              : styles.green;
+          const fontColor =
+            transaction.typeOfTransaction === "Expense"
+              ? styles["pink-font"]
+              : styles["green-font"];
 
-            <div className={`${styles["transaction-row"]} ${color}`}>
-              <span>Type:</span>
-              <span>{transaction.type}</span>
-            </div>
+          const type = transaction.typeOfTransaction === "Expense" ? "-" : "+";
+          return (
+            <div className={styles.transaction} key={index}>
+              <div className={`${styles["transaction-row"]} ${color}`}>
+                <span>Date:</span>
+                <span>{changeDateFormat(transaction.transactionDate)}</span>
+              </div>
 
-            <div className={`${styles["transaction-row"]} ${color}`}>
-              <span>Category:</span>
-              <span>{transaction.category}</span>
-            </div>
+              <div className={`${styles["transaction-row"]} ${color}`}>
+                <span>Type:</span>
+                <span>{type}</span>
+              </div>
 
-            <div className={`${styles["transaction-row"]} ${color}`}>
-              <span>Comment:</span>
-              <span>{transaction.comment}</span>
-            </div>
+              <div className={`${styles["transaction-row"]} ${color}`}>
+                <span>Category:</span>
+                <span>{`Car`}</span>
+              </div>
 
-            <div className={`${styles["transaction-row"]} ${color}`}>
-              <span>Sum:</span>
-              <span className={`${fontColor}`}>{transaction.sum}</span>
-            </div>
+              <div className={`${styles["transaction-row"]} ${color}`}>
+                <span>Comment:</span>
+                <span>{transaction.comment}</span>
+              </div>
 
-            <div className={`${styles["transaction-row"]} ${color}`}>
-              <PrimaryButton text="Delete" onclick={deleteFunction} />
-              <span className={styles.edit} onClick={openEdit}>
-                <HiOutlinePencil />
-                Edit
-              </span>
+              <div className={`${styles["transaction-row"]} ${color}`}>
+                <span>Sum:</span>
+                <span className={`${fontColor}`}>
+                  {transaction.amountOfTransaction}
+                </span>
+              </div>
+
+              <div className={`${styles["transaction-row"]} ${color}`}>
+                <PrimaryButton
+                  text="Delete"
+                  onclick={() => handleDelete(transaction._id)}
+                />
+                <span className={styles.edit} onClick={openEdit}>
+                  <HiOutlinePencil />
+                  Edit
+                </span>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      )}
     </div>
   );
 };
