@@ -112,7 +112,10 @@ const RegistrationForm = () => {
                 placeholder="Confirm Password"
                 className={css.input}
               />
-              <PasswordStrengthMeter password={values.password} />
+              <PasswordStrengthMeter
+                className={css.strenght}
+                password={values.password}
+              />
               {touched.confirmPassword && errors.confirmPassword ? (
                 <div>{errors.confirmPassword}</div>
               ) : null}
