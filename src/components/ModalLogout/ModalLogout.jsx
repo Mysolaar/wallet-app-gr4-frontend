@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import css from "../ModalLogout/ModalLogout.module.css";
 import PrimaryButton from "../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../reusableButtons/SecondaryButton/SecondaryButton";
@@ -11,6 +12,7 @@ Modal.setAppElement("#root");
 
 const ModalLogout = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClose = () => {
     dispatch(closeModal("isModalLogoutOpen"));
@@ -18,7 +20,9 @@ const ModalLogout = () => {
 
   const handleClick = async () => {
     try {
+      dispatch(closeModal("isModalLogoutOpen"));
       await dispatch(logout());
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }
@@ -36,6 +40,7 @@ const ModalLogout = () => {
       </p>
       <div className={css.button}>
         <PrimaryButton text="yes" onclick={handleClick} />
+
         <SecondaryButton text="no" onclick={handleClose} />
       </div>
     </Modal>

@@ -4,7 +4,6 @@ import { IoExitOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { openModal } from "./../../redux/global/globalSlice";
 import { useAuth } from "../../hooks/useAuth";
-// import { logout } from "../../redux/auth/authOperations";
 import ModalLogout from "../ModalLogout/ModalLogout";
 import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
 import { useSelector } from "react-redux";
