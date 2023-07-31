@@ -1,8 +1,9 @@
 import styles from "./Currency.module.css";
 import Transactions from "../../../../components/Transactions/Transactions.jsx";
+import Currency from "../../../../components/Currency/Currency.jsx";
 
-const Currency = () => {
-  return <div className={styles.currency}>CURRENCY PLACEHOLDER</div>;
+const CurrencyMobile = () => {
+  return <Currency />;
 };
 
-export default Currency;
+export default CurrencyMobile;

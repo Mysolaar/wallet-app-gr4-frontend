@@ -2,6 +2,8 @@ import styles from "./Mainpage.module.css";
 import Navigate from "../../../../components/Navigate/Navigate.jsx";
 import Transactions from "../../../../components/Transactions/Transactions.jsx";
 import StatisticsDesktop from "../Statistics/Statistics.jsx";
+import Balance from "../../../../components/Balance/Balance.jsx";
+import Currency from "../../../../components/Currency/Currency.jsx";
 
 const MainpageDesktop = ({
   page,
@@ -21,9 +23,9 @@ const MainpageDesktop = ({
               page={page}
             />
           </div>
-          <div className={styles.balance}>BALANCE PLACEHOLDER</div>
+          <Balance />
         </div>
-        <div className={styles.currency}>CURRENCY PLACEHOLDER</div>
+        <Currency />
       </div>
       <div className={styles["transactions-box"]}>
         {(() => {

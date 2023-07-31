@@ -13,7 +13,6 @@ const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 const Homepage = lazy(() => import("./pages/Homepage/Homepage"));
 
-
 function App() {
   const dispatch = useDispatch();
 
@@ -45,12 +44,7 @@ function App() {
             <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
           }
         />
-        <Route
-          path="/homepage"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Homepage />} />
-          }
-        />
+        <Route path="/homepage" element={<Homepage />} />
 
         <Route path="*" element={<RegisterPage />} />
       </Routes>
