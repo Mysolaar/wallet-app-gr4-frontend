@@ -1,4 +1,4 @@
-export const selectName = (state) => state.user.username;
+export const selectName = (state) => state.auth.user.username;
 
 export const selectId = (state) => state.user._id;
 

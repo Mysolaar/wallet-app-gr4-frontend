@@ -3,14 +3,17 @@ import ReactWallet from "../../icons/wallet-icon.svg";
 import { IoExitOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { openModal } from "./../../redux/global/globalSlice";
-import { useAuth } from "../../hooks/useAuth";
+
 import ModalLogout from "../ModalLogout/ModalLogout";
 import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
 import { useSelector } from "react-redux";
+import { selectIsAuth, selectName } from "../../redux/auth/authSelectors";
 
-function Header() {
+function Header(user) {
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  // const isAuth = useSelector(selectIsAuth);
+  const username = useSelector(selectName);
+  console.log("username: ", username);
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
 
   const handleLogOut = async () => {
