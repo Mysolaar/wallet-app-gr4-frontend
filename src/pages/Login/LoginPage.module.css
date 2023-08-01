@@ -81,9 +81,10 @@
   .c {
     align-items: center;
     background-color: #f3f5fa;
-    background-image: url(/src/img/Ellipse2.png);
+    background-image: url(/src/img/ElipseBlur.png);
     background-repeat: no-repeat;
     background-position: top right;
+    background-size: 100%;
 
     /* filter: blur(8px); */
 

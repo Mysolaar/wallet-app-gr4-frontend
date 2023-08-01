@@ -6,6 +6,7 @@ import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
 import { ToastContainer } from "react-toastify";
 import LoaderMain from "./components/Loader/LoaderMain";
+import PageNotFound from "./pages/404/PageNotFound";
 
 //LAZY LOADING:
 
@@ -50,7 +51,7 @@ function App() {
           element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
         />
 
-        <Route path="*" element={<RegisterPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer position="bottom-right" />
     </Suspense>
