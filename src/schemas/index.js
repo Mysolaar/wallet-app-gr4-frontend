@@ -1,12 +1,12 @@
 import * as Yup from "yup";
 
 export const modalAddTransactionsSchema = Yup.object().shape({
-  toggle: Yup.boolean(),
-  category: Yup.string().when("toggle", {
-    is: (toggle) => toggle === false,
+  typeOfTransaction: Yup.string(),
+  category: Yup.string().when("typeOfTransaction", {
+    is: (typeOfTransaction) => typeOfTransaction === "Expense",
     then: () => Yup.string().required("Required"),
   }),
-  price: Yup.string().required("Required"),
-  date: Yup.string().required("Required"),
+  amountOfTransaction: Yup.string("test").required("Required"),
+  transactionDate: Yup.string().required("Required"),
   comment: Yup.string().max(45),
 });

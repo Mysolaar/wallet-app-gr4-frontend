@@ -10,6 +10,9 @@ import {
   getTransactionsMonthlySummary,
 } from "../../redux/transactions/transactionsOperations.js";
 import ButtonAddTransactions from "../../components/ButtonAddTransaction/ButtonAddTransactions.jsx";
+import ModalAddTransactions from "../../components/ModalAddTransactions/ModalAddTransactions.jsx";
+import { openModal, closeModal } from "../../redux/global/globalSlice.js";
+import { selectIsModalAddTransactionOpen } from "../../redux/global/globalSelectors.js";
 import {
   selectSelectedMonth,
   selectSelectedYear,
@@ -22,6 +25,10 @@ const Homepage = () => {
   const year = useSelector(selectSelectedYear);
 
   const dispatch = useDispatch();
+
+  const isModalAddTransactionsOpen = useSelector(
+    selectIsModalAddTransactionOpen
+  );
 
   const setHomePage = () => {
     setPage("Home");
@@ -71,8 +78,20 @@ const Homepage = () => {
             setCurrencyPage={setCurrencyPage}
           />
         )}
-        <ButtonAddTransactions />
-        {/* <ModalAddTransactions /> */}
+        <ButtonAddTransactions
+          handleClick={() => {
+            dispatch(openModal("isModalAddTransactionsOpen"));
+          }}
+        />
+
+        {isModalAddTransactionsOpen && (
+          <ModalAddTransactions
+            type="add"
+            handleClose={() =>
+              dispatch(closeModal("isModalAddTransactionsOpen"))
+            }
+          />
+        )}
       </main>
     </>
   );

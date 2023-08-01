@@ -12,6 +12,7 @@ import LoaderMain from "./components/Loader/LoaderMain";
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 const HomePage = lazy(() => import("./pages/Homepage/Homepage"));
+const PageNotFound = lazy(() => import("./pages/404/PageNotFound"));
 
 function App() {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function App() {
           element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
         />
 
-        <Route path="*" element={<RegisterPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer position="bottom-right" />
     </Suspense>
