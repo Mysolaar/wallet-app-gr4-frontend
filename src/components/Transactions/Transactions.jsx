@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
-import tokenAuth from "../../pages/Homepage/token.js";
 import { useDispatch } from "react-redux";
 import { deleteTransaction } from "../../redux/transactions/transactionsOperations.js";
 

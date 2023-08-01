@@ -5,14 +5,15 @@ import {
   getTransactions,
   editTransaction,
   getTransactionsMonthlySummary,
+  setSelectedDate,
+  setSelectedMonth,
+  setSelectedYear,
 } from "./transactionsOperations";
 
 const currentDate = new Date();
 
 const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
 const currentYear = String(currentDate.getFullYear());
-
-console.log("Current Month: ", currentYear);
 
 const transactionsSlice = createSlice({
   name: "transactions",
@@ -83,7 +84,6 @@ const transactionsSlice = createSlice({
       .addCase(
         getTransactionsMonthlySummary.fulfilled,
         (state, { payload }) => {
-          console.log("payload: ", payload);
           state.monthlySummary = payload;
           state.isLoading = false;
           state.error = null;
@@ -111,6 +111,12 @@ const transactionsSlice = createSlice({
       .addCase(editTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(setSelectedMonth.fulfilled, (state, { payload }) => {
+        state.selectedMonth = payload;
+      })
+      .addCase(setSelectedYear.fulfilled, (state, { payload }) => {
+        state.selectedYear = payload;
       }),
 });
 

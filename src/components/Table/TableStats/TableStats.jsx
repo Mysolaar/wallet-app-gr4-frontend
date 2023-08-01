@@ -2,9 +2,6 @@ import formatNumber from "../../../utils/formatNumber.js";
 import styles from "./TableStats.module.css";
 
 const TableStats = ({ data }) => {
-  console.log("data: ", data);
-  console.log("values: ", data.categoryIdValues);
-  console.log("Names: ", data.categoryNames);
   return (
     <table className={styles.table}>
       <thead>

@@ -44,7 +44,6 @@ export const getTransactions = createAsyncThunk(
   "categories/getAllTransactions",
   async ({ token }, { rejectWithValue }) => {
     try {
-      console.log(storedToken);
       const response = await axios.get("/api/transactions", {
         headers: {
           Authorization: `Bearer ${storedToken}`,
@@ -82,9 +81,34 @@ export const getTransactionsMonthlySummary = createAsyncThunk(
           },
         }
       );
-      console.log("TransactionSummary data: ", response.data.data);
 
       return response.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const setSelectedMonth = createAsyncThunk(
+  "transactions/setSelectedMonth",
+  async ({ month }, { rejectWithValue }) => {
+    try {
+      const response = month;
+
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const setSelectedYear = createAsyncThunk(
+  "transactions/setSelectedYear",
+  async ({ year }, { rejectWithValue }) => {
+    try {
+      const response = year;
+
+      return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }

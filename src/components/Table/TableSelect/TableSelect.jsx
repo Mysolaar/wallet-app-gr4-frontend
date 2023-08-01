@@ -1,7 +1,8 @@
+import { useDispatch } from "react-redux";
 import styles from "./TableSelect.module.css";
 import Select from "react-select";
 
-const TableSelect = ({ options, placeholder }) => {
+const TableSelect = ({ options, placeholder, handleChange }) => {
   const CustomDropdownIndicator = () => (
     <svg
       width="20"
@@ -40,6 +41,7 @@ const TableSelect = ({ options, placeholder }) => {
       placeholder={placeholder}
       unstyled
       className={styles.select}
+      onChange={handleChange}
     />
   );
 };

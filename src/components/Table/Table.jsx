@@ -2,18 +2,25 @@ import { useEffect, useState } from "react";
 import styles from "./Table.module.css";
 import TableSelect from "./TableSelect/TableSelect.jsx";
 import TableStats from "./TableStats/TableStats.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   selectSelectedMonth,
   selectSelectedYear,
   selectTransactions,
 } from "../../redux/transactions/transactionsSelectors.js";
 import getMonthNameFromDDFormat from "../../utils/getMonthNameFromDDFormat.js";
+import {
+  getTransactionsMonthlySummary,
+  setSelectedMonth,
+  setSelectedYear,
+} from "../../redux/transactions/transactionsOperations.js";
 
 const Table = ({ data }) => {
   const transactions = useSelector(selectTransactions);
   const month = useSelector(selectSelectedMonth);
   const year = useSelector(selectSelectedYear);
+  const dispatch = useDispatch();
+  const [optionsYear, setOptionsYear] = useState([]);
 
   const optionsMonth = [
     { value: "01", label: "January" },
@@ -30,11 +37,19 @@ const Table = ({ data }) => {
     { value: "12", label: "December" },
   ];
 
-  const [optionsYear, setOptionsYear] = useState([]);
+  const handleChangeMonth = (selectedOption) => {
+    dispatch(setSelectedMonth({ month: selectedOption.value }));
+
+    // dispatch(getTransactionsMonthlySummary({ month: selectedOption, year }));
+  };
+
+  const handleChangeYear = (selectedOption) => {
+    dispatch(setSelectedYear({ year: selectedOption.value }));
+    // dispatch(getTransactionsMonthlySummary({ month, year: selectedOption }));
+  };
 
   useEffect(() => {
     const newYears = [];
-    console.log("transactions: ", transactions.transactions);
 
     transactions.transactions.forEach((transaction) => {
       const transactionDateShort = transaction.transactionDateShort;
@@ -56,8 +71,13 @@ const Table = ({ data }) => {
         <TableSelect
           options={optionsMonth}
           placeholder={getMonthNameFromDDFormat(month)}
+          handleChange={handleChangeMonth}
         />
-        <TableSelect options={optionsYear} placeholder={year} />
+        <TableSelect
+          options={optionsYear}
+          placeholder={year}
+          handleChange={handleChangeYear}
+        />
       </div>
       <TableStats data={data} />
     </div>
