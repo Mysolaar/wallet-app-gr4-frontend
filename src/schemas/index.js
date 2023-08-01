@@ -6,7 +6,7 @@ export const modalAddTransactionsSchema = Yup.object().shape({
     is: (typeOfTransaction) => typeOfTransaction === "Expense",
     then: () => Yup.string().required("Required"),
   }),
-  amountOfTransaction: Yup.string("test").required("Required"),
+  amountOfTransaction: Yup.string().required("Required"),
   transactionDate: Yup.string().required("Required"),
   comment: Yup.string().max(45),
 });

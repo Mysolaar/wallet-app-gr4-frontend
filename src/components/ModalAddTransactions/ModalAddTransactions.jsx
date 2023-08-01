@@ -156,7 +156,7 @@ function ModalAddTransactions({ type, handleClose }) {
                 name="amountOfTransaction"
                 onBlur={formik.handleBlur}
                 onValueChange={(value) =>
-                  formik.setFieldValue("amountOfTransaction", value)
+                  formik.setFieldValue("amountOfTransaction", +value)
                 }
                 decimalSeparator="."
                 groupSeparator=" "
