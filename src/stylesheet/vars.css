@@ -30,6 +30,52 @@ body {
   font-weight: 400;
 }
 
+@media (max-width: 767px) {
+  body {
+      background-color: none;
+      background-image: none;
+  }
+}
+
+@media (min-width: 768px) {
+    body {
+      margin: 0;
+      background-color: #e7eaf2;
+      height: 1024px;
+      width: 768px;
+      &::before {
+        content: url(../img/Ellipse2.png);
+        position: fixed;
+        width: 618px;
+        top: -15px;
+        right: -220px;
+        transform: rotate(15deg);
+      }
+      &::after {
+        content: url(../img/Ellipse1.png);
+        position: fixed;
+        bottom: -15px;
+        left: -10px;
+      }
+    }
+}
+
+@media (min-width: 1280px) {
+  body {
+    background-color: #f3f5fa;
+    height: 720px;
+    width: 1280px;
+    &::before {
+      filter: blur(30px);
+    }
+    &::after {
+     background-color: #e7eaf2;
+     padding-right: 40px;
+     padding-top: 350px;
+    }
+  }
+}
+
 h1,
 h2,
 h3,
@@ -66,4 +112,3 @@ input {
   margin: 0;
   height: min(100vh, 1000px);
 }
-

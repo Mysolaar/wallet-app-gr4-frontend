@@ -21,40 +21,42 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/homepage"
-              component={<RegisterPage />}
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
-          }
-        />
+    <Loader />
+  )
+  //   <Suspense fallback={<Loader />}>
+  //     <Routes>
+  //       <Route
+  //         path="/"
+  //         element={
+  //           <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
+  //         }
+  //       />
+  //       <Route
+  //         path="/register"
+  //         element={
+  //           <RestrictedRoute
+  //             redirectTo="/homepage"
+  //             component={<RegisterPage />}
+  //           />
+  //         }
+  //       />
+  //       <Route
+  //         path="/login"
+  //         element={
+  //           <RestrictedRoute redirectTo="/homepage" component={<LoginPage />} />
+  //         }
+  //       />
 
-        <Route
-          path="/homepage"
-          element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
-        />
+  //       <Route
+  //         path="/homepage"
+  //         element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
+  //       />
 
-        <Route path="*" element={<RegisterPage />} />
-      </Routes>
-      <ToastContainer position="bottom-right" />
-    </Suspense>
-  );
+  //       <Route path="*" element={<RegisterPage />} />
+  //     </Routes>
+  //     <ToastContainer position="bottom-right" />
+  //   </Suspense>
+  // );
 }
 
 export default App;
