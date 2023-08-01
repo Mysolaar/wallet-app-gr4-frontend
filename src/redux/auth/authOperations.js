@@ -49,7 +49,7 @@ export const login = createAsyncThunk(
       token.set(data.data.token);
 
       toast.success(`Welcome, ${data.data.user.username}!`);
-      return data;
+      return data.data;
     } catch (error) {
       return rejectWithValue(toast.error(`${error}`));
     }

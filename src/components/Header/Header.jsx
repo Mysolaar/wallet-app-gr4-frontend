@@ -6,11 +6,13 @@ import { openModal } from "./../../redux/global/globalSlice";
 import ModalLogout from "../ModalLogout/ModalLogout";
 import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
 import { selectName } from "../../redux/auth/authSelectors";
+import { useEffect } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 function Header(user) {
   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
   const username = useSelector(selectName);
-
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
   const handleLogOut = async () => {
     try {
@@ -33,7 +35,7 @@ function Header(user) {
         <p className={css.logo}>Wallet</p>
       </div>
       <div className={css.headerBoxNext}>
-        <p className={css.headerUser}>{username}</p>
+        <p className={css.headerUser}>{isAuth ? username : ""}</p>
         <button
           type="button"
           className={css.headerButton}
