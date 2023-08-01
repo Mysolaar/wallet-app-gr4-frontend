@@ -2,11 +2,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import tokenAuth from "../../pages/Homepage/token.js";
 
 axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
 
-const token2 = tokenAuth; //TODO to be deleted
+const cookies = document.cookie;
+const cookie = cookies.split("=");
+const storedToken = cookie[1];
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
@@ -14,7 +15,7 @@ export const deleteTransaction = createAsyncThunk(
     try {
       await axios.delete(`/api/transactions/${_id}`, {
         headers: {
-          Authorization: `Bearer ${token2}`,
+          Authorization: `Bearer ${storedToken}`,
         },
       });
       toast.success("Your transaction is deleted!");
@@ -45,7 +46,7 @@ export const getTransactions = createAsyncThunk(
     try {
       const response = await axios.get("/api/transactions", {
         headers: {
-          Authorization: `Bearer ${token2}`,
+          Authorization: `Bearer ${storedToken}`,
         },
       });
       return response.data.data;
@@ -64,6 +65,52 @@ export const editTransaction = createAsyncThunk(
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error);
+    }
+  }
+);
+
+export const getTransactionsMonthlySummary = createAsyncThunk(
+  "categories/getTransactionsMonthlySummary",
+  async ({ month, year }, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        `api/transactions-summary?date=${month}-${year}`,
+        {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        }
+      );
+
+      return response.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const setSelectedMonth = createAsyncThunk(
+  "transactions/setSelectedMonth",
+  async ({ month }, { rejectWithValue }) => {
+    try {
+      const response = month;
+
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const setSelectedYear = createAsyncThunk(
+  "transactions/setSelectedYear",
+  async ({ year }, { rejectWithValue }) => {
+    try {
+      const response = year;
+
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

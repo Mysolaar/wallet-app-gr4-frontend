@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
-import tokenAuth from "../../pages/Homepage/token.js";
 import { useDispatch } from "react-redux";
-import {
-  deleteTransaction,
-  getTransactions,
-} from "../../redux/transactions/transactionsOperations.js";
-
-const token = tokenAuth; //TODO Get token from cookies
+import { deleteTransaction } from "../../redux/transactions/transactionsOperations.js";
 
 const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -24,10 +18,6 @@ const Transactions = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, []);
 
   const handleDelete = (_id) => {

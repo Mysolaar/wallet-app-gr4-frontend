@@ -54,7 +54,7 @@
 
 .transaction-row span:first-child {
   font-family: "Circe", sans-serif;
-  font-weight: 700; /*TODO Nie działa */
+  font-weight: 700;
 }
 
 .transaction .transaction-row:nth-last-child(n + 2) {

@@ -1,4 +1,0 @@
-const tokenAuth =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzU3ZWJlMjhlYzczN2EzZTUxMzhkZSIsImlhdCI6MTY5MDgyMjA0MSwiZXhwIjoxNjkwOTA4NDQxfQ.3Uocm1qZZsEkKTtkhTeSaTzHaHhG-zplP_wespfVbvQ";
-
-export default tokenAuth;

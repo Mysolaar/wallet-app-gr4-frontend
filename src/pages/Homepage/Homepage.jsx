@@ -5,14 +5,24 @@ import styles from "./Homepage.module.css";
 import HomepageMobile from "./HomepageMobile/HomepageMobile.jsx";
 import HomepageDesktop from "./HomepageDesktop/HomepageDesktop.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { getTransactions } from "../../redux/transactions/transactionsOperations.js";
+import {
+  getTransactions,
+  getTransactionsMonthlySummary,
+} from "../../redux/transactions/transactionsOperations.js";
 import ButtonAddTransactions from "../../components/ButtonAddTransaction/ButtonAddTransactions.jsx";
 import ModalAddTransactions from "../../components/ModalAddTransactions/ModalAddTransactions.jsx";
 import { openModal, closeModal } from "../../redux/global/globalSlice.js";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/globalSelectors.js";
+import {
+  selectSelectedMonth,
+  selectSelectedYear,
+} from "../../redux/transactions/transactionsSelectors.js";
+
 const Homepage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [page, setPage] = useState("Home");
+  const month = useSelector(selectSelectedMonth);
+  const year = useSelector(selectSelectedYear);
 
   const dispatch = useDispatch();
 
@@ -46,7 +56,8 @@ const Homepage = () => {
 
   useEffect(() => {
     dispatch(getTransactions({ token: "your_token_here" }));
-  }, []);
+    dispatch(getTransactionsMonthlySummary({ month, year }));
+  }, [dispatch, month, year]);
 
   return (
     <>

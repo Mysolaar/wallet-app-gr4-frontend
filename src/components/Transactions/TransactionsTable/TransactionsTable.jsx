@@ -49,9 +49,7 @@ const TransactionsTable = ({ handleDelete, openEdit }) => {
                   <td>{type}</td>
                   <td>{transaction.category}</td>
                   <td>{transaction.comment}</td>
-                  <td className={color}>
-                    {formatNumber(transaction.amountOfTransaction)}
-                  </td>
+                  <td className={color}>{transaction.amountOfTransaction}</td>
                   <td>
                     <HiOutlinePencil
                       onClick={openEdit}

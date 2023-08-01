@@ -1,13 +1,3 @@
-.balance {
-  width: 336px;
-  height: 80px;
-  border-radius: 30px;
-  background-color: aquamarine;
-  text-align: center;
-  padding-top: 10px;
-  /* margin: auto; */
-} /* TODO to be deleted once balance component is created*/
-
 .currency {
   width: 336px;
   height: 174px;

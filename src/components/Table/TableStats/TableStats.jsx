@@ -1,15 +1,7 @@
 import formatNumber from "../../../utils/formatNumber.js";
 import styles from "./TableStats.module.css";
 
-const data = [
-  { category: "Main expenses", sum: 8700 },
-  { category: "Products", sum: 3800 },
-  { category: "Car", sum: 1500 },
-];
-
-const TableStats = () => {
-  const totalSum = data.reduce((acc, item) => acc + item.sum, 0);
-
+const TableStats = ({ data }) => {
   return (
     <table className={styles.table}>
       <thead>
@@ -19,19 +11,19 @@ const TableStats = () => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item, index) => (
+        {data.categoryNames.map((item, index) => (
           <tr key={index} className={styles["data-row"]}>
-            <td>{item.category}</td>
-            <td>{formatNumber(item.sum)}</td>
+            <td>{item}</td>
+            <td>{formatNumber(Number(data.categoryIdValues[index]))}</td>
           </tr>
         ))}
         <tr className={styles.expenses}>
           <td>Expenses:</td>
-          <td>{formatNumber(totalSum)}</td>
+          <td>{formatNumber(Number(data.expenseValue))}</td>
         </tr>
         <tr className={styles.income}>
           <td>Income:</td>
-          <td>{formatNumber(100000)}</td>
+          <td>{formatNumber(Number(data.incomeValue))}</td>
         </tr>
       </tbody>
     </table>

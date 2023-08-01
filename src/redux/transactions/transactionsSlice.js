@@ -4,7 +4,16 @@ import {
   addTransaction,
   getTransactions,
   editTransaction,
+  getTransactionsMonthlySummary,
+  setSelectedDate,
+  setSelectedMonth,
+  setSelectedYear,
 } from "./transactionsOperations";
+
+const currentDate = new Date();
+
+const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
+const currentYear = String(currentDate.getFullYear());
 
 const transactionsSlice = createSlice({
   name: "transactions",
@@ -12,9 +21,12 @@ const transactionsSlice = createSlice({
     transactions: {
       transactions: [],
     },
+    monthlySummary: {},
     balance: 0,
     isLoading: false,
     error: null,
+    selectedMonth: currentMonth,
+    selectedYear: currentYear,
   },
   reducers: {},
   extraReducers: (builder) =>
@@ -65,6 +77,22 @@ const transactionsSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
+      .addCase(getTransactionsMonthlySummary.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        getTransactionsMonthlySummary.fulfilled,
+        (state, { payload }) => {
+          state.monthlySummary = payload;
+          state.isLoading = false;
+          state.error = null;
+        }
+      )
+      .addCase(getTransactionsMonthlySummary.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
       .addCase(editTransaction.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -83,6 +111,12 @@ const transactionsSlice = createSlice({
       .addCase(editTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(setSelectedMonth.fulfilled, (state, { payload }) => {
+        state.selectedMonth = payload;
+      })
+      .addCase(setSelectedYear.fulfilled, (state, { payload }) => {
+        state.selectedYear = payload;
       }),
 });
 
