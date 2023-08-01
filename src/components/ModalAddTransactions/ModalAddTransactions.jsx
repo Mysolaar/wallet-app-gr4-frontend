@@ -29,7 +29,11 @@ function ModalAddTransactions({ type, handleClose }) {
   const dispatch = useDispatch();
 
   const date = new Date();
-  let dateToText = date.toLocaleDateString();
+  let dateToText = date.toLocaleDateString("pl-PL", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
   const initialValues = {
     typeOfTransaction: "Expense",
