@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Select from "react-select";
 import Modal from "react-modal";
 import CurrencyInput from "react-currency-input-field";
@@ -6,7 +7,6 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
 
 import { MdDateRange } from "react-icons/md";
 import { BsPlusLg } from "react-icons/bs";
@@ -17,34 +17,45 @@ import css from "./ModalAddTransactions.module.css";
 import { colorStyles } from "./colorStyles.js";
 import { modalAddTransactionsSchema } from "./../../schemas/index";
 import { options } from "./expenseOptions/expenseOptions";
-import { closeModal } from "./../../redux/global/globalSlice";
 import DropdownIndicator from "./../reusableButtons/DropdownIndicator/DropdownIndicator";
 import PrimaryButton from "./../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "./../reusableButtons/SecondaryButton/SecondaryButton";
+import { addTransaction } from "../../redux/transactions/transactionsOperations";
 
 Modal.setAppElement("#root");
-function ModalAddTransactions({ type }) {
+function ModalAddTransactions({ type, handleClose }) {
   const [checked, setChecked] = useState(false);
-  const dispatch = useDispatch();
 
-  const handleClose = () => {
-    dispatch(closeModal("isModalAddTransactionsOpen"));
-  };
+  const dispatch = useDispatch();
 
   const date = new Date();
   let dateToText = date.toLocaleDateString();
 
+  const initialValues = {
+    typeOfTransaction: "Expense",
+    amountOfTransaction: "",
+    category: "",
+    transactionDate: dateToText,
+    comment: "",
+  };
+
+  const handleSubmit = async (values) => {
+    console.log(values);
+    try {
+      checked ? (initialValues.category = "Income") : console.log();
+      await dispatch(addTransaction(values));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const formik = useFormik({
-    initialValues: {
-      toggle: false,
-      category: "",
-      price: "",
-      date: dateToText,
-      comment: "",
-    },
+    initialValues: initialValues,
     validationSchema: modalAddTransactionsSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values, { resetForm }) => {
+      handleSubmit(values);
+      resetForm();
+      handleClose();
     },
   });
 
@@ -62,7 +73,7 @@ function ModalAddTransactions({ type }) {
           autoComplete="off"
           className={css.modalForm}
         >
-          <button class={css.closeIconContainer} onClick={handleClose}>
+          <button className={css.closeIconContainer} onClick={handleClose}>
             <RxCross1 size={20} />
           </button>
           <h3 className={css.modalHeading}>
@@ -70,15 +81,21 @@ function ModalAddTransactions({ type }) {
           </h3>
           <label className={css.modalCheckboxLabel} name="income or expense">
             <input
-              name="toggle"
+              name="typeOfTransaction"
               type="checkbox"
               id="checkbox"
               className={css.modalCheckboxInput}
               onChange={() => {
                 setChecked(document.querySelector("#checkbox").checked);
                 formik.setFieldValue(
-                  "toggle",
+                  "typeOfTransaction",
                   document.querySelector("#checkbox").checked
+                    ? "Income"
+                    : "Expense"
+                );
+                formik.setFieldValue(
+                  "category",
+                  document.querySelector("#checkbox").checked ? "Income" : ""
                 );
               }}
             />
@@ -104,9 +121,9 @@ function ModalAddTransactions({ type }) {
 
           {!checked && (
             <Select
-              onChange={(selectedOption) =>
-                formik.setFieldValue("category", selectedOption.value)
-              }
+              onChange={(selectedOption) => {
+                formik.setFieldValue("category", selectedOption.value);
+              }}
               name="category"
               styles={colorStyles}
               className={
@@ -119,20 +136,24 @@ function ModalAddTransactions({ type }) {
               components={{ DropdownIndicator }}
             />
           )}
+
           <div className={css.modalGroup}>
             <label
               className={`${css.inputLabel}  ${css.modalDividedInput} ${
-                formik.errors.price && formik.touched.price
+                formik.errors.amountOfTransaction &&
+                formik.touched.amountOfTransaction
                   ? css.inputLabelError
                   : ""
               }`}
-              name="price"
+              name="amountOfTransaction"
             >
               <CurrencyInput
-                value={formik.values.price}
-                name="price"
+                value={formik.values.amountOfTransaction}
+                name="amountOfTransaction"
                 onBlur={formik.handleBlur}
-                onValueChange={(value) => formik.setFieldValue("price", value)}
+                onValueChange={(value) =>
+                  formik.setFieldValue("amountOfTransaction", value)
+                }
                 decimalSeparator="."
                 groupSeparator=" "
                 placeholder="0.00"
@@ -144,16 +165,19 @@ function ModalAddTransactions({ type }) {
             <div
               className={`${css.inputLabel}  ${css.relative} ${
                 css.modalDividedInput
-              }  ${formik.errors.date ? css.inputLabelError : ""}`}
+              }  ${formik.errors.transactionDate ? css.inputLabelError : ""}`}
             >
               <Datetime
-                value={formik.values.date}
-                name="date"
+                value={formik.values.transactionDate}
+                name="transactionDate"
                 inputProps={{ className: css.input }}
                 onBlur={formik.handleBlur}
-                onChange={(date) =>
-                  formik.setFieldValue("date", date.format("DD.MM.YYYY"))
-                }
+                onChange={(date) => {
+                  formik.setFieldValue(
+                    "transactionDate",
+                    date.format("DD.MM.YYYY")
+                  );
+                }}
                 initialValue={dateToText}
                 dateFormat="DD.MM.YYYY"
                 timeFormat={false}

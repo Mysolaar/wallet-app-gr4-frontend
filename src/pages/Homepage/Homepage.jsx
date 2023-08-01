@@ -4,16 +4,21 @@ import Header from "../../components/Header/Header.jsx";
 import styles from "./Homepage.module.css";
 import HomepageMobile from "./HomepageMobile/HomepageMobile.jsx";
 import HomepageDesktop from "./HomepageDesktop/HomepageDesktop.jsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTransactions } from "../../redux/transactions/transactionsOperations.js";
 import ButtonAddTransactions from "../../components/ButtonAddTransaction/ButtonAddTransactions.jsx";
 import ModalAddTransactions from "../../components/ModalAddTransactions/ModalAddTransactions.jsx";
-
+import { openModal, closeModal } from "../../redux/global/globalSlice.js";
+import { selectIsModalAddTransactionOpen } from "../../redux/global/globalSelectors.js";
 const Homepage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [page, setPage] = useState("Home");
 
   const dispatch = useDispatch();
+
+  const isModalAddTransactionsOpen = useSelector(
+    selectIsModalAddTransactionOpen
+  );
 
   const setHomePage = () => {
     setPage("Home");
@@ -62,8 +67,20 @@ const Homepage = () => {
             setCurrencyPage={setCurrencyPage}
           />
         )}
-        <ButtonAddTransactions />
-        {/* <ModalAddTransactions /> */}
+        <ButtonAddTransactions
+          handleClick={() => {
+            dispatch(openModal("isModalAddTransactionsOpen"));
+          }}
+        />
+
+        {isModalAddTransactionsOpen && (
+          <ModalAddTransactions
+            type="add"
+            handleClose={() =>
+              dispatch(closeModal("isModalAddTransactionsOpen"))
+            }
+          />
+        )}
       </main>
     </>
   );

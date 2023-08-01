@@ -33,7 +33,8 @@ export const addTransaction = createAsyncThunk(
       toast.success("Your transaction is added!");
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error);
+      console.log("error", error.response.data);
+      return rejectWithValue(error.response.data);
     }
   }
 );
