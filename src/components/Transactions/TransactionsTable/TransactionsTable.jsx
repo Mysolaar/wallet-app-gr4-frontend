@@ -17,6 +17,15 @@ const TransactionsTable = ({ handleDelete, openEdit }) => {
 
   useEffect(() => {}, [data]);
 
+  const sortedTransactions = [...data.transactions].sort((a, b) => {
+    // Assuming transactionDate is in "dd.mm.yyyy" format
+    const dateA = new Date(a.transactionDate.split(".").reverse().join("-"));
+    const dateB = new Date(b.transactionDate.split(".").reverse().join("-"));
+    return dateB - dateA; // Sort in descending order (newest to oldest)
+  });
+
+  console.log("Sorted: ", sortedTransactions);
+
   return (
     <div className={styles["transactions-container"]}>
       {isLoading ? (
@@ -34,7 +43,7 @@ const TransactionsTable = ({ handleDelete, openEdit }) => {
             </tr>
           </thead>
           <tbody>
-            {data.transactions.map((transaction, index) => {
+            {sortedTransactions.map((transaction, index) => {
               const color =
                 transaction.typeOfTransaction === "Expense"
                   ? styles.pink
