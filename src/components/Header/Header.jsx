@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "./../../redux/global/globalSlice";
 import ModalLogout from "../ModalLogout/ModalLogout";
 import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
+import { selectName } from "../../redux/auth/authSelectors";
 
 function Header(user) {
   const dispatch = useDispatch();
-  const username = useSelector((state) => state.auth.user.username);
+  const username = useSelector(selectName);
 
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
   const handleLogOut = async () => {
