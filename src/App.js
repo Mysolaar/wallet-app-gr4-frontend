@@ -5,7 +5,7 @@ import { RestrictedRoute } from "./redux/routes/restrictedRoute";
 import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
 import { ToastContainer } from "react-toastify";
-import Loader from "./components/Loader/Loader";
+import LoaderMain from "./components/Loader/LoaderMain";
 
 //LAZY LOADING:
 
@@ -21,7 +21,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<LoaderMain />}>
       <Routes>
         <Route
           path="/"

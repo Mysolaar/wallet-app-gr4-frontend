@@ -1,14 +1,18 @@
 import css from "./Header.module.css";
 import ReactWallet from "../../icons/wallet-icon.svg";
 import { IoExitOutline } from "react-icons/io5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "./../../redux/global/globalSlice";
 import ModalLogout from "../ModalLogout/ModalLogout";
 import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
-import { useSelector } from "react-redux";
+import { selectName } from "../../redux/auth/authSelectors";
+import { useEffect } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 function Header(user) {
   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+  const username = useSelector(selectName);
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
   const handleLogOut = async () => {
     try {
@@ -31,7 +35,7 @@ function Header(user) {
         <p className={css.logo}>Wallet</p>
       </div>
       <div className={css.headerBoxNext}>
-        <p className={css.headerUser}></p>
+        <p className={css.headerUser}>{isAuth ? username : ""}</p>
         <button
           type="button"
           className={css.headerButton}
