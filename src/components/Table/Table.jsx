@@ -1,33 +1,65 @@
+import { useEffect, useState } from "react";
 import styles from "./Table.module.css";
 import TableSelect from "./TableSelect/TableSelect.jsx";
 import TableStats from "./TableStats/TableStats.jsx";
+import { useSelector } from "react-redux";
+import {
+  selectSelectedMonth,
+  selectSelectedYear,
+  selectTransactions,
+} from "../../redux/transactions/transactionsSelectors.js";
+import getMonthNameFromDDFormat from "../../utils/getMonthNameFromDDFormat.js";
 
-const Table = () => {
-  //TODO dodać fetch danych
+const Table = ({ data }) => {
+  const transactions = useSelector(selectTransactions);
+  const month = useSelector(selectSelectedMonth);
+  const year = useSelector(selectSelectedYear);
 
   const optionsMonth = [
-    { value: "january", label: "January" },
-    { value: "option2", label: "Option 2" },
-    { value: "option3", label: "Option 3" },
-    { value: "option4", label: "Option 4" },
-    { value: "option5", label: "Option 5" },
-    { value: "option6", label: "Option 6" },
-    { value: "option7", label: "Option 7" },
+    { value: "01", label: "January" },
+    { value: "02", label: "February" },
+    { value: "03", label: "March" },
+    { value: "04", label: "April" },
+    { value: "05", label: "May" },
+    { value: "06", label: "June" },
+    { value: "07", label: "July" },
+    { value: "08", label: "August" },
+    { value: "09", label: "September" },
+    { value: "10", label: "October" },
+    { value: "11", label: "November" },
+    { value: "12", label: "December" },
   ];
 
-  const optionsYear = [
-    { value: "2021", label: "2021" },
-    { value: "2022", label: "2022" },
-    { value: "2023", label: "2023" },
-  ];
+  const [optionsYear, setOptionsYear] = useState([]);
+
+  useEffect(() => {
+    const newYears = [];
+    console.log("transactions: ", transactions.transactions);
+
+    transactions.transactions.forEach((transaction) => {
+      const transactionDateShort = transaction.transactionDateShort;
+      const [month, year] = transactionDateShort.split("-");
+
+      if (!newYears.some((obj) => obj.value === year)) {
+        newYears.push({ value: year, label: year });
+      }
+    });
+
+    newYears.sort((a, b) => b - a);
+
+    setOptionsYear(newYears);
+  }, []);
 
   return (
     <div className={styles["table-container"]}>
       <div className={styles.filters}>
-        <TableSelect options={optionsMonth} placeholder={"Month..."} />
-        <TableSelect options={optionsYear} placeholder={"Year..."} />
+        <TableSelect
+          options={optionsMonth}
+          placeholder={getMonthNameFromDDFormat(month)}
+        />
+        <TableSelect options={optionsYear} placeholder={year} />
       </div>
-      <TableStats />
+      <TableStats data={data} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 .main {
   position: relative;
 }
+
 @media screen and (max-width: 768px) {
   .main {
     width: 280px;

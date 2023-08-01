@@ -24,6 +24,9 @@ const TableSelect = ({ options, placeholder }) => {
         menu: () => {
           return styles.dropdown;
         },
+        menuList: () => {
+          return styles.menuList;
+        },
         option: () => {
           return styles.option;
         },
