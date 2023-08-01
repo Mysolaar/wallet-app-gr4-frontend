@@ -6,13 +6,13 @@ import { PrivateRoute } from "./redux/routes/privateRoute";
 import { fetchCurrentUser } from "./redux/auth/authOperations";
 import { ToastContainer } from "react-toastify";
 import LoaderMain from "./components/Loader/LoaderMain";
-import PageNotFound from "./pages/404/PageNotFound";
 
 //LAZY LOADING:
 
 const RegisterPage = lazy(() => import("./pages/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 const HomePage = lazy(() => import("./pages/Homepage/Homepage"));
+const PageNotFound = lazy(() => import("./pages/404/PageNotFound"));
 
 function App() {
   const dispatch = useDispatch();
