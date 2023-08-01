@@ -6,6 +6,9 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
   const isActivePage = (pageName) => {
     return pageName === page ? css.active : "";
   };
+  const isActivePageTitle = (pageName) => {
+    return pageName === page ? css.activeText : "";
+  };
 
   return (
     <div className={css.navBox}>
@@ -17,7 +20,7 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
             className={`${css.navItem} ${isActivePage("Home")}`}
             onClick={setHomePage}
           />
-          <p className={css.navTitle}>Home</p>
+          <p className={`${css.navTitle} ${isActivePageTitle("Home")}`}>Home</p>
         </li>
         <li>
           <MdTimeline
@@ -26,7 +29,9 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
             className={`${css.navItem} ${isActivePage("Statistics")}`}
             onClick={setStatisticsPage}
           />
-          <p className={css.navTitle}>Statistics</p>
+          <p className={`${css.navTitle} ${isActivePageTitle("Statistics")}`}>
+            Statistics
+          </p>
         </li>
         <li className={css.dollarIcon}>
           <FaDollarSign

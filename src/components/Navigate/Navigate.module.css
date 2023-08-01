@@ -20,6 +20,10 @@
     -3px 5px 8px rgba(74, 86, 226, 0.5);
 }
 
+.activeText {
+  font-weight: 700;
+}
+
 .nav {
   list-style: none;
   display: flex;

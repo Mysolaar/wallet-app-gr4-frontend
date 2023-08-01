@@ -5,7 +5,6 @@ import {
   getTransactions,
   editTransaction,
   getTransactionsMonthlySummary,
-  setSelectedDate,
   setSelectedMonth,
   setSelectedYear,
 } from "./transactionsOperations";
