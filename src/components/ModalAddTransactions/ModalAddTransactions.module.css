@@ -48,13 +48,22 @@
 }
 
 .inputLabelError {
+  position: relative;
   color: var(--red700);
-  font-weight: 700;
-  outline: 2px solid var(--red700);
+  font-weight: 400;
+  border-bottom: 2px solid var(--red700);
+  background-color: var(--red700-transparent05);
+}
+.inputLabelError::after {
+  content: "This field is required";
+  color: var(--red700);
+  position: absolute;
+  bottom: -22px;
+  left: 0;
 }
 
 .input {
-  background-color: none;
+  background-color: transparent;
   border: none;
   width: 100%;
 }
@@ -154,7 +163,7 @@
 }
 
 .commentField {
-  height: 80px;
+  height: 60px;
   resize: none;
 }
 

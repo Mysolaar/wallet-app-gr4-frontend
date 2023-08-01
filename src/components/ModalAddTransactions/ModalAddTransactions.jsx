@@ -31,26 +31,31 @@ function ModalAddTransactions({ type, handleClose }) {
   const date = new Date();
   let dateToText = date.toLocaleDateString();
 
+  const initialValues = {
+    typeOfTransaction: "Expense",
+    amountOfTransaction: "",
+    category: "",
+    transactionDate: dateToText,
+    comment: "",
+  };
+
   const handleSubmit = async (values) => {
+    console.log(values);
     try {
+      checked ? (initialValues.category = "Income") : console.log();
       await dispatch(addTransaction(values));
-      console.log(values);
     } catch (err) {
-      console.log(err.response.data);
+      console.log(err);
     }
   };
 
   const formik = useFormik({
-    initialValues: {
-      typeOfTransaction: "Expense",
-      category: "",
-      amountOfTransaction: 0,
-      transactionDateShort: dateToText,
-      comment: "",
-    },
+    initialValues: initialValues,
     validationSchema: modalAddTransactionsSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       handleSubmit(values);
+      resetForm();
+      handleClose();
     },
   });
 
@@ -88,6 +93,10 @@ function ModalAddTransactions({ type, handleClose }) {
                     ? "Income"
                     : "Expense"
                 );
+                formik.setFieldValue(
+                  "category",
+                  document.querySelector("#checkbox").checked ? "Income" : ""
+                );
               }}
             />
 
@@ -112,9 +121,9 @@ function ModalAddTransactions({ type, handleClose }) {
 
           {!checked && (
             <Select
-              onChange={(selectedOption) =>
-                formik.setFieldValue("category", selectedOption.value)
-              }
+              onChange={(selectedOption) => {
+                formik.setFieldValue("category", selectedOption.value);
+              }}
               name="category"
               styles={colorStyles}
               className={
@@ -127,6 +136,7 @@ function ModalAddTransactions({ type, handleClose }) {
               components={{ DropdownIndicator }}
             />
           )}
+
           <div className={css.modalGroup}>
             <label
               className={`${css.inputLabel}  ${css.modalDividedInput} ${
@@ -141,10 +151,8 @@ function ModalAddTransactions({ type, handleClose }) {
                 value={formik.values.amountOfTransaction}
                 name="amountOfTransaction"
                 onBlur={formik.handleBlur}
-                onValueChange={
-                  (value) =>
-                    formik.setFieldValue("amountOfTransaction", Number(value))
-                  //TODO - change to string so decimal points will work ??
+                onValueChange={(value) =>
+                  formik.setFieldValue("amountOfTransaction", value)
                 }
                 decimalSeparator="."
                 groupSeparator=" "
@@ -157,18 +165,16 @@ function ModalAddTransactions({ type, handleClose }) {
             <div
               className={`${css.inputLabel}  ${css.relative} ${
                 css.modalDividedInput
-              }  ${
-                formik.errors.transactionDateShort ? css.inputLabelError : ""
-              }`}
+              }  ${formik.errors.transactionDate ? css.inputLabelError : ""}`}
             >
               <Datetime
-                value={formik.values.transactionDateShort}
-                name="transactionDateShort"
+                value={formik.values.transactionDate}
+                name="transactionDate"
                 inputProps={{ className: css.input }}
                 onBlur={formik.handleBlur}
                 onChange={(date) => {
                   formik.setFieldValue(
-                    "transactionDateShort",
+                    "transactionDate",
                     date.format("DD.MM.YYYY")
                   );
                 }}

@@ -17,6 +17,7 @@
   --purple200: #c5baff;
   --red200: #fd9498;
   --red700: #ff0000;
+  --red700-transparent05: #ff00000d;
   --teal400: #00ad84;
   --white: #ffffff;
   --white-transparent40: #ffffff66;
@@ -66,4 +67,3 @@ input {
   margin: 0;
   height: min(100vh, 1000px);
 }
-
