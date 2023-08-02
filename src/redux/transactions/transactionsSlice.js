@@ -55,9 +55,12 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.transactions = [...state.transactions, payload].sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
-        });
+        state.transactions = {
+          transactions: [
+            ...state.transactions.transactions,
+            payload.newTransaction,
+          ],
+        };
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
