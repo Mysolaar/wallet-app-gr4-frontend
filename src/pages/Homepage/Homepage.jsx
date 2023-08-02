@@ -63,35 +63,36 @@ const Homepage = () => {
     <>
       <Header />
       <main className={styles.main}>
-        {isMobile ? (
-          <HomepageMobile
-            page={page}
-            setHomePage={setHomePage}
-            setStatisticsPage={setStatisticsPage}
-            setCurrencyPage={setCurrencyPage}
+        <div className={styles.mainContainer}>
+          {isMobile ? (
+            <HomepageMobile
+              page={page}
+              setHomePage={setHomePage}
+              setStatisticsPage={setStatisticsPage}
+              setCurrencyPage={setCurrencyPage}
+            />
+          ) : (
+            <HomepageDesktop
+              page={page}
+              setHomePage={setHomePage}
+              setStatisticsPage={setStatisticsPage}
+              setCurrencyPage={setCurrencyPage}
+            />
+          )}
+          <ButtonAddTransactions
+            handleClick={() => {
+              dispatch(openModal("isModalAddTransactionsOpen"));
+            }}
           />
-        ) : (
-          <HomepageDesktop
-            page={page}
-            setHomePage={setHomePage}
-            setStatisticsPage={setStatisticsPage}
-            setCurrencyPage={setCurrencyPage}
-          />
-        )}
-        <ButtonAddTransactions
-          handleClick={() => {
-            dispatch(openModal("isModalAddTransactionsOpen"));
-          }}
-        />
-
-        {isModalAddTransactionsOpen && (
-          <ModalAddTransactions
-            type="add"
-            handleClose={() =>
-              dispatch(closeModal("isModalAddTransactionsOpen"))
-            }
-          />
-        )}
+          {isModalAddTransactionsOpen && (
+            <ModalAddTransactions
+              type="add"
+              handleClose={() =>
+                dispatch(closeModal("isModalAddTransactionsOpen"))
+              }
+            />
+          )}
+        </div>
       </main>
     </>
   );

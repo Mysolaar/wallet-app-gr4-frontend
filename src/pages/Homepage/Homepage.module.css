@@ -1,9 +1,14 @@
 .main {
   position: relative;
+  flex-grow: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: 768px) {
-  .main {
+  .mainContainer {
     width: 280px;
     margin: auto;
     display: flex;
