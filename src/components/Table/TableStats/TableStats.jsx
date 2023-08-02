@@ -13,7 +13,13 @@ const TableStats = ({ data }) => {
       <tbody>
         {data.categoryNames.map((item, index) => (
           <tr key={index} className={styles["data-row"]}>
-            <td>{item}</td>
+            <td>
+              <span
+                className={`${styles.colorBox}`}
+                style={{ backgroundColor: data.categoryColors[index] }}
+              ></span>
+              {item}
+            </td>
             <td>{formatNumber(Number(data.categoryIdValues[index]))}</td>
           </tr>
         ))}
