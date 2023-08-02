@@ -1,9 +1,32 @@
 .main {
+  width: 100%;
   position: relative;
+  flex-grow: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--background-gray);
+  background-image: url("../../img/EllipseHomePage.png"),
+    url("../../img/EllipseHomePage2.png");
+  background-repeat: no-repeat;
+  background-position: top right, bottom left;
 }
 
-@media screen and (max-width: 768px) {
-  .main {
+.blur {
+  backdrop-filter: blur(25px);
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .mainContainer {
     width: 280px;
     margin: auto;
     display: flex;
