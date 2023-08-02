@@ -2,17 +2,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import getCookieToken from "../../utils/getCookieToken.js";
 
 axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
-
-const cookies = document.cookie;
-const cookie = cookies.split("=");
-const storedToken = cookie[1];
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
   async (_id, { rejectWithValue }) => {
     try {
+      const storedToken = getCookieToken();
       await axios.delete(`/api/transactions/${_id}`, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
@@ -44,6 +42,7 @@ export const getTransactions = createAsyncThunk(
   "categories/getAllTransactions",
   async ({ token }, { rejectWithValue }) => {
     try {
+      const storedToken = getCookieToken();
       const response = await axios.get("/api/transactions", {
         headers: {
           Authorization: `Bearer ${storedToken}`,
@@ -73,8 +72,10 @@ export const getTransactionsMonthlySummary = createAsyncThunk(
   "categories/getTransactionsMonthlySummary",
   async ({ month, year }, { rejectWithValue }) => {
     try {
+      const storedToken = getCookieToken();
+
       const response = await axios.get(
-        `api/transactions-summary?date=${month}-${year}`,
+        `api/transactions-summary?date=${String(month)}.${String(year)}`,
         {
           headers: {
             Authorization: `Bearer ${storedToken}`,

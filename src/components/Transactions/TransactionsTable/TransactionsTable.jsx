@@ -24,8 +24,6 @@ const TransactionsTable = ({ handleDelete, openEdit }) => {
     return dateB - dateA; // Sort in descending order (newest to oldest)
   });
 
-  console.log("Sorted: ", sortedTransactions);
-
   return (
     <div className={styles["transactions-container"]}>
       {isLoading ? (
