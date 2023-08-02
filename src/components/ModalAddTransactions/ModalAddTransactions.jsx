@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Select from "react-select";
 import Modal from "react-modal";
@@ -20,13 +20,22 @@ import { options } from "./expenseOptions/expenseOptions";
 import DropdownIndicator from "./../reusableButtons/DropdownIndicator/DropdownIndicator";
 import PrimaryButton from "./../reusableButtons/PrimaryButton/PrimaryButton";
 import SecondaryButton from "./../reusableButtons/SecondaryButton/SecondaryButton";
-import { addTransaction } from "../../redux/transactions/transactionsOperations";
-
+import {
+  addTransaction,
+  editTransaction,
+} from "../../redux/transactions/transactionsOperations";
 Modal.setAppElement("#root");
-function ModalAddTransactions({ type, handleClose }) {
+
+function ModalAddTransactions({ type, handleClose, data }) {
   const [checked, setChecked] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (type === "edit") {
+      setChecked(initialValues.typeOfTransaction === "Income");
+    }
+  }, []);
 
   const date = new Date();
   let dateToText = date.toLocaleDateString("pl-PL", {
@@ -36,18 +45,20 @@ function ModalAddTransactions({ type, handleClose }) {
   });
 
   const initialValues = {
-    typeOfTransaction: "Expense",
-    amountOfTransaction: "",
-    category: "",
-    transactionDate: dateToText,
-    comment: "",
+    _id: type === "edit" ? data?._id : null, // Add a conditional check for the "_id"
+    typeOfTransaction: type === "edit" ? data?.typeOfTransaction : "Expense",
+    amountOfTransaction: type === "edit" ? data?.amountOfTransaction : "",
+    category: type === "edit" ? data?.category : "",
+    transactionDate: type === "edit" ? data?.transactionDate : dateToText,
+    comment: type === "edit" ? data?.comment : "",
   };
 
   const handleSubmit = async (values) => {
-    console.log(values);
     try {
       checked ? (initialValues.category = "Income") : console.log();
-      await dispatch(addTransaction(values));
+      type === "add"
+        ? await dispatch(addTransaction(values))
+        : await dispatch(editTransaction(values));
     } catch (err) {
       console.log(err);
     }
@@ -88,6 +99,7 @@ function ModalAddTransactions({ type, handleClose }) {
               name="typeOfTransaction"
               type="checkbox"
               id="checkbox"
+              checked={checked}
               className={css.modalCheckboxInput}
               onChange={() => {
                 setChecked(document.querySelector("#checkbox").checked);
@@ -138,6 +150,9 @@ function ModalAddTransactions({ type, handleClose }) {
               options={options}
               placeholder={"Select a category..."}
               components={{ DropdownIndicator }}
+              defaultValue={options.find(
+                (option) => option.value === initialValues.category
+              )}
             />
           )}
 
@@ -155,9 +170,9 @@ function ModalAddTransactions({ type, handleClose }) {
                 value={formik.values.amountOfTransaction}
                 name="amountOfTransaction"
                 onBlur={formik.handleBlur}
-                onValueChange={(value) =>
-                  formik.setFieldValue("amountOfTransaction", +value)
-                }
+                onValueChange={(value) => {
+                  formik.setFieldValue("amountOfTransaction", value);
+                }}
                 decimalSeparator="."
                 groupSeparator=" "
                 placeholder="0.00"
@@ -223,8 +238,9 @@ function ModalAddTransactions({ type, handleClose }) {
 }
 
 ModalAddTransactions.propTypes = {
-  type: PropTypes.oneOf(["add", "edit"]),
+  type: PropTypes.oneOf(["edit", "add"]),
   handleClose: PropTypes.func,
+  data: PropTypes.object,
 };
 
 export default ModalAddTransactions;

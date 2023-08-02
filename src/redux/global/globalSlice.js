@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isModalAddTransactionsOpen: false,
+  isModalEditTransactionsOpen: false,
   isModalLogoutOpen: false,
 };
 
