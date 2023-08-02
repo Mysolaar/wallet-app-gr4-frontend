@@ -10,7 +10,6 @@ import {
 } from "../../redux/transactions/transactionsSelectors.js";
 import getMonthNameFromDDFormat from "../../utils/getMonthNameFromDDFormat.js";
 import {
-  getTransactionsMonthlySummary,
   setSelectedMonth,
   setSelectedYear,
 } from "../../redux/transactions/transactionsOperations.js";
