@@ -5,6 +5,7 @@
   justify-self: center;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--white)
 }
 
 .headerBox {
