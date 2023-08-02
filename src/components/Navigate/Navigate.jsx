@@ -13,21 +13,19 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
   return (
     <div className={css.navBox}>
       <ul className={css.nav}>
-        <li>
+        <li onClick={setHomePage} className={css.listItem}>
           <MdHome
             color="rgba(255, 255, 255, 1)"
             size={40}
             className={`${css.navItem} ${isActivePage("Home")}`}
-            onClick={setHomePage}
           />
           <p className={`${css.navTitle} ${isActivePageTitle("Home")}`}>Home</p>
         </li>
-        <li>
+        <li onClick={setStatisticsPage} className={css.listItem}>
           <MdTimeline
             color="rgba(255, 255, 255, 1)"
             size={30}
             className={`${css.navItem} ${isActivePage("Statistics")}`}
-            onClick={setStatisticsPage}
           />
           <p className={`${css.navTitle} ${isActivePageTitle("Statistics")}`}>
             Statistics
