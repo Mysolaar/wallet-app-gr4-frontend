@@ -15,7 +15,7 @@ export const getCurrentUser = createAsyncThunk(
           },
         }
       );
-      return data;
+      return data.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

@@ -25,3 +25,8 @@
   font-size: 30px;
   line-height: 1.5;
 }
+
+.balance__amount span {
+  font-size: 28px;
+  padding-right: 10px;
+}

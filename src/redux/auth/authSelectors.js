@@ -9,3 +9,5 @@ export const selectIsFetchingCurrentUser = (state) =>
 export const selectIsAuth = (state) => state.auth.isAuth;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectToken = (state) => state.auth.token;
+
+export const selectBalance = (state) => state.auth.user?.balance || "";
