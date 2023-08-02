@@ -12,10 +12,10 @@
   flex-direction: column;
 
   background: var(--background-gray);
-  background-image: url("../../img/EllipseHomePage.png"),
-    url("../../img/EllipseHomePage2.png");
+  background-image: url("../../img/EllipseDesktop1.png"),
+    url("../../img/EllipseDesktop2.png");
   background-repeat: no-repeat;
-  background-position: top right, bottom left;
+  background-position: bottom left, top right;
 }
 
 .blur {
@@ -25,7 +25,17 @@
   flex-grow: 1;
 }
 
+@media screen and (max-width: 1280px) {
+  .main {
+    background-image: url("../../img/EllipseTablet.png"),
+      url("../../img/EllipseTablet2.png");
+  }
+}
+
 @media screen and (max-width: 767px) {
+  .main {
+    background-image: none;
+  }
   .mainContainer {
     width: 280px;
     margin: auto;
