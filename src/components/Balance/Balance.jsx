@@ -1,10 +1,7 @@
 import styles from "./Balance.module.css";
 import { useSelector } from "react-redux";
 import { selectBalance } from "../../redux/auth/authSelectors";
-import { useAuth } from "../../hooks/useAuth";
-
 export default function Balance() {
-  // const { isAuth } = useAuth();
   const balance = useSelector(selectBalance);
 
   const formatedBalance = balance.toLocaleString("pl-PL", {
@@ -16,7 +13,7 @@ export default function Balance() {
   });
 
   const displayBalance = formatedBalance.replace(",", ".");
-  console.log(typeof balance)
+  console.log(typeof balance);
 
   return (
     <div className={styles.balance}>

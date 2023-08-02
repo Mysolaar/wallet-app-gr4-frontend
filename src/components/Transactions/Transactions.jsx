@@ -4,6 +4,7 @@ import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
 import { useDispatch } from "react-redux";
 import { deleteTransaction } from "../../redux/transactions/transactionsOperations.js";
 import { openModal, closeModal } from "../../redux/global/globalSlice.js";
+import { fetchCurrentUser } from "../../redux/auth/authOperations.js";
 
 const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -20,7 +21,7 @@ const Transactions = () => {
 
   const handleDelete = (_id) => {
     dispatch(deleteTransaction(_id));
-    // dispatch(getTransactions());
+    dispatch(fetchCurrentUser());
   };
 
   const handleOpen = () => {

@@ -24,6 +24,7 @@ import {
   addTransaction,
   editTransaction,
 } from "../../redux/transactions/transactionsOperations";
+import { fetchCurrentUser } from "../../redux/auth/authOperations";
 Modal.setAppElement("#root");
 
 function ModalAddTransactions({ type, handleClose, data }) {
@@ -71,6 +72,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
       handleSubmit(values);
       resetForm();
       handleClose();
+      dispatch(fetchCurrentUser());
     },
   });
 

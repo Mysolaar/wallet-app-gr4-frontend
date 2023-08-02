@@ -100,15 +100,13 @@ const transactionsSlice = createSlice({
         state.error = null;
       })
       .addCase(editTransaction.fulfilled, (state, { payload }) => {
+        console.log("payload", payload);
         state.isLoading = false;
         state.error = null;
-        const index = state.transactions.findIndex(
-          (transaction) => transaction._id === payload._id
+        const index = state.transactions.transactions.findIndex(
+          (transaction) => transaction._id === payload.updatedTransaction._id
         );
-        state.transactions[index] = payload;
-        state.transactions = state.transactions.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
-        });
+        state.transactions.transactions[index] = payload.updatedTransaction;
       })
       .addCase(editTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
