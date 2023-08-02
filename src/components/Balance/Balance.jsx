@@ -13,7 +13,6 @@ export default function Balance() {
   });
 
   const displayBalance = formatedBalance.replace(",", ".");
-  console.log(typeof balance);
 
   return (
     <div className={styles.balance}>

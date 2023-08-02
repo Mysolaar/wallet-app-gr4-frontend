@@ -1,52 +1,35 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../values/colors";
-ChartJS.register(
-  ArcElement
-  //  Tooltip
-  // to consider if it's really necessary
-);
+import PropTypes from "prop-types";
 
-function Chart() {
+ChartJS.register(ArcElement);
+
+function Chart({ statistics }) {
   const data = {
-    labels: [
-      "Main expenses",
-      "Products",
-      "Car",
-      "Self care",
-      "Child care",
-      "Household products",
-      "Education",
-      "Leisure",
-      "Other expenses",
-    ],
+    labels: [...statistics.categoryNames],
     datasets: [
       {
         label: "Expense",
-        data: [8700, 3800.74, 1500, 800, 2208.5, 300, 3400, 1230, 610],
-        backgroundColor: [
-          COLORS.yellow300,
-          COLORS.orange100,
-          COLORS.red200,
-          COLORS.purple50,
-          COLORS.indigo300,
-          COLORS.indigo500,
-          COLORS.blue200,
-          COLORS.green300,
-          COLORS.teal400,
-        ],
+        data: [...statistics.categoryIdValues],
+        backgroundColor: [...statistics.categoryColors],
         borderWidth: 0,
         cutout: "70%",
       },
     ],
-    options: {
-      plugins: {
-        tooltip: {
-          backgroundColor: "red",
-        },
-      },
-    },
+  };
+
+  const formatBalance = (statistics) => {
+    const formatedBalance = statistics.toLocaleString("pl-PL", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      useGrouping: true,
+      style: "currency",
+      currency: "PLN",
+    });
+
+    return formatedBalance.replace(",", ".");
   };
 
   const hoverLabel = {
@@ -67,8 +50,6 @@ function Chart() {
           chart.config.data.datasets[chart._active[0].datasetIndex].data[
             chart._active[0].index
           ];
-
-        console.log(ctx.font);
         const textLabel = chart.config.data.labels[chart._active[0].index];
         const color =
           chart.config.data.datasets[chart._active[0].datasetIndex]
@@ -76,12 +57,12 @@ function Chart() {
 
         ctx.fillStyle = color;
         ctx.fillText(`${textLabel}:`, width / 2, height / 2.2);
-        ctx.fillText(`€${numberLabel}`, width / 2, height / 1.8);
+        ctx.fillText(`${formatBalance(numberLabel)}`, width / 2, height / 1.8);
       } else {
         ctx.save();
         ctx.fillStyle = COLORS.black;
         ctx.fillText(
-          `€ ${data.datasets[0].data.reduce((p, c) => p + c).toFixed(2)}`,
+          `${formatBalance(statistics.balanceForMonth)}`,
           chart.getDatasetMeta(0).data[0].x,
           chart.getDatasetMeta(0).data[0].y
         );
@@ -100,5 +81,9 @@ function Chart() {
     </div>
   );
 }
+
+Chart.propTypes = {
+  statistics: PropTypes.object,
+};
 
 export default Chart;
