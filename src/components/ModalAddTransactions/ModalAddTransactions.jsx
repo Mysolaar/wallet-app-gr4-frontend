@@ -45,7 +45,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
   });
 
   const initialValues = {
-    _id: type === "edit" ? data?._id : null, // Add a conditional check for the "_id"
+    _id: type === "edit" ? data?._id : null,
     typeOfTransaction: type === "edit" ? data?.typeOfTransaction : "Expense",
     amountOfTransaction: type === "edit" ? data?.amountOfTransaction : "",
     category: type === "edit" ? data?.category : "",
@@ -171,7 +171,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
                 name="amountOfTransaction"
                 onBlur={formik.handleBlur}
                 onValueChange={(value) => {
-                  formik.setFieldValue("amountOfTransaction", value);
+                  formik.setFieldValue("amountOfTransaction", +value);
                 }}
                 decimalSeparator="."
                 groupSeparator=" "
