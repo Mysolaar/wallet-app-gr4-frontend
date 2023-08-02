@@ -1,15 +1,25 @@
 .transaction {
   border-radius: 10px;
   overflow: hidden;
+  height: 243px;
 }
 
 .transactions-container {
   margin: auto;
   width: 280px;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 280px;
+
   gap: 8px;
+
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.transactions-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .transaction-row {
