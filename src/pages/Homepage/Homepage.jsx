@@ -42,15 +42,15 @@ const Homepage = () => {
     setPage("Currency");
   };
 
-  const handleResize = () => {
-    if (page === "Currency" && window.innerWidth >= 768) {
-      setPage("Home");
-    }
-
-    setIsMobile(window.innerWidth < 768);
-  };
-
   useEffect(() => {
+    const handleResize = () => {
+      if (page === "Currency" && window.innerWidth >= 768) {
+        setPage("Home");
+      }
+
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener("resize", handleResize);
   }, []);
 
