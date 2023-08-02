@@ -96,7 +96,7 @@
   padding: 15px 0 15px 56px;
 }
 
-.data-row td:first-child:before {
+/* .data-row td:first-child:before {
   content: "";
   display: inline-block;
   width: 24px;
@@ -107,4 +107,16 @@
   position: absolute;
   top: 10px;
   left: 20px;
+} */
+
+.colorBox {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  /* background-color: red; */
 }
