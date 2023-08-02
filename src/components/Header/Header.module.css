@@ -1,5 +1,7 @@
 .header {
   height: 60px;
+  width: 100%;
+  max-width: 280px;
   margin-inline: 20px;
   display: flex;
   justify-self: center;
@@ -78,4 +80,5 @@
     margin: 0 auto;
     padding-inline: 16px;
     max-width: 1280px;
-  }}
+  }
+}
