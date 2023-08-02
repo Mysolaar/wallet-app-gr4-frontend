@@ -4,7 +4,7 @@ import { selectBalance } from "../../redux/auth/authSelectors";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function Balance() {
-  const { isAuth } = useAuth();
+  // const { isAuth } = useAuth();
   const balance = useSelector(selectBalance);
 
   const formatedBalance = balance.toLocaleString("pl-PL", {
@@ -16,12 +16,13 @@ export default function Balance() {
   });
 
   const displayBalance = formatedBalance.replace(",", ".");
+  console.log(typeof balance)
 
   return (
     <div className={styles.balance}>
       <div className={styles.balance__text}>Your balance</div>
       <div className={styles.balance__amount}>
-        {isAuth ? displayBalance : ""}
+        {balance !== "" ? displayBalance : "0.00"}
       </div>
     </div>
   );
