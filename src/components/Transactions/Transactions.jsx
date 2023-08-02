@@ -3,15 +3,13 @@ import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
 import { useDispatch } from "react-redux";
 import { deleteTransaction } from "../../redux/transactions/transactionsOperations.js";
+import { openModal, closeModal } from "../../redux/global/globalSlice.js";
 
 const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const dispatch = useDispatch();
 
-  const openEdit = () => {
-    console.log("Add Edit logic");
-  };
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
   };
@@ -25,12 +23,28 @@ const Transactions = () => {
     // dispatch(getTransactions());
   };
 
+  const handleOpen = () => {
+    dispatch(openModal("isModalEditTransactionsOpen"));
+  };
+
+  const handleClose = () => {
+    dispatch(closeModal("isModalEditTransactionsOpen"));
+  };
+
   return (
     <>
       {!isMobile ? (
-        <TransactionsTable handleDelete={handleDelete} openEdit={openEdit} />
+        <TransactionsTable
+          handleDelete={handleDelete}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+        />
       ) : (
-        <TransactionsMobile handleDelete={handleDelete} openEdit={openEdit} />
+        <TransactionsMobile
+          handleDelete={handleDelete}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+        />
       )}
     </>
   );

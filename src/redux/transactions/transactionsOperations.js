@@ -57,9 +57,12 @@ export const getTransactions = createAsyncThunk(
 
 export const editTransaction = createAsyncThunk(
   "transactions/editTransaction",
-  async ({ id, transaction }, { rejectWithValue }) => {
+  async (payload, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/api/transactions/${id}`, transaction);
+      const response = await axios.patch(
+        `/api/transactions/${payload._id}`,
+        payload
+      );
       toast.success("Your transaction is updated!");
       return response.data.data;
     } catch (error) {
