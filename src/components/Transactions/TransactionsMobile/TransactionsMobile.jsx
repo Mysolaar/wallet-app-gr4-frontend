@@ -10,6 +10,7 @@ import {
 } from "../../../redux/transactions/transactionsSelectors.js";
 import LoaderComponent from "../../Loader/Loader.js";
 import { deleteTransaction } from "../../../redux/transactions/transactionsOperations.js";
+import formatNumber from "../../../utils/formatNumber.js";
 
 const TransactionsMobile = ({ handleDelete, openEdit }) => {
   const data = useSelector(selectTransactions);
@@ -63,7 +64,7 @@ const TransactionsMobile = ({ handleDelete, openEdit }) => {
               <div className={`${styles["transaction-row"]} ${color}`}>
                 <span>Sum:</span>
                 <span className={`${fontColor}`}>
-                  {transaction.amountOfTransaction}
+                  {formatNumber(transaction.amountOfTransaction)}
                 </span>
               </div>
 
