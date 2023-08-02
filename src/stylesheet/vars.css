@@ -62,17 +62,8 @@ body {
 
 @media (min-width: 1280px) {
   body {
-    background-color: #f3f5fa;
     height: 720px;
     width: 1280px;
-    &::before {
-      filter: blur(30px);
-    }
-    &::after {
-     background-color: #e7eaf2;
-     padding-right: 40px;
-     padding-top: 350px;
-    }
   }
 }
 
