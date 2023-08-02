@@ -6,7 +6,6 @@ import { openModal } from "./../../redux/global/globalSlice";
 import ModalLogout from "../ModalLogout/ModalLogout";
 import { selectIsModalLogoutOpen } from "../../redux/global/globalSelectors";
 import { selectName } from "../../redux/auth/authSelectors";
-import { useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
 function Header(user) {

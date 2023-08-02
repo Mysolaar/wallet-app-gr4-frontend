@@ -1,32 +1,28 @@
-// import React, { useEffect, useCallback } from "react";
 import styles from "./Balance.module.css";
-// import { useSelector, useDispatch } from "react-redux";
-// import { selectToken } from "../../redux/auth/authSelectors";
-// import { selectCurrentUser } from "../../redux/user/userSelectors";
-// import { getCurrentUser } from "../../redux/user/userOperations";
+import { useSelector } from "react-redux";
+import { selectBalance } from "../../redux/auth/authSelectors";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Balance() {
-  //   const user = useSelector(selectCurrentUser);
-  // // const currencySymbol =
-  //   const balance = user.balance;
-  //   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+  const balance = useSelector(selectBalance);
 
-  //   const token = useSelector(selectToken);
+  const formatedBalance = balance.toLocaleString("pl-PL", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+    useGrouping: true,
+    style: "currency",
+    currency: "PLN",
+  });
 
-  //   const fetchCurrentUser = useCallback(async () => {
-  //     dispatch(getCurrentUser({ token }));
-  //   }, [token, dispatch]);
-
-  //   useEffect(() => {
-  //     fetchCurrentUser();
-  //   }, [fetchCurrentUser]);
+  const displayBalance = formatedBalance.replace(",", ".");
 
   return (
     <div className={styles.balance}>
       <div className={styles.balance__text}>Your balance</div>
-      <div className={styles.balance__amount}>€ 150 000.00</div>
-      {/* <div className={styles.balance__amount}>{currencySymbol} {balance}
-      </div> */}
+      <div className={styles.balance__amount}>
+        {isAuth ? displayBalance : ""}
+      </div>
     </div>
   );
 }
