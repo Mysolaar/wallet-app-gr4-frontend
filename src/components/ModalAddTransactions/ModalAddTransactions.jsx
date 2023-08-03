@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import Modal from "react-modal";
 import CurrencyInput from "react-currency-input-field";
@@ -23,12 +23,19 @@ import SecondaryButton from "./../reusableButtons/SecondaryButton/SecondaryButto
 import {
   addTransaction,
   editTransaction,
+  getTransactionsMonthlySummary,
 } from "../../redux/transactions/transactionsOperations";
 import { fetchCurrentUser } from "../../redux/auth/authOperations";
+import {
+  selectSelectedMonth,
+  selectSelectedYear,
+} from "../../redux/transactions/transactionsSelectors.js";
 Modal.setAppElement("#root");
 
 function ModalAddTransactions({ type, handleClose, data }) {
   const [checked, setChecked] = useState(false);
+  const month = useSelector(selectSelectedMonth);
+  const year = useSelector(selectSelectedYear);
 
   const dispatch = useDispatch();
 
@@ -73,6 +80,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
       resetForm();
       handleClose();
       dispatch(fetchCurrentUser());
+      dispatch(getTransactionsMonthlySummary({ month, year }));
     },
   });
 

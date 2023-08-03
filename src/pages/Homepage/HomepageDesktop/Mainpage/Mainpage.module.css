@@ -1,16 +1,3 @@
-.currency {
-  width: 336px;
-  height: 174px;
-  margin: 0 auto;
-  padding-top: 30px;
-  text-align: center;
-  color: white;
-
-  border-radius: 30px;
-
-  background-color: #4a56e2;
-} /* TODO to be deleted once currency component is created*/
-
 .main {
   width: 704px;
   margin: auto;
@@ -22,8 +9,10 @@
 .box1 {
   width: 704px;
   display: flex;
-  justify-content: space-between;
+  padding-top: 32px;
+  /* justify-content: space-between; */
   align-items: flex-end;
+  align-content: flex-end;
   flex-wrap: wrap;
   margin: auto;
   gap: 32px;
