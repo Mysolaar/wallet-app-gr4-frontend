@@ -52,7 +52,7 @@ const Table = ({ data }) => {
 
     transactions.transactions.forEach((transaction) => {
       const transactionDateShort = transaction.transactionDateShort;
-      const [month, year] = transactionDateShort.split("-");
+      const [month, year] = transactionDateShort.split(".");
 
       if (!newYears.some((obj) => obj.value === year)) {
         newYears.push({ value: year, label: year });
