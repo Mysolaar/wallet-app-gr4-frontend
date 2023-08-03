@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import TransactionsMobile from "./TransactionsMobile/TransactionsMobile.jsx";
 import TransactionsTable from "./TransactionsTable/TransactionsTable.jsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTransaction } from "../../redux/transactions/transactionsOperations.js";
 import { openModal, closeModal } from "../../redux/global/globalSlice.js";
 import { fetchCurrentUser } from "../../redux/auth/authOperations.js";
+import { selectTransactions } from "../../redux/transactions/transactionsSelectors.js";
 
 const Transactions = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const transactions = useSelector(selectTransactions);
 
   const dispatch = useDispatch();
 
@@ -20,8 +22,20 @@ const Transactions = () => {
   }, []);
 
   const handleDelete = (_id) => {
-    dispatch(deleteTransaction(_id));
-    dispatch(fetchCurrentUser());
+    const transactionToUpdate = transactions.transactions.find(
+      (transaction) => transaction._id === _id
+    );
+    let value = 0;
+    if (transactionToUpdate) {
+      if (transactionToUpdate.typeOfTransaction === "Income") {
+        value = transactionToUpdate.amountOfTransaction;
+      } else if (transactionToUpdate.typeOfTransaction === "Expense") {
+        value = -transactionToUpdate.amountOfTransaction;
+      }
+    }
+
+    dispatch(deleteTransaction({ _id, value }));
+    // dispatch(fetchCurrentUser());
   };
 
   const handleOpen = () => {

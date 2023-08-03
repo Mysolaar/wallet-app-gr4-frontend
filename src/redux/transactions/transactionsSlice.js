@@ -40,8 +40,10 @@ const transactionsSlice = createSlice({
 
         state.transactions.transactions =
           state.transactions.transactions.filter((transaction) => {
-            return transaction._id !== payload;
+            return transaction._id !== payload._id;
           });
+
+        state.balance += payload.value;
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -55,12 +57,14 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.balance = payload.updatedBalance;
         state.transactions = {
           transactions: [
             ...state.transactions.transactions,
             payload.newTransaction,
           ],
         };
+        // state.monthlySummary.balanceForMonth = payload.updatedBalance;
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -71,6 +75,7 @@ const transactionsSlice = createSlice({
         state.error = null;
       })
       .addCase(getTransactions.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
         state.transactions = payload;
         state.isLoading = false;
         state.error = null;
@@ -100,7 +105,7 @@ const transactionsSlice = createSlice({
         state.error = null;
       })
       .addCase(editTransaction.fulfilled, (state, { payload }) => {
-        console.log("payload", payload);
+        state.balance = payload.updatedBalance;
         state.isLoading = false;
         state.error = null;
         const index = state.transactions.transactions.findIndex(
