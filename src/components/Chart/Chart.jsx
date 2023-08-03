@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../values/colors";
@@ -7,14 +7,27 @@ import PropTypes from "prop-types";
 ChartJS.register(ArcElement);
 
 function Chart({ statistics }) {
+  const noDataCheck = () => {
+    return statistics.usedCategoryIds.length === 0;
+  };
+
+  useEffect(() => {}, [
+    statistics.balanceForMonth,
+    statistics.usedCategoryIds.length,
+  ]);
+
   const data = {
-    labels: [...statistics.categoryNames],
+    labels: noDataCheck() ? ["Category"] : [...statistics.categoryNames],
     datasets: [
       {
         label: "Expense",
-        data: [...statistics.categoryIdValues],
-        backgroundColor: [...statistics.categoryColors],
-        borderWidth: 0,
+        data: noDataCheck() ? [1] : [...statistics.categoryIdValues],
+        balance: statistics.balanceForMonth,
+        backgroundColor: noDataCheck()
+          ? [COLORS.white]
+          : [...statistics.categoryColors],
+        borderWidth: noDataCheck() ? 1 : 0,
+
         cutout: "70%",
       },
     ],
@@ -35,6 +48,8 @@ function Chart({ statistics }) {
   const hoverLabel = {
     id: "hoverLabel",
     afterDatasetDraw(chart) {
+      const newValue = statistics.balanceForMonth;
+
       const {
         ctx,
         chartArea: { width, height },
@@ -50,6 +65,7 @@ function Chart({ statistics }) {
           chart.config.data.datasets[chart._active[0].datasetIndex].data[
             chart._active[0].index
           ];
+
         const textLabel = chart.config.data.labels[chart._active[0].index];
         const color =
           chart.config.data.datasets[chart._active[0].datasetIndex]
@@ -57,16 +73,25 @@ function Chart({ statistics }) {
 
         ctx.fillStyle = color;
         ctx.fillText(`${textLabel}:`, width / 2, height / 2.2);
-        ctx.fillText(`${formatBalance(numberLabel)}`, width / 2, height / 1.8);
+        ctx.fillText(
+          `${
+            noDataCheck() ? "Add income or expense" : formatBalance(numberLabel)
+          }`,
+          width / 2,
+          height / 1.8
+        );
       } else {
         ctx.save();
         ctx.fillStyle = COLORS.black;
+        chart.update();
+
         ctx.fillText(
-          `${formatBalance(statistics.balanceForMonth)}`,
+          `${noDataCheck() ? 0 : formatBalance(newValue)}`,
           chart.getDatasetMeta(0).data[0].x,
           chart.getDatasetMeta(0).data[0].y
         );
       }
+      chart.update();
     },
   };
 
@@ -77,7 +102,11 @@ function Chart({ statistics }) {
         height: "288px",
       }}
     >
-      <Doughnut data={data} plugins={[hoverLabel]} />
+      <Doughnut
+        data={data}
+        key={statistics.balanceForMonth}
+        plugins={[hoverLabel]}
+      />
     </div>
   );
 }
