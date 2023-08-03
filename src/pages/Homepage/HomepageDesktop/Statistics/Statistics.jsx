@@ -7,8 +7,6 @@ import { selectTransactionsMonthlySummary } from "../../../../redux/transactions
 const StatisticsDesktop = () => {
   const summaryData = useSelector(selectTransactionsMonthlySummary);
 
-  console.log("Summary data: ", summaryData);
-
   return (
     <div className={styles.statistics}>
       <div className={styles["chart-box"]}>

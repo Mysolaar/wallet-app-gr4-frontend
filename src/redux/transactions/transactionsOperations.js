@@ -8,7 +8,7 @@ axios.defaults.baseURL = "https://wallet-app-x3a3.onrender.com";
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
-  async (_id, { rejectWithValue }) => {
+  async ({ _id, value }, { rejectWithValue }) => {
     try {
       const storedToken = getCookieToken();
       await axios.delete(`/api/transactions/${_id}`, {
@@ -17,7 +17,10 @@ export const deleteTransaction = createAsyncThunk(
         },
       });
       toast.success("Your transaction is deleted!");
-      return _id;
+
+      const payload = { _id, value };
+
+      return payload;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -30,9 +33,9 @@ export const addTransaction = createAsyncThunk(
     try {
       const response = await axios.post(`/api/transactions/`, payload);
       toast.success("Your transaction is added!");
+
       return response.data.data;
     } catch (error) {
-      console.log("error", error.response.data);
       return rejectWithValue(error.response.data);
     }
   }

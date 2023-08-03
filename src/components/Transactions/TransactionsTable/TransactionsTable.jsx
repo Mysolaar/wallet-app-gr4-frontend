@@ -72,7 +72,6 @@ const TransactionsTable = ({ handleDelete, handleOpen, handleClose }) => {
                         onClick={() => {
                           handleOpen();
                           setTransaction(transaction);
-                          console.log(transaction);
                         }}
                         className={styles.edit}
                       />

@@ -64,9 +64,13 @@ function ModalAddTransactions({ type, handleClose, data }) {
   const handleSubmit = async (values) => {
     try {
       checked ? (initialValues.category = "Income") : console.log();
-      type === "add"
-        ? await dispatch(addTransaction(values))
-        : await dispatch(editTransaction(values));
+      if (type === "add") {
+        dispatch(addTransaction(values));
+      } else {
+        dispatch(editTransaction(values));
+      }
+      // dispatch(fetchCurrentUser());
+      dispatch(getTransactionsMonthlySummary({ month, year }));
     } catch (err) {
       console.log(err);
     }
@@ -79,8 +83,6 @@ function ModalAddTransactions({ type, handleClose, data }) {
       handleSubmit(values);
       resetForm();
       handleClose();
-      dispatch(fetchCurrentUser());
-      dispatch(getTransactionsMonthlySummary({ month, year }));
     },
   });
 

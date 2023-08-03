@@ -124,9 +124,12 @@
 
 .data-row td:last-child {
   display: flex;
+  width: 89px;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
+  margin-right: 20px;
+  padding-right: 0;
+  /* padding-left: 20px; */
 }
 
 .edit {
