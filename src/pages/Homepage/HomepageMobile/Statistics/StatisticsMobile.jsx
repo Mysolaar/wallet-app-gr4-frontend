@@ -9,7 +9,7 @@ const StatisticsMobile = () => {
   return (
     <div className={styles.statistics}>
       <h2 className={styles["statistics-header"]}>Statistics!</h2>
-      <Chart data={summaryData} />
+      <Chart statistics={summaryData} />
       <Table data={summaryData} />
     </div>
   );
