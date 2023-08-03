@@ -13,7 +13,7 @@ const StatisticsDesktop = () => {
     <div className={styles.statistics}>
       <div className={styles["chart-box"]}>
         <h1 className={styles["statistics-header"]}>Statistics</h1>
-        <Chart data={summaryData} />
+        <Chart statistics={summaryData} />
       </div>
       <Table data={summaryData} />
     </div>

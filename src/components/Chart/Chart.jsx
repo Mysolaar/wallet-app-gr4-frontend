@@ -1,57 +1,55 @@
-import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
+import { useEffect } from "react";
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../values/colors";
-ChartJS.register(
-  ArcElement
-  //  Tooltip
-  // to consider if it's really necessary
-);
+import PropTypes from "prop-types";
 
-function Chart() {
+ChartJS.register(ArcElement);
+
+function Chart({ statistics }) {
+  const noDataCheck = () => {
+    return statistics.usedCategoryIds.length === 0;
+  };
+
+  useEffect(() => {}, [
+    statistics.balanceForMonth,
+    statistics.usedCategoryIds.length,
+  ]);
+
   const data = {
-    labels: [
-      "Main expenses",
-      "Products",
-      "Car",
-      "Self care",
-      "Child care",
-      "Household products",
-      "Education",
-      "Leisure",
-      "Other expenses",
-    ],
+    labels: noDataCheck() ? ["Category"] : [...statistics.categoryNames],
     datasets: [
       {
         label: "Expense",
-        data: [8700, 3800.74, 1500, 800, 2208.5, 300, 3400, 1230, 610],
-        backgroundColor: [
-          COLORS.yellow300,
-          COLORS.orange100,
-          COLORS.red200,
-          COLORS.purple50,
-          COLORS.indigo300,
-          COLORS.indigo500,
-          COLORS.blue200,
-          COLORS.green300,
-          COLORS.teal400,
-        ],
-        borderWidth: 0,
+        data: noDataCheck() ? [1] : [...statistics.categoryIdValues],
+        balance: statistics.balanceForMonth,
+        backgroundColor: noDataCheck()
+          ? [COLORS.white]
+          : [...statistics.categoryColors],
+        borderWidth: noDataCheck() ? 1 : 0,
+
         cutout: "70%",
       },
     ],
-    options: {
-      plugins: {
-        tooltip: {
-          backgroundColor: "red",
-        },
-      },
-    },
+  };
+
+  const formatBalance = (statistics) => {
+    const formatedBalance = statistics.toLocaleString("pl-PL", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      useGrouping: true,
+      style: "currency",
+      currency: "PLN",
+    });
+
+    return formatedBalance.replace(",", ".");
   };
 
   const hoverLabel = {
     id: "hoverLabel",
     afterDatasetDraw(chart) {
+      const newValue = statistics.balanceForMonth;
+
       const {
         ctx,
         chartArea: { width, height },
@@ -68,7 +66,6 @@ function Chart() {
             chart._active[0].index
           ];
 
-        console.log(ctx.font);
         const textLabel = chart.config.data.labels[chart._active[0].index];
         const color =
           chart.config.data.datasets[chart._active[0].datasetIndex]
@@ -76,16 +73,25 @@ function Chart() {
 
         ctx.fillStyle = color;
         ctx.fillText(`${textLabel}:`, width / 2, height / 2.2);
-        ctx.fillText(`€${numberLabel}`, width / 2, height / 1.8);
+        ctx.fillText(
+          `${
+            noDataCheck() ? "Add income or expense" : formatBalance(numberLabel)
+          }`,
+          width / 2,
+          height / 1.8
+        );
       } else {
         ctx.save();
         ctx.fillStyle = COLORS.black;
+        chart.update();
+
         ctx.fillText(
-          `€ ${data.datasets[0].data.reduce((p, c) => p + c).toFixed(2)}`,
+          `${noDataCheck() ? 0 : formatBalance(newValue)}`,
           chart.getDatasetMeta(0).data[0].x,
           chart.getDatasetMeta(0).data[0].y
         );
       }
+      chart.update();
     },
   };
 
@@ -96,9 +102,17 @@ function Chart() {
         height: "288px",
       }}
     >
-      <Doughnut data={data} plugins={[hoverLabel]} />
+      <Doughnut
+        data={data}
+        key={statistics.balanceForMonth}
+        plugins={[hoverLabel]}
+      />
     </div>
   );
 }
+
+Chart.propTypes = {
+  statistics: PropTypes.object,
+};
 
 export default Chart;
