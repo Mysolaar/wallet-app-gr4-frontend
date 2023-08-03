@@ -65,8 +65,22 @@ input {
 
 #root {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
   min-height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  #root {
+    background-color: var(--background-gray);
+    background-image: url("/src/img/EllipsePurple.png"),
+      url("/src/img/EllipseOrange.png");
+    background-repeat: no-repeat;
+    background-position: 50% 70%, 50% 30%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #root {
+    background-position: -30% 140%, 140% -30%;
+  }
 }

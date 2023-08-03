@@ -52,21 +52,22 @@
     display: flex;
     justify-content: center;
     height: 100%;
+    align-items: flex-end;
   }
   .a {
     height: 720px;
-    width: 1280px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     flex-direction: row;
   }
   .b {
     position: relative;
     width: 40%;
     align-items: end;
-    background-color: #e7eaf2;
-    background-image: url(/src/img/Register.png), url(/src/img/Ellipse1.png);
+    background: none;
+    background-image: url(/src/img/Register.png);
     background-repeat: no-repeat;
-    background-position: center center, bottom left;
+    background-position: center center;
     background-size: 80%;
   }
   .b > p {
@@ -77,11 +78,13 @@
     left: 155px;
   }
   .c {
+    background: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    height: 100vh;
     align-items: center;
-    background-color: #f3f5fa;
-    background-image: url(/src/img/Ellipse2.png);
-    background-repeat: no-repeat;
-    background-position: top right;
+    backdrop-filter: blur(25px);
+    align-items: center;
     width: 60%;
   }
 }

@@ -21,10 +21,10 @@
   .b {
     position: relative;
     align-items: end;
-    background-color: #f3f5fa;
-    background-image: url(/src/img/Login.png), url(/src/img/Ellipse2.png);
+    /* background-color: #f3f5fa; */
+    background-image: url(/src/img/Login.png);
     background-repeat: no-repeat;
-    background-position: 114px 60px, 410px 0px;
+    background-position: 114px 60px;
     background-size: 35%, 75%;
   }
   .b > p {
@@ -38,12 +38,12 @@
   .c {
     position: relative;
     align-items: center;
-    background-color: #f3f5fa;
+    /* background-color: #f3f5fa; */
 
-    background-image: url(/src/img/Ellipse1.png);
+    /* background-image: url(/src/img/Ellipse1.png);
     background-repeat: no-repeat;
     background-position: bottom left;
-    background-size: 60%;
+    background-size: 60%; */
   }
 }
 
@@ -53,22 +53,23 @@
   .c {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 100%;
   }
   .a {
     height: 720px;
-    width: 1280px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     flex-direction: row;
   }
   .b {
     position: relative;
     width: 40%;
     align-items: end;
-    background-color: #e7eaf2;
-    background-image: url(/src/img/Login.png), url(/src/img/Ellipse1.png);
+    /* background-color: #e7eaf2; */
+    background-image: url(/src/img/Login.png);
     background-repeat: no-repeat;
-    background-position: center center, bottom left;
+    background-position: center center;
     background-size: 80%;
   }
   .b > p {
@@ -79,15 +80,11 @@
     left: 155px;
   }
   .c {
+    background-color: rgba(255, 255, 255, 0.4);
+    height: 100vh;
     align-items: center;
-    background-color: #f3f5fa;
-    background-image: url(/src/img/ElipseBlur.png);
-    background-repeat: no-repeat;
-    background-position: top right;
-    background-size: 100%;
-
-    /* filter: blur(8px); */
-
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
     width: 60%;
   }
 }
