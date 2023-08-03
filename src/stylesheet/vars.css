@@ -75,12 +75,6 @@ input {
     background-image: url("/src/img/EllipsePurple.png"),
       url("/src/img/EllipseOrange.png");
     background-repeat: no-repeat;
-    background-position: 50% 70%, 50% 30%;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  #root {
     background-position: -30% 140%, 140% -30%;
   }
 }
