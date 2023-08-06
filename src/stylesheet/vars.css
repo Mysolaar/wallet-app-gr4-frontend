@@ -7,6 +7,7 @@
   --gray500: #a6a6a6;
   --green300: #24cca7;
   --green300-transparent50: #24cca780;
+  --indigo50: #e7eaf2;
   --indigo300: #6e78e8;
   --indigo500-transparent50: #4b58e280;
   --indigo500: #4a56e2;
@@ -20,10 +21,11 @@
   --red700-transparent05: #ff00000d;
   --teal400: #00ad84;
   --white: #ffffff;
+  --white-transparent20: #ffffff33;
   --white-transparent40: #ffffff66;
   --yellow300: #fed057;
   --gray-row-divider: #dcdcdf;
-  --background-gray: #e7eaf2;
+  /* --background-gray: #e7eaf2; */
 }
 
 body {
@@ -63,15 +65,14 @@ input {
   font-weight: 400;
 }
 
-#root {
-  margin: 0;
-
-  min-height: 100vh;
+html,
+body {
+  min-height: 100%;
 }
 
 @media screen and (min-width: 768px) {
   #root {
-    background-color: var(--background-gray);
+    background-color: var(--indigo50);
     background-image: url("/src/img/EllipsePurple.png"),
       url("/src/img/EllipseOrange.png");
     background-repeat: no-repeat;
