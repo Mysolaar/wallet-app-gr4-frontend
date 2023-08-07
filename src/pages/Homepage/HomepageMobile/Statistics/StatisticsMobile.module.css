@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 12px;
   align-content: flex-start;
+  margin-bottom: 60px;
 }
 
 .chart {

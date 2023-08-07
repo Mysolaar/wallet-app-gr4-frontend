@@ -4,37 +4,28 @@
   flex-grow: 1;
   padding: 10px;
   box-sizing: border-box;
-  height: 100vh;
-  overflow-y: auto;
+  min-height: calc(100dvh - 80px);
+  min-height: calc(100vh - 80px);
   padding: 0;
-
   display: flex;
   flex-direction: column;
-
-  background: var(--background-gray);
-  background-image: url("../../img/EllipseDesktop1.png"),
-    url("../../img/EllipseDesktop2.png");
   background-repeat: no-repeat;
   background-position: bottom left, top right;
 }
 
 .blur {
   backdrop-filter: blur(25px);
+  background-color: var(--white-transparent20);
   width: 100%;
-  height: 100%;
   flex-grow: 1;
-}
-
-@media screen and (max-width: 1280px) {
-  .main {
-    background-image: url("../../img/EllipseTablet.png"),
-      url("../../img/EllipseTablet2.png");
-  }
 }
 
 @media screen and (max-width: 767px) {
   .main {
-    background-image: none;
+    background-color: var(--indigo50);
+    height: calc(100dvh - 60px);
+    height: calc(100vh - 60px);
+    margin-bottom: 60px;
   }
   .mainContainer {
     width: 280px;
