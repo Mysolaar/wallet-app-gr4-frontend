@@ -23,8 +23,8 @@
 @media screen and (max-width: 767px) {
   .main {
     background-color: var(--indigo50);
-    height: calc(100dvh - 60px);
-    height: calc(100vh - 60px);
+    min-height: calc(100dvh - 60px);
+    min-height: calc(100vh - 60px);
   }
   .mainContainer {
     width: 280px;
