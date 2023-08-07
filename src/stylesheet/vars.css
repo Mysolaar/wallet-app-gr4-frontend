@@ -28,7 +28,9 @@
   /* --background-gray: #e7eaf2; */
 }
 
+html,
 body {
+  min-height: 100%;
   font-family: Circe;
   font-weight: 400;
 }
@@ -65,13 +67,8 @@ input {
   font-weight: 400;
 }
 
-html,
-body {
-  min-height: 100%;
-}
-
 @media screen and (min-width: 768px) {
-  #root {
+  body {
     background-color: var(--indigo50);
     background-image: url("/src/img/EllipsePurple.png"),
       url("/src/img/EllipseOrange.png");
