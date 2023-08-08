@@ -21,7 +21,6 @@
   .b {
     position: relative;
     align-items: end;
-    background-image: url(/src/img/Login.png);
     background-repeat: no-repeat;
     background-position: 114px 60px;
     background-size: 35%, 75%;
@@ -50,33 +49,44 @@
     height: 100%;
   }
   .a {
-    height: 720px;
-    width: 100%;
-    margin: 0;
     flex-direction: row;
+    width: 100%;
+    background-color: transparent;
+    background-image: url(../../img/Ellipse1.png),
+      url(../../img/EllipseDesktop2.png);
+    background-repeat: no-repeat;
+    background-position: bottom left, top right;
+    background-size: 33%, 40%;
   }
   .b {
     position: relative;
+    background-image: url(../../img/Login.png);
+    background-repeat: no-repeat;
+    background-position: left 50% bottom 50%;
+    background-size: 70%;
     width: 40%;
     align-items: end;
-    background-image: url(/src/img/Login.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 80%;
   }
   .b > p {
     color: black;
-    font-size: 36px;
-    position: absolute;
-    top: 550px;
-    left: 155px;
+    font-size: 2.5vw;
+    position: sticky;
+    bottom: 15%;
+    left: 10%;
   }
   .c {
-    background-color: rgba(255, 255, 255, 0.4);
     height: 100vh;
-    align-items: center;
-    backdrop-filter: blur(25px);
-    border-radius: 25px;
+    position: relative;
+    backdrop-filter: blur(5px);
     width: 60%;
+  }
+  .d {
+    display: flex;
+    margin: 0px 0px 0px 0px;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    background: linear-gradient(90deg, #e7eaf2 40%, #f0f0f0 40%);
   }
 }

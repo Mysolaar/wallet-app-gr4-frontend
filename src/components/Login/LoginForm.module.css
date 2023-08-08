@@ -8,8 +8,6 @@
   align-items: center;
   justify-content: center;
   gap: 30px;
-  margin: 0 auto;
-  margin-top: 20%;
 }
 
 .logo__container {
@@ -95,8 +93,6 @@
 
 @media (min-width: 767px) {
   .container {
-    position: absolute;
-    bottom: 200px;
     width: 533px;
     height: 468px;
   }
@@ -121,12 +117,5 @@
   .envelope__svg {
     left: 64px;
     top: 17px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    position: absolute;
-    bottom: 135px;
   }
 }
