@@ -53,7 +53,7 @@ const TransactionsMobile = ({ handleDelete, openEdit }) => {
 
               <div className={`${styles["transaction-row"]} ${color}`}>
                 <span>Category:</span>
-                <span>{`Car`}</span>
+                <span>{transaction.category}</span>
               </div>
 
               <div className={`${styles["transaction-row"]} ${color}`}>
