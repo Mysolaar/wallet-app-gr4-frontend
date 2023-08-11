@@ -2,6 +2,12 @@
   background-color: rgb(231, 234, 242, 1);
 } */
 
+li .activeCurrency {
+  background-color: rgba(74, 86, 226, 1);
+  box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5),
+    -3px 5px 8px rgba(74, 86, 226, 0.5);
+}
+
 .navItem {
   padding: 5px;
   background-color: rgba(110, 120, 232, 1);
@@ -73,6 +79,7 @@
   .navItem:active .navTitle {
     font-weight: 700;
   }
+
   li,
   .linkLink {
     display: flex;

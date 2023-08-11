@@ -16,10 +16,10 @@ const StatisticsDesktop = () => {
         <div className={styles.wrapper}>
           <div className={styles.navigate}>
             <Navigate
-            // setHomePage={setHomePage}
-            // setStatisticsPage={setStatisticsPage}
-            // setCurrencyPage={setCurrencyPage}
-            // page={page}
+              // setHomePage={setHomePage}
+              // setStatisticsPage={setStatisticsPage}
+              // setCurrencyPage={setCurrencyPage}
+              page="Statistics"
             />
           </div>
           <Balance />

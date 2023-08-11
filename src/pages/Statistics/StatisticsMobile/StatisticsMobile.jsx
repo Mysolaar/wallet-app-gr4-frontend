@@ -9,7 +9,7 @@ const StatisticsMobile = () => {
   const summaryData = useSelector(selectTransactionsMonthlySummary);
   return (
     <>
-      <Navigate />
+      <Navigate page="Statistics" />
       <div className={styles.statisticsMobile}>
         <h2 className={styles["statistics-header"]}>Statistics!</h2>
         <Chart statistics={summaryData} />
