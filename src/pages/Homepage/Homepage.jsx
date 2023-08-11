@@ -84,12 +84,12 @@ const Homepage = () => {
           setCurrencyPage={setCurrencyPage}
         />
       )}
-      {isModalAddTransactionsOpen && (
+      {/* {isModalAddTransactionsOpen && (
         <ModalAddTransactions
           type="add"
           handleClose={() => dispatch(closeModal("isModalAddTransactionsOpen"))}
         />
-      )}
+      )} */}
       {/* </div>
         </div>
       </main>

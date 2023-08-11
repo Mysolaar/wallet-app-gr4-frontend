@@ -56,11 +56,7 @@ const Statistics = () => {
     dispatch(getTransactionsMonthlySummary({ month, year }));
   }, [dispatch, month, year]);
 
-  return (
-    // <div>Welcome to statistics</div>
-
-    <div>{isMobile ? <StatisticsMobile /> : <StatisticsDesktop />}</div>
-  );
+  return <>{isMobile ? <StatisticsMobile /> : <StatisticsDesktop />}</>;
 };
 
 export default Statistics;
