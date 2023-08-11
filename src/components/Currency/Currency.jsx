@@ -6,7 +6,7 @@ import { ReactComponent as CurrencyIcon } from "../../icons/currency-icon.svg";
 function Currency() {
     const [isLoading, setIsLoading] = useState(false);
     const [currency, setCurrency] = useState([]);
-    const nameCurrency = ["USD", "EUR"];
+    const nameCurrency = ["USD", "EUR", "GBP", "CHF"];
 
     useEffect(() => {
         setIsLoading(true);

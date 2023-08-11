@@ -1,7 +1,6 @@
-.relative {
-  position: relative;
+.defaultCursor {
+  cursor: default !important;
 }
-
 .modalOverlay {
   background-color: "transparent";
   position: fixed;
@@ -15,10 +14,13 @@
 }
 
 .modalContainer {
+  position: relative;
   margin-top: 60px;
   padding: 20px 20px 37px;
   background-color: var(--white);
   z-index: 99;
+  height: 100dvh;
+  height: 100vh;
 }
 
 .modalForm {
@@ -34,13 +36,24 @@
   margin: 0;
 }
 
+.modalHeading::first-letter {
+  text-transform: uppercase;
+}
+
 .inputLabel {
+  position: relative;
   display: flex;
   width: 100%;
   border-bottom: 1px solid var(--gray300);
   padding-inline: 20px;
   padding-top: 20px;
   padding-bottom: 8px;
+  justify-content: space-between;
+}
+
+.inputLabel div {
+  border: none;
+  width: 100%;
 }
 
 .inputLabel:focus-within {
@@ -129,7 +142,7 @@
   width: 100%;
 }
 
-.button {
+.modalButton {
   bottom: 20px;
   right: 20px;
   width: 44px;
@@ -150,17 +163,10 @@
   pointer-events: none;
 }
 
-.modalCheckboxInput:not(:checked) + .modalCheckbox .button {
+.modalCheckboxInput:not(:checked) + .modalCheckbox .modalButton {
   background-color: var(--pink300);
   box-shadow: 0px 5px 5px var(--pink300-transparent50);
   left: 50%;
-}
-
-.calendarIcon {
-  position: absolute;
-  top: 40%;
-  right: 20px;
-  pointer-events: none;
 }
 
 .commentField {
@@ -187,10 +193,17 @@
   }
 
   .modalContainer {
+    margin-top: 0px;
     padding: 40px 73px 60px;
     max-width: 540px;
     max-height: 603px;
     border-radius: 20px;
+    height: auto;
+    z-index: 8;
+  }
+
+  .modalDividedInput {
+    width: 50%;
   }
 
   .modalDividedInput {
@@ -213,5 +226,13 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+  }
+
+  .inputLabel div {
+    border: none;
+    width: auto;
+  }
+  .inputLabel .calendarIcon {
+    margin-left: 20px;
   }
 }

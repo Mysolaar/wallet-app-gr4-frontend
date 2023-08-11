@@ -57,7 +57,8 @@
     flex-direction: row;
     gap: 0;
     width: fit-content;
-    /* width: 1280px; */
+    min-height: calc(100dvh - 80px);
+    min-height: calc(100vh - 80px);
   }
 
   .transactions-box {

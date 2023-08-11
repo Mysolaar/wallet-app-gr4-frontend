@@ -1,13 +1,12 @@
 .header {
   height: 60px;
   width: 100%;
-  max-width: 280px;
-  margin-inline: 20px;
+  padding-inline: 20px;
   display: flex;
   justify-self: center;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--white)
+  background-color: var(--white);
 }
 
 .headerBox {
@@ -52,7 +51,7 @@
   .header {
     border: 1px solid var(--white);
     height: 80px;
-    margin-inline: 32px;
+    padding-inline: 32px;
     max-width: 1280px;
   }
   .headerExit {
@@ -78,8 +77,8 @@
 
 @media screen and (min-width: 1280px) {
   .header {
-    margin: 0 auto;
+    margin: 0;
     padding-inline: 16px;
-    max-width: 1280px;
+    max-width: 100%;
   }
 }

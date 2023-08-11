@@ -50,6 +50,8 @@
   .layout {
     flex-direction: row;
     padding: 50px;
+    min-height: 100dvh;
+    min-height: 100vh;
   }
   .logo {
     gap: 20px;
