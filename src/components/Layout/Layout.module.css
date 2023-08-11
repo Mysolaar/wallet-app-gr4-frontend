@@ -1,0 +1,47 @@
+.main {
+  width: 100%;
+  position: relative;
+  flex-grow: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--background-gray);
+  background-image: url("../../img/EllipseDesktop1.png"),
+    url("../../img/EllipseDesktop2.png");
+  background-repeat: no-repeat;
+  background-position: bottom left, top right;
+}
+
+.blur {
+  backdrop-filter: blur(25px);
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 1280px) {
+  .main {
+    background-image: url("../../img/EllipseTablet.png"),
+      url("../../img/EllipseTablet2.png");
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    background-image: none;
+  }
+  .mainContainer {
+    width: 280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}

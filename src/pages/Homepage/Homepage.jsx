@@ -61,41 +61,39 @@ const Homepage = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header />
       <main className={styles.main}>
         <div className={styles.blur}>
-          <div className={styles.mainContainer}>
-            {isMobile ? (
-              <HomepageMobile
-                page={page}
-                setHomePage={setHomePage}
-                setStatisticsPage={setStatisticsPage}
-                setCurrencyPage={setCurrencyPage}
-              />
-            ) : (
-              <HomepageDesktop
-                page={page}
-                setHomePage={setHomePage}
-                setStatisticsPage={setStatisticsPage}
-                setCurrencyPage={setCurrencyPage}
-              />
-            )}
-            {isModalAddTransactionsOpen && (
-              <ModalAddTransactions
-                type="add"
-                handleClose={() =>
-                  dispatch(closeModal("isModalAddTransactionsOpen"))
-                }
-              />
-            )}
-          </div>
+          <div className={styles.mainContainer}> */}
+      {isMobile ? (
+        <HomepageMobile
+          page={page}
+          setHomePage={setHomePage}
+          setStatisticsPage={setStatisticsPage}
+          setCurrencyPage={setCurrencyPage}
+        />
+      ) : (
+        <HomepageDesktop
+          page={page}
+          setHomePage={setHomePage}
+          setStatisticsPage={setStatisticsPage}
+          setCurrencyPage={setCurrencyPage}
+        />
+      )}
+      {isModalAddTransactionsOpen && (
+        <ModalAddTransactions
+          type="add"
+          handleClose={() => dispatch(closeModal("isModalAddTransactionsOpen"))}
+        />
+      )}
+      {/* </div>
         </div>
       </main>
       <ButtonAddTransactions
         handleClick={() => {
           dispatch(openModal("isModalAddTransactionsOpen"));
         }}
-      />
+      /> */}
     </>
   );
 };
