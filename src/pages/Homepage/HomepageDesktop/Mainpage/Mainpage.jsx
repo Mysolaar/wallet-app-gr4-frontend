@@ -4,6 +4,8 @@ import Transactions from "../../../../components/Transactions/Transactions.jsx";
 import StatisticsDesktop from "../Statistics/Statistics.jsx";
 import Balance from "../../../../components/Balance/Balance.jsx";
 import Currency from "../../../../components/Currency/Currency.jsx";
+import { useDispatch } from "react-redux";
+import { setPage } from "../../../../redux/global/globalSlice.js";
 
 const MainpageDesktop = ({
   page,
@@ -11,6 +13,8 @@ const MainpageDesktop = ({
   setStatisticsPage,
   setCurrencyPage,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.main}>
       <div className={styles.box1}>
@@ -35,7 +39,8 @@ const MainpageDesktop = ({
             case "Statistics":
               return <StatisticsDesktop />;
             default:
-              return <div>Sorry, something went wrong</div>;
+              dispatch(setPage("Home"));
+              return <Transactions />;
           }
         })()}
       </div>

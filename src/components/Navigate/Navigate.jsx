@@ -3,8 +3,14 @@ import { MdHome, MdTimeline } from "react-icons/md";
 import { FaDollarSign } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { styled } from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentPage } from "../../redux/global/globalSelectors.js";
+import { setPage } from "../../redux/global/globalSlice.js";
 
-function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
+function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
+  const page = useSelector(selectCurrentPage);
+  const dispatch = useDispatch();
+
   const StyledLink = styled(NavLink)`
     color: rgba(0, 0, 0, 1);
 
@@ -37,6 +43,7 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
           <StyledLink
             to="/homepage"
             className={`${css.linkLink} ${isActivePage("Home")}`}
+            onClick={() => dispatch(setPage("Home"))}
           >
             <MdHome
               color="rgba(255, 255, 255, 1)"
@@ -52,6 +59,7 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
           <StyledLink
             to="/statistics"
             className={`${css.linkLink} ${isActivePage("Statistics")}`}
+            onClick={() => dispatch(setPage("Statistics"))}
           >
             <MdTimeline
               color="rgba(255, 255, 255, 1)"
@@ -64,12 +72,16 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage, page }) {
           </StyledLink>
         </li>
         <li className={css.dollarIcon}>
-          <FaDollarSign
-            color="rgba(255, 255, 255, 1)"
-            size={25}
-            className={`${css.navItem} ${isCurrency("Currency")}`}
-            onClick={setCurrencyPage}
-          />
+          <StyledLink
+            to="/homepage"
+            onClick={() => dispatch(setPage("Currency"))}
+          >
+            <FaDollarSign
+              color="rgba(255, 255, 255, 1)"
+              size={25}
+              className={`${css.navItem} ${isCurrency("Currency")}`}
+            />
+          </StyledLink>
         </li>
       </ul>
     </div>
