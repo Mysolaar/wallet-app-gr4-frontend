@@ -4,5 +4,8 @@ export const selectIsModalAddTransactionOpen = (state) =>
 export const selectIsModalEditTransactionsOpen = (state) =>
   state.global.isModalEditTransactionsOpen;
 
+export const selectIsModalDeleteTransactionsOpen = (state) =>
+  state.global.isModalDeleteTransactionsOpen;
+
 export const selectIsModalLogoutOpen = (state) =>
   state.global.isModalLogoutOpen;
