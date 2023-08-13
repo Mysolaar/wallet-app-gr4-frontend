@@ -13,6 +13,7 @@ import { deleteTransaction } from "../../../redux/transactions/transactionsOpera
 import formatNumber from "../../../utils/formatNumber.js";
 import ModalAddTransactions from "../../ModalAddTransactions/ModalAddTransactions.jsx";
 import { selectIsModalEditTransactionsOpen } from "../../../redux/global/globalSelectors.js";
+import React from "react";
 
 const TransactionsMobile = ({ handleDelete, handleOpen, handleClose }) => {
   const data = useSelector(selectTransactions);
@@ -45,8 +46,8 @@ const TransactionsMobile = ({ handleDelete, handleOpen, handleClose }) => {
 
           const type = transaction.typeOfTransaction === "Expense" ? "-" : "+";
           return (
-            <>
-              <div className={styles.transaction} key={index}>
+            <React.Fragment key={index}>
+              <div className={styles.transaction}>
                 <div className={`${styles["transaction-row"]} ${color}`}>
                   <span>Date:</span>
                   <span>{changeDateFormat(transaction.transactionDate)}</span>
@@ -98,7 +99,7 @@ const TransactionsMobile = ({ handleDelete, handleOpen, handleClose }) => {
                   data={transaction}
                 />
               )}
-            </>
+            </React.Fragment>
           );
         })
       )}
