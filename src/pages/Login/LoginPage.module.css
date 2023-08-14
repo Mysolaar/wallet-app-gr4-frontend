@@ -1,4 +1,10 @@
 @media (max-width: 767px) {
+  .a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
   .b > p {
     display: none;
   }
@@ -15,35 +21,29 @@
   }
   .a {
     flex-direction: column;
-    width: 100%;
+    width: 768px;
     background-color: transparent;
-    background-image: url(../../img/Ellipse1.png),
-      url(../../img/EllipseDesktop2.png);
-    background-repeat: no-repeat;
-    background-position: bottom left, top left 160%;
-    background-size: 40%, 60%;
   }
   .b {
     position: relative;
     background-image: url(../../img/Login.png);
     background-repeat: no-repeat;
-    background-position: left 30% bottom 50%;
-    background-size: 30%;
+    background-position: left 25% bottom 50%;
+    background-size: 260.26px, 250px;
     width: 100%;
     align-items: end;
   }
   .b > p {
     color: black;
-    font-size: 3vw;
+    font-size: 36px;
     position: sticky;
     bottom: 80%;
-    left: 70%;
+    left: 55%;
   }
   .c {
     height: 100vh;
     position: relative;
-    backdrop-filter: blur(5px);
-    width: 60%;
+    width: 100%;
   }
   .d {
     display: flex;
@@ -53,6 +53,11 @@
     height: 100vh;
     justify-content: center;
     background-color: #e7eaf2;
+    background-image: url(../../img/Ellipse1.png),
+      url(../../img/EllipseDesktop2.png);
+    background-repeat: no-repeat;
+    background-position: bottom left, top left 160%;
+    background-size: 60%, 68%;
   }
 }
 
@@ -80,7 +85,7 @@
     background-image: url(../../img/Login.png);
     background-repeat: no-repeat;
     background-position: left 50% bottom 50%;
-    background-size: 70%;
+    background-size: 435.2px, 419.5px;
     width: 40%;
     align-items: end;
   }

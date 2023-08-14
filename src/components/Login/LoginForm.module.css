@@ -91,10 +91,11 @@
   justify-content: center;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .container {
     width: 533px;
     height: 468px;
+    margin-bottom: 200px;
   }
   .logo__container {
     gap: 20px;
@@ -117,5 +118,10 @@
   .envelope__svg {
     left: 64px;
     top: 17px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    margin: 0;
   }
 }
