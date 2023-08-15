@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isModalAddTransactionsOpen: false,
   isModalEditTransactionsOpen: false,
+  isModalDeleteTransactionsOpen: false,
   isModalLogoutOpen: false,
 };
 
