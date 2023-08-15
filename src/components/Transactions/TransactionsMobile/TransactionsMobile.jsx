@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import PrimaryButton from "../../reusableButtons/PrimaryButton/PrimaryButton.jsx";
 import styles from "./TransactionsMobile.module.css";
 import { HiOutlinePencil } from "react-icons/hi";
@@ -62,59 +62,60 @@ const TransactionsMobile = ({
             const type =
               transaction.typeOfTransaction === "Expense" ? "-" : "+";
             return (
-              <div className={styles.transaction} key={index}>
-                <div className={`${styles["transaction-row"]} ${color}`}>
-                  <span>Date:</span>
-                  <span>{changeDateFormat(transaction.transactionDate)}</span>
-                </div>
+              <React.Fragment key={index}>
+                <div className={styles.transaction}>
+                  <div className={`${styles["transaction-row"]} ${color}`}>
+                    <span>Date:</span>
+                    <span>{changeDateFormat(transaction.transactionDate)}</span>
+                  </div>
 
-                <div className={`${styles["transaction-row"]} ${color}`}>
-                  <span>Type:</span>
-                  <span>{type}</span>
-                </div>
+                  <div className={`${styles["transaction-row"]} ${color}`}>
+                    <span>Type:</span>
+                    <span>{type}</span>
+                  </div>
 
-                <div className={`${styles["transaction-row"]} ${color}`}>
-                  <span>Category:</span>
-                  <span>{`Car`}</span>
-                </div>
+                  <div className={`${styles["transaction-row"]} ${color}`}>
+                    <span>Category:</span>
+                    <span>{transaction.category}</span>
+                  </div>
 
-                <div className={`${styles["transaction-row"]} ${color}`}>
-                  <span>Comment:</span>
-                  <span>{transaction.comment}</span>
-                </div>
+                  <div className={`${styles["transaction-row"]} ${color}`}>
+                    <span>Comment:</span>
+                    <span>{transaction.comment}</span>
+                  </div>
 
-                <div className={`${styles["transaction-row"]} ${color}`}>
-                  <span>Sum:</span>
-                  <span className={`${fontColor}`}>
-                    {formatNumber(transaction.amountOfTransaction)}
-                  </span>
-                </div>
+                  <div className={`${styles["transaction-row"]} ${color}`}>
+                    <span>Sum:</span>
+                    <span className={`${fontColor}`}>
+                      {formatNumber(transaction.amountOfTransaction)}
+                    </span>
+                  </div>
 
-                <div className={`${styles["transaction-row"]} ${color}`}>
-                  <PrimaryButton
-                    text="Delete"
-                    onclick={() => {
-                      handleDeleteButton();
-                      setTransaction(transaction);
-                    }}
-                  />
-                  <span
-                    className={styles.edit}
-                    onClick={() => {
-                      handleOpen();
-                      setTransaction(transaction);
-                    }}
-                  >
-                    <HiOutlinePencil />
-                    Edit
-                  </span>
+                  <div className={`${styles["transaction-row"]} ${color}`}>
+                    <PrimaryButton
+                      text="Delete"
+                      onclick={() => {
+                        handleDeleteButton();
+                        setTransaction(transaction);
+                      }}
+                    />
+                    <span
+                      className={styles.edit}
+                      onClick={() => {
+                        handleOpen();
+                        setTransaction(transaction);
+                      }}
+                    >
+                      <HiOutlinePencil />
+                      Edit
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </React.Fragment>
             );
           })
         )}
       </div>
-
       {isModalEditTransactionsOpen && (
         <ModalAddTransactions
           type="edit"

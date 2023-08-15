@@ -39,9 +39,9 @@ const Transactions = () => {
     let value = 0;
     if (transactionToUpdate) {
       if (transactionToUpdate.typeOfTransaction === "Income") {
-        value = transactionToUpdate.amountOfTransaction;
-      } else if (transactionToUpdate.typeOfTransaction === "Expense") {
         value = -transactionToUpdate.amountOfTransaction;
+      } else if (transactionToUpdate.typeOfTransaction === "Expense") {
+        value = transactionToUpdate.amountOfTransaction;
       }
     }
 
