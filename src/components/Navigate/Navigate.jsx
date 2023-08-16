@@ -7,23 +7,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentPage } from "../../redux/global/globalSelectors.js";
 import { setPage } from "../../redux/global/globalSlice.js";
 
+const StyledLink = styled(NavLink)`
+  color: rgba(0, 0, 0, 1);
+
+  &.active.activePage svg {
+    background-color: rgba(74, 86, 226, 1);
+    box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5),
+      -3px 5px 8px rgba(74, 86, 226, 0.5);
+  }
+
+  &.active.activePage p {
+    font-weight: 700;
+  }
+`;
+
 function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
   const page = useSelector(selectCurrentPage);
   const dispatch = useDispatch();
-
-  const StyledLink = styled(NavLink)`
-    color: rgba(0, 0, 0, 1);
-
-    &.active.activePage svg {
-      background-color: rgba(74, 86, 226, 1);
-      box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5),
-        -3px 5px 8px rgba(74, 86, 226, 0.5);
-    }
-
-    &.active.activePage p {
-      font-weight: 700;
-    }
-  `;
 
   const isActivePage = (pageName) => {
     return pageName === page ? "activePage" : "";
@@ -35,6 +35,8 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
     if (page === pageName) return css.activeCurrency;
     return "";
   };
+
+  // console.log("I am here");
 
   return (
     <div className={css.navBox}>
