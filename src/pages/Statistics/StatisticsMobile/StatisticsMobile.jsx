@@ -11,7 +11,7 @@ const StatisticsMobile = () => {
     <>
       <Navigate />
       <div className={styles.statisticsMobile}>
-        <h2 className={styles["statistics-header"]}>Statistics!</h2>
+        <h2 className={styles["statistics-header"]}>Statistics</h2>
         <Chart statistics={summaryData} />
         <Table data={summaryData} />
       </div>
