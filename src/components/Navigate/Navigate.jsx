@@ -36,8 +36,6 @@ function Navigate({ setHomePage, setStatisticsPage, setCurrencyPage }) {
     return "";
   };
 
-  // console.log("I am here");
-
   return (
     <div className={css.navBox}>
       <ul className={css.nav}>
