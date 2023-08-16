@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import Modal from "react-modal";
 import CurrencyInput from "react-currency-input-field";
-// import DatePicker from "react-date-picker";
-// import "react-date-picker/dist/DatePicker.css";
-// import "react-calendar/dist/Calendar.css";
+import DatePicker from "react-date-picker";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import { MdDateRange } from "react-icons/md";
@@ -47,6 +47,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
           new Date().toLocaleDateString("pl-PL", dateLocaleFormatString)
         )
   );
+
   const month = useSelector(selectSelectedMonth);
   const year = useSelector(selectSelectedYear);
 
@@ -220,7 +221,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
                 formik.errors.transactionDate ? css.inputLabelError : ""
               }`}
             >
-              {/* <DatePicker
+              <DatePicker
                 format="dd.MM.yyyy"
                 clearIcon={null}
                 name="transactionDate"
@@ -238,7 +239,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
                   setSelectedDate(date);
                   formik.setFieldValue("transactionDate", date);
                 }}
-              /> */}
+              />
             </div>
           </div>
           <label
