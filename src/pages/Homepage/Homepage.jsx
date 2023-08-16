@@ -12,15 +12,19 @@ import {
 import ButtonAddTransactions from "../../components/ButtonAddTransaction/ButtonAddTransactions.jsx";
 import ModalAddTransactions from "../../components/ModalAddTransactions/ModalAddTransactions.jsx";
 import { openModal, closeModal } from "../../redux/global/globalSlice.js";
-import { selectIsModalAddTransactionOpen } from "../../redux/global/globalSelectors.js";
+import {
+  selectCurrentPage,
+  selectIsModalAddTransactionOpen,
+} from "../../redux/global/globalSelectors.js";
 import {
   selectSelectedMonth,
   selectSelectedYear,
 } from "../../redux/transactions/transactionsSelectors.js";
+import { setPage } from "../../redux/global/globalSlice.js";
 
 const Homepage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [page, setPage] = useState("Home");
+  const page = useSelector(selectCurrentPage);
   const month = useSelector(selectSelectedMonth);
   const year = useSelector(selectSelectedYear);
 
@@ -31,15 +35,15 @@ const Homepage = () => {
   );
 
   const setHomePage = () => {
-    setPage("Home");
+    dispatch(setPage("Home"));
   };
 
   const setStatisticsPage = () => {
-    setPage("Statistics");
+    dispatch(setPage("Statistics"));
   };
 
   const setCurrencyPage = () => {
-    setPage("Currency");
+    dispatch(setPage("Currency"));
   };
 
   useEffect(() => {
@@ -61,41 +65,39 @@ const Homepage = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header />
       <main className={styles.main}>
         <div className={styles.blur}>
-          <div className={styles.mainContainer}>
-            {isMobile ? (
-              <HomepageMobile
-                page={page}
-                setHomePage={setHomePage}
-                setStatisticsPage={setStatisticsPage}
-                setCurrencyPage={setCurrencyPage}
-              />
-            ) : (
-              <HomepageDesktop
-                page={page}
-                setHomePage={setHomePage}
-                setStatisticsPage={setStatisticsPage}
-                setCurrencyPage={setCurrencyPage}
-              />
-            )}
-            {isModalAddTransactionsOpen && (
-              <ModalAddTransactions
-                type="add"
-                handleClose={() =>
-                  dispatch(closeModal("isModalAddTransactionsOpen"))
-                }
-              />
-            )}
-          </div>
+          <div className={styles.mainContainer}> */}
+      {isMobile ? (
+        <HomepageMobile
+          page={page}
+          setHomePage={setHomePage}
+          setStatisticsPage={setStatisticsPage}
+          setCurrencyPage={setCurrencyPage}
+        />
+      ) : (
+        <HomepageDesktop
+          page={page}
+          setHomePage={setHomePage}
+          setStatisticsPage={setStatisticsPage}
+          setCurrencyPage={setCurrencyPage}
+        />
+      )}
+      {/* {isModalAddTransactionsOpen && (
+        <ModalAddTransactions
+          type="add"
+          handleClose={() => dispatch(closeModal("isModalAddTransactionsOpen"))}
+        />
+      )} */}
+      {/* </div>
         </div>
       </main>
       <ButtonAddTransactions
         handleClick={() => {
           dispatch(openModal("isModalAddTransactionsOpen"));
         }}
-      />
+      /> */}
     </>
   );
 };

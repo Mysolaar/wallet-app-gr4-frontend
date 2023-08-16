@@ -9,3 +9,5 @@ export const selectIsModalDeleteTransactionsOpen = (state) =>
 
 export const selectIsModalLogoutOpen = (state) =>
   state.global.isModalLogoutOpen;
+
+export const selectCurrentPage = (state) => state.global.currentPage;

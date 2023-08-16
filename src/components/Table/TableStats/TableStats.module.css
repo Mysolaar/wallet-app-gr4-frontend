@@ -8,12 +8,12 @@
 
 .table thead {
   height: 58px;
-  background-color: var(--white);
 }
 
 .table th {
   border: 0;
   box-shadow: 0 0 0 1px var(--white);
+  background-color: var(--white);
 }
 
 .table thead tr:first-child th:first-child {

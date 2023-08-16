@@ -29,7 +29,6 @@
 
 html,
 body {
-  min-height: 100%;
   font-family: Circe;
   font-weight: 400;
 }
@@ -64,14 +63,4 @@ textarea,
 input {
   font-family: inherit;
   font-weight: 400;
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    background-color: var(--indigo50);
-    background-image: url("/src/img/EllipsePurple.png"),
-      url("/src/img/EllipseOrange.png");
-    background-repeat: no-repeat;
-    background-position: -30% 140%, 140% -30%;
-  }
 }

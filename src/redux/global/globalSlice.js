@@ -5,6 +5,7 @@ const initialState = {
   isModalEditTransactionsOpen: false,
   isModalDeleteTransactionsOpen: false,
   isModalLogoutOpen: false,
+  currentPage: "Home",
 };
 
 const globalSlice = createSlice({
@@ -17,9 +18,12 @@ const globalSlice = createSlice({
     closeModal: (state, action) => {
       state[action.payload] = false;
     },
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 
-export const { openModal, closeModal } = globalSlice.actions;
+export const { openModal, closeModal, setPage } = globalSlice.actions;
 
 export default globalSlice.reducer;
