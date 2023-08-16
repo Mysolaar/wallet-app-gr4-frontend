@@ -11,9 +11,18 @@ import {
 import { useEffect, useState } from "react";
 import LoaderComponent from "../../Loader/Loader.js";
 import ModalAddTransactions from "../../ModalAddTransactions/ModalAddTransactions.jsx";
-import { selectIsModalEditTransactionsOpen } from "../../../redux/global/globalSelectors.js";
+import ModalDeleteTransactions from "../../ModalDeleteTransactions/ModalDeleteTransactions.jsx";
+import {
+  selectIsModalEditTransactionsOpen,
+  selectIsModalDeleteTransactionsOpen,
+} from "../../../redux/global/globalSelectors.js";
 
-const TransactionsTable = ({ handleDelete, handleOpen, handleClose }) => {
+const TransactionsTable = ({
+  handleDelete,
+  handleDeleteButton,
+  handleOpen,
+  handleClose,
+}) => {
   const [transaction, setTransaction] = useState();
   const data = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
@@ -22,6 +31,9 @@ const TransactionsTable = ({ handleDelete, handleOpen, handleClose }) => {
 
   const isModalEditTransactionsOpen = useSelector(
     selectIsModalEditTransactionsOpen
+  );
+  const isModalDeleteTransactionsOpen = useSelector(
+    selectIsModalDeleteTransactionsOpen
   );
 
   const sortedTransactions = [...data.transactions].sort((a, b) => {
@@ -77,7 +89,10 @@ const TransactionsTable = ({ handleDelete, handleOpen, handleClose }) => {
                       />
                       <PrimaryButton
                         text="Delete"
-                        onclick={() => handleDelete(transaction._id)}
+                        onclick={() => {
+                          handleDeleteButton();
+                          setTransaction(transaction);
+                        }}
                       />
                     </td>
                   </tr>
@@ -90,8 +105,15 @@ const TransactionsTable = ({ handleDelete, handleOpen, handleClose }) => {
       {isModalEditTransactionsOpen && (
         <ModalAddTransactions
           type="edit"
-          handleClose={() => handleClose()}
+          handleClose={() => handleClose("isModalEditTransactionsOpen")}
           data={transaction}
+        />
+      )}
+
+      {isModalDeleteTransactionsOpen && (
+        <ModalDeleteTransactions
+          handleClose={() => handleClose("isModalDeleteTransactionsOpen")}
+          handleDelete={() => handleDelete(transaction._id)}
         />
       )}
     </>
