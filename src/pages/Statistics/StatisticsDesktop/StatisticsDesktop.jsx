@@ -32,7 +32,7 @@ const StatisticsDesktop = () => {
             <h1 className={styles["statistics-header"]}>Statistics</h1>
             <Chart statistics={summaryData} />
           </div>
-          <Table data={summaryData} />
+          <Table />
         </div>
       </div>
     </div>

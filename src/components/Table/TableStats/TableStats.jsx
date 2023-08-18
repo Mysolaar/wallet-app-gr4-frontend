@@ -3,7 +3,7 @@ import formatNumber from "../../../utils/formatNumber.js";
 import styles from "./TableStats.module.css";
 import { selectTransactionsMonthlySummary } from "../../../redux/transactions/transactionsSelectors.js";
 
-const TableStats = ({ data }) => {
+const TableStats = () => {
   const summaryData = useSelector(selectTransactionsMonthlySummary);
 
   return (

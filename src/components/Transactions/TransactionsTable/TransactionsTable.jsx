@@ -27,8 +27,6 @@ const TransactionsTable = ({
   const data = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
 
-  useEffect(() => {}, [data]);
-
   const isModalEditTransactionsOpen = useSelector(
     selectIsModalEditTransactionsOpen
   );
