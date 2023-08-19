@@ -58,13 +58,13 @@ const transactionsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.balance = payload.updatedBalance;
+
         state.transactions = {
           transactions: [
             ...state.transactions.transactions,
             payload.newTransaction,
           ],
         };
-        // state.monthlySummary.balanceForMonth = payload.updatedBalance;
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;

@@ -83,11 +83,14 @@ function ModalAddTransactions({ type, handleClose, data }) {
       checked && (initialValues.category = "Income");
 
       if (isType("edit")) {
-        dispatch(editTransaction(values));
+        dispatch(editTransaction(values)).then(() =>
+          dispatch(getTransactionsMonthlySummary({ month, year }))
+        );
       } else {
-        dispatch(addTransaction(values));
+        dispatch(addTransaction(values)).then(() =>
+          dispatch(getTransactionsMonthlySummary({ month, year }))
+        );
       }
-      dispatch(getTransactionsMonthlySummary({ month, year }));
     } catch (err) {
       console.log(err);
     }

@@ -14,7 +14,7 @@ import {
   setSelectedYear,
 } from "../../redux/transactions/transactionsOperations.js";
 
-const Table = ({ data }) => {
+const Table = () => {
   const transactions = useSelector(selectTransactions);
   const month = useSelector(selectSelectedMonth);
   const year = useSelector(selectSelectedYear);
@@ -78,7 +78,7 @@ const Table = ({ data }) => {
           handleChange={handleChangeYear}
         />
       </div>
-      <TableStats data={data} />
+      <TableStats />
     </div>
   );
 };

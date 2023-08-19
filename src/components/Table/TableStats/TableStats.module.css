@@ -48,6 +48,7 @@
 
 .table tbody tr td:last-child {
   text-align: right;
+  width: 110px;
 }
 
 .expenses {
