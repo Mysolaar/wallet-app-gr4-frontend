@@ -15,12 +15,11 @@
 
 .modalContainer {
   position: relative;
-  margin-top: 60px;
-  padding: 20px 20px 37px;
+  padding: 40px 20px;
   background-color: var(--white);
   z-index: 99;
-  height: 100dvh;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .modalForm {
@@ -143,24 +142,22 @@
 }
 
 .modalButton {
-  bottom: 20px;
-  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -4px;
+  left: 0;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   border: none;
+  color: var(--white);
+  pointer-events: none;
   cursor: pointer;
   background-color: var(--green300);
   box-shadow: 0px 5px 5px var(--green300-transparent50);
-  transition: background-color 350ms ease-in-out;
-  position: absolute;
-  top: -4px;
-  left: 0;
-  padding-top: 6px;
-  color: var(--white);
-  font-size: 30px;
   transition: all 350ms ease-in-out;
-  pointer-events: none;
 }
 
 .modalCheckboxInput:not(:checked) + .modalCheckbox .modalButton {
@@ -193,12 +190,11 @@
   }
 
   .modalContainer {
-    margin-top: 0px;
     padding: 40px 73px 60px;
+    min-height: auto;
     max-width: 540px;
     max-height: 603px;
     border-radius: 20px;
-    height: auto;
     z-index: 8;
   }
 
