@@ -8,12 +8,16 @@ ChartJS.register(ArcElement);
 
 function Chart({ statistics }) {
   const noDataCheck = () => {
-    return statistics.usedCategoryIds.length === 0;
+    return (
+      !statistics ||
+      Object.keys(statistics).length === 0 ||
+      statistics.usedCategoryIds.length === 0
+    );
   };
 
   useEffect(() => {}, [
-    statistics.balanceForMonth,
-    statistics.usedCategoryIds.length,
+    statistics?.balanceForMonth,
+    statistics?.usedCategoryIds?.length,
   ]);
 
   const data = {
