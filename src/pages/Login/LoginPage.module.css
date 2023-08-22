@@ -1,30 +1,30 @@
 @media (max-width: 767px) {
-  .a {
+  .layout {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
   }
-  .b > p {
+  .logo > p {
     display: none;
   }
 }
 
 @media (min-width: 768px) {
-  .a,
-  .b,
-  .c {
+  .layout,
+  .logo,
+  .form {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
   }
-  .a {
+  .layout {
     flex-direction: column;
     width: 768px;
     background-color: transparent;
   }
-  .b {
+  .logo {
     position: relative;
     background-image: url(../../img/Login.png);
     background-repeat: no-repeat;
@@ -32,20 +32,22 @@
     background-size: 260.26px, 250px;
     width: 100%;
     align-items: end;
+    height: 30vh;
   }
-  .b > p {
+  .logo > p {
     color: black;
     font-size: 36px;
     position: sticky;
     bottom: 80%;
     left: 55%;
   }
-  .c {
-    height: 100vh;
+  .form {
+    height: 70vh;
     position: relative;
+    align-items: center;
     width: 100%;
   }
-  .d {
+  .background {
     display: flex;
     margin: 0px 0px 0px 0px;
     align-items: center;
@@ -62,15 +64,15 @@
 }
 
 @media (min-width: 1280px) {
-  .a,
-  .b,
-  .c {
+  .layout,
+  .logo,
+  .form {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100%;
   }
-  .a {
+  .layout {
     flex-direction: row;
     width: 100%;
     background-color: transparent;
@@ -80,7 +82,7 @@
     background-position: bottom left, top right;
     background-size: 33%, 40%;
   }
-  .b {
+  .logo {
     position: relative;
     background-image: url(../../img/Login.png);
     background-repeat: no-repeat;
@@ -89,20 +91,20 @@
     width: 40%;
     align-items: end;
   }
-  .b > p {
+  .logo > p {
     color: black;
     font-size: 2.5vw;
     position: sticky;
     bottom: 15%;
     left: 10%;
   }
-  .c {
-    min-height: 100vh;
+  .form {
     position: relative;
     backdrop-filter: blur(5px);
+
     width: 60%;
   }
-  .d {
+  .background {
     display: flex;
     margin: 0px 0px 0px 0px;
     align-items: center;
@@ -110,5 +112,20 @@
     min-height: 100vh;
     justify-content: center;
     background: linear-gradient(90deg, #e7eaf2 40%, #f0f0f0 40%);
+  }
+}
+
+@media (max-height: 900px) {
+  .logo {
+    display: none;
+  }
+  .form {
+    height: 100vh;
+  }
+}
+
+@media (max-height: 660px) {
+  .form {
+    scale: 0.9;
   }
 }

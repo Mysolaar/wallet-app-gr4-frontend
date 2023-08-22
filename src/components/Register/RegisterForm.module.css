@@ -1,6 +1,6 @@
 .container {
   width: 533px;
-  min-height: 615px;
+  max-height: 615px;
   background-color: var(--white);
   border-radius: 5%;
   display: flex;
@@ -104,7 +104,6 @@
     width: 320px;
     height: 568px;
     margin: 0 auto;
-    /* margin-top: 80px; */
   }
 
   .input {
@@ -114,10 +113,6 @@
 }
 
 @media (min-width: 768px) {
-  .container {
-    position: absolute;
-    bottom: 50px;
-  }
   .logo__container {
     gap: 20px;
   }
@@ -146,17 +141,5 @@
     left: 62px;
     top: 10px;
     width: 30px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    position: absolute;
-    bottom: 50px;
-  }
-
-  .input {
-    padding-left: 60px;
-    font-size: 18px;
   }
 }

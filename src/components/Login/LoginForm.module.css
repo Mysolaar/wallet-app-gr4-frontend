@@ -1,6 +1,6 @@
 .container {
   width: 320px;
-  height: 468px;
+  height: 568px;
   background-color: var(--white);
   border-radius: 5%;
   display: flex;
@@ -94,8 +94,6 @@
 @media (min-width: 768px) {
   .container {
     width: 533px;
-    height: 468px;
-    margin-bottom: 200px;
   }
   .logo__container {
     gap: 20px;
