@@ -1,20 +1,38 @@
+.container,
+.logo__container,
+.form,
+.label,
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form,
+.label,
+.iconWallet,
+.link {
+  width: 100%;
+}
+.container,
+.form,
+.label {
+  flex-direction: column;
+}
+.title,
+.input {
+  color: var(--black);
+}
+
 .container {
   width: 533px;
   max-height: 615px;
   background-color: var(--white);
   border-radius: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 30px;
   margin: 0;
 }
 
 .logo__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 15px;
 }
 
@@ -25,34 +43,22 @@
 }
 
 .form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   gap: 25px;
   margin-bottom: 50px;
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   position: relative;
-  align-items: center;
-  justify-content: center;
 }
 
 .iconWallet {
   height: 30px;
-  width: 100%;
 }
 
 .title {
   font-family: Poppins;
   font-weight: 700;
   font-size: 22px;
-  color: var(--black);
 }
 
 .input {
@@ -61,7 +67,6 @@
   height: 50px;
   width: 80%;
   padding-left: 60px;
-  color: var(--black);
   font-size: 18px;
 }
 
@@ -75,7 +80,6 @@
   position: absolute;
   width: 25px;
   height: auto;
-  z-index: 1;
 }
 
 .padlock__svg {
@@ -93,10 +97,7 @@
   width: 30px;
 }
 .link {
-  width: 100%;
-  display: flex;
   text-decoration: none;
-  justify-content: center;
 }
 
 @media (max-width: 767px) {
