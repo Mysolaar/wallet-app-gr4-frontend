@@ -149,6 +149,23 @@
 .title,
 .input {
   color: var(--black);
+  position: relative;
+}
+
+.inputLabelError {
+  position: relative;
+  color: var(--red700);
+  font-weight: 400;
+  border-bottom: 2px solid var(--red700);
+  background-color: var(--red700-transparent05);
+}
+.inputLabelError::after {
+  content: "This field is required";
+  color: var(--black);
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
 }
 
 .container {
