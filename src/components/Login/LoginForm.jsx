@@ -62,9 +62,10 @@ const LoginForm = () => {
                 value={values.email}
                 onChange={handleChange}
                 placeholder="E-mail"
-                className={css.input}
+                className={`${css.input} ${
+                  touched.email && errors.email ? css.inputLabelError : ""
+                }`}
               />
-              {touched.email && errors.email ? <div>{errors.email}</div> : null}
             </label>
 
             <label htmlFor="password" className={css.label}>
@@ -82,7 +83,9 @@ const LoginForm = () => {
                 value={values.password}
                 onChange={handleChange}
                 placeholder="Password"
-                className={css.input}
+                className={`${css.input} ${
+                  touched.password && errors.password ? css.inputLabelError : ""
+                }`}
               />
               {touched.password && errors.password ? (
                 <div>{errors.password}</div>

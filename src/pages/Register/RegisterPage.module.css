@@ -25,7 +25,7 @@
   position: relative;
 }
 .form {
-  height: 100%;
+  height: 70vh;
 }
 .layout {
   background-color: transparent;
@@ -39,6 +39,11 @@
   color: var(--black);
   font-size: 46px;
   font-weight: 400;
+}
+@media (max-width: 767px) {
+  .logo {
+    display: none;
+  }
 }
 @media (min-width: 768px) {
   .layout {
@@ -57,9 +62,6 @@
     left: 150px;
   }
 
-  .form {
-    height: 70vh;
-  }
   .background {
     height: 100vh;
     background-color: #e7eaf2;
@@ -93,6 +95,7 @@
   .form {
     backdrop-filter: blur(5px);
     width: 60%;
+    height: 100vh;
   }
   .background {
     min-width: 100vw;
