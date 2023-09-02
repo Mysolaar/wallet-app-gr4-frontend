@@ -29,7 +29,7 @@ const PasswordStrengthMeter = ({ password }) => {
   };
 
   const meterStyle = {
-    width: "80%",
+    width: "100%",
     height: "4px",
     marginTop: "0px",
     borderRadius: "5px",

@@ -47,7 +47,12 @@ const LoginForm = () => {
           </div>
 
           <Form className={css.form}>
-            <label htmlFor="email" className={css.label}>
+            <label
+              htmlFor="email"
+              className={`${css.label} ${
+                touched.email && errors.email ? css.inputLabelError : ""
+              }`}
+            >
               <img
                 src={ReactEnvelope}
                 alt="Envelope icon"
@@ -62,13 +67,16 @@ const LoginForm = () => {
                 value={values.email}
                 onChange={handleChange}
                 placeholder="E-mail"
-                className={`${css.input} ${
-                  touched.email && errors.email ? css.inputLabelError : ""
-                }`}
+                className={`${css.input}`}
               />
             </label>
 
-            <label htmlFor="password" className={css.label}>
+            <label
+              htmlFor="password"
+              className={`${css.label} ${
+                touched.password && errors.password ? css.inputLabelError : ""
+              }`}
+            >
               <img
                 src={ReactPadlock}
                 alt="Padlock icon"
@@ -83,13 +91,8 @@ const LoginForm = () => {
                 value={values.password}
                 onChange={handleChange}
                 placeholder="Password"
-                className={`${css.input} ${
-                  touched.password && errors.password ? css.inputLabelError : ""
-                }`}
+                className={css.input}
               />
-              {touched.password && errors.password ? (
-                <div>{errors.password}</div>
-              ) : null}
             </label>
 
             <PrimaryButton text={"LOG IN"} />

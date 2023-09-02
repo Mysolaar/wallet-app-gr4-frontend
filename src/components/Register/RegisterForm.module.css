@@ -49,6 +49,9 @@
 
 .label {
   position: relative;
+  width: 80%;
+  height: 50px;
+  border-radius: 5px;
 }
 
 .iconWallet {
@@ -62,12 +65,29 @@
 }
 
 .input {
+  position: relative;
   border: none;
   border-bottom: 1px solid var(--gray300);
+  background-color: transparent;
   height: 50px;
-  width: 80%;
+  width: 100%;
   padding-left: 60px;
   font-size: 18px;
+}
+.inputLabelError {
+  position: relative;
+  color: var(--red700);
+  font-weight: 400;
+  border-bottom: 2px solid var(--red700);
+  background-color: var(--red700-transparent05);
+}
+.inputLabelError::after {
+  content: "This field is required";
+  color: var(--red700);
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
 }
 
 .input:is(:focus, :active) {
@@ -78,22 +98,21 @@
 .envelope__svg,
 .portrait__svg {
   position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
   width: 25px;
   height: auto;
 }
 
 .padlock__svg {
-  left: 39px;
-  top: 12px;
+  left: 30px;
 }
 
 .envelope__svg {
-  left: 36px;
-  top: 17px;
+  left: 28.5px;
 }
 .portrait__svg {
-  left: 35px;
-  top: 10px;
+  left: 27px;
   width: 30px;
 }
 .link {
@@ -105,11 +124,6 @@
     width: 320px;
     height: 568px;
     margin: 0 auto;
-  }
-
-  .input {
-    padding-left: 50px;
-    font-size: 16px;
   }
 }
 
@@ -128,19 +142,5 @@
   .input {
     padding-left: 60px;
     font-size: 18px;
-  }
-  .padlock__svg {
-    left: 67px;
-    top: 12px;
-  }
-
-  .envelope__svg {
-    left: 64px;
-    top: 17px;
-  }
-  .portrait__svg {
-    left: 62px;
-    top: 10px;
-    width: 30px;
   }
 }
