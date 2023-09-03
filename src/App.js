@@ -58,7 +58,7 @@ function App() {
           <Route path="statistics" element={<Statistics />} />
         </Route> */}
 
-        <Route path="/*" element={<PageNotFound />} />
+        <Route path="/error" element={<PageNotFound />} />
       </Routes>
       <ToastContainer position="bottom-right" />
     </Suspense>
