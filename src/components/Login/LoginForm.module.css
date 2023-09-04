@@ -89,13 +89,15 @@
   width: 100%;
   padding-left: 60px;
   font-size: 18px;
+  transition: 2s;
 }
 
 .input:is(:focus, :active) {
   outline: none;
 }
-.input:is(:focus, :active) .padlock__svg {
-  color: blue;
+.input:is(:focus, :active) + .padlock__svg {
+  transform: matrix(0, 1, 1, 0, 0, 0);
+  transition: 2s;
 }
 
 .padlock__svg,
