@@ -1,4 +1,4 @@
-.layout,
+/* .layout,
 .logo,
 .form,
 .background {
@@ -116,5 +116,140 @@
 @media (max-height: 660px) {
   .form {
     scale: 0.9;
+  }
+} */
+
+body {
+  background: linear-gradient(90deg, #e7eaf2 40%, #f0f0f0 40%);
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin: 0 auto;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../../img/Ellipse1.png),
+    url(../../img/EllipseDesktop2.png);
+  background-repeat: no-repeat;
+  background-position: bottom left, top right;
+  background-size: 33%, 40%;
+}
+.logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 100vh;
+}
+.logo {
+  position: relative;
+  background-image: url(../../img/Login.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 500px;
+  height: 500px;
+}
+.logo::after {
+  position: absolute;
+  content: "Finance App";
+  color: black;
+  font-weight: 500;
+  font-size: 42px;
+  transform: translate(-50%);
+  left: 50%;
+  bottom: -30px;
+}
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+  height: 100vh;
+}
+@media (max-width: 768px) {
+  .logo_container {
+    display: none;
+  }
+  body {
+  }
+  .container {
+    background: white;
+  }
+  .form {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 1279px) {
+  body {
+    background: #e7eaf2;
+  }
+  .layout {
+    display: flex;
+    flex-direction: column;
+    width: 768px;
+    height: 950px;
+    margin: auto;
+  }
+  .logo {
+    height: 100%;
+    width: 100vw;
+    background-size: 40%;
+    background-position: left 30% center;
+  }
+  .logo::after {
+    transform: translate(-50%);
+    font-size: 25px;
+    left: 70%;
+    bottom: 50%;
+  }
+  .logo_container {
+    width: 100%;
+    height: 40vw;
+  }
+  .container {
+    background-size: 50% 50%, 45% 45%;
+  }
+  .form {
+    height: 70vw;
+  }
+}
+@media (min-width: 1600px) {
+  body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+  }
+  .layout {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+@media ((max-width: 1269px ) and (max-height: 900px)) {
+  .logo_container {
+    display: none;
+  }
+  .layout {
+    margin: auto;
+    height: auto;
+  }
+}
+
+@media ((max-width: 1269px ) and (max-height: 670px)) {
+  .layout {
+    margin: auto;
+    height: 600px;
   }
 }
