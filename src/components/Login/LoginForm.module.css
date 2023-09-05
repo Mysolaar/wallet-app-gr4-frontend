@@ -123,14 +123,16 @@
 
 @media (max-width: 767px) {
   .container {
-    width: 533px;
-    height: 568px;
+    width: 80%;
     margin: 0 auto;
   }
 
   .input {
     padding-left: 50px;
     font-size: 16px;
+  }
+  .label {
+    width: 100%;
   }
 }
 

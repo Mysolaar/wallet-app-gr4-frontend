@@ -17,3 +17,9 @@
 .primaryButton:is(:hover, :focus) {
   background-color: rgb(29, 175, 143);
 }
+
+@media (max-width: 330px) {
+  .primaryButton {
+    margin: 20px;
+  }
+}

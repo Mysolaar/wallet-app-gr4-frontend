@@ -128,15 +128,11 @@ body {
 }
 .layout {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  margin: 0 auto;
 }
 .container {
   display: flex;
-  flex-direction: row;
   width: 100%;
   height: 100vh;
   background-image: url(../../img/Ellipse1.png),
@@ -150,38 +146,33 @@ body {
   justify-content: center;
   align-items: center;
   width: 40vw;
-  height: 100vh;
 }
 .logo {
   position: relative;
   background-image: url(../../img/Login.png);
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
   width: 500px;
-  height: 500px;
+  height: 488px;
 }
 .logo::after {
   position: absolute;
   content: "Finance App";
-  color: black;
   font-weight: 500;
   font-size: 42px;
   transform: translate(-50%);
   left: 50%;
-  bottom: -30px;
+  bottom: 0px;
 }
 .form {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 60vw;
-  height: 100vh;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .logo_container {
     display: none;
-  }
-  body {
   }
   .container {
     background: white;
@@ -205,24 +196,27 @@ body {
   .logo {
     height: 100%;
     width: 100vw;
-    background-size: 40%;
-    background-position: left 30% center;
+    background-size: 60%;
+    background-position: left bottom;
   }
   .logo::after {
     transform: translate(-50%);
-    font-size: 25px;
-    left: 70%;
-    bottom: 50%;
+    font-size: 30px;
+    width: 176px;
+    text-align: right;
+    left: 82%;
+    bottom: 40%;
   }
   .logo_container {
-    width: 100%;
+    width: 523px;
     height: 40vw;
   }
   .container {
-    background-size: 50% 50%, 45% 45%;
+    background-size: 50% 30%, 50% 30%;
   }
   .form {
     height: 70vw;
+    width: 100%;
   }
 }
 @media (min-width: 1600px) {
