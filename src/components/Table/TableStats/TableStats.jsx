@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import formatNumber from "../../../utils/formatNumber.js";
 import styles from "./TableStats.module.css";
+import { selectTransactionsMonthlySummary } from "../../../redux/transactions/transactionsSelectors.js";
 
-const TableStats = ({ data }) => {
+const TableStats = () => {
+  const summaryData = useSelector(selectTransactionsMonthlySummary);
+
   return (
     <table className={styles.table}>
       <thead>
@@ -11,25 +15,25 @@ const TableStats = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.categoryNames.map((item, index) => (
+        {summaryData.categoryNames?.map((item, index) => (
           <tr key={index} className={styles["data-row"]}>
             <td>
               <span
                 className={`${styles.colorBox}`}
-                style={{ backgroundColor: data.categoryColors[index] }}
+                style={{ backgroundColor: summaryData.categoryColors[index] }}
               ></span>
               {item}
             </td>
-            <td>{formatNumber(Number(data.categoryIdValues[index]))}</td>
+            <td>{formatNumber(Number(summaryData.categoryIdValues[index]))}</td>
           </tr>
         ))}
         <tr className={styles.expenses}>
           <td>Expenses:</td>
-          <td>{formatNumber(Number(data.expenseValue))}</td>
+          <td>{formatNumber(Number(summaryData.expenseValue))}</td>
         </tr>
         <tr className={styles.income}>
           <td>Income:</td>
-          <td>{formatNumber(Number(data.incomeValue))}</td>
+          <td>{formatNumber(Number(summaryData.incomeValue))}</td>
         </tr>
       </tbody>
     </table>

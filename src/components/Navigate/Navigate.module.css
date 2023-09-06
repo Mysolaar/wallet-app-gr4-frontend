@@ -2,6 +2,12 @@
   background-color: rgb(231, 234, 242, 1);
 } */
 
+li .activeCurrency {
+  background-color: rgba(74, 86, 226, 1);
+  box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5),
+    -3px 5px 8px rgba(74, 86, 226, 0.5);
+}
+
 .navItem {
   padding: 5px;
   background-color: rgba(110, 120, 232, 1);
@@ -14,19 +20,20 @@
   align-items: center;
 }
 
-.active {
+/* .active {
   background-color: rgba(74, 86, 226, 1);
   box-shadow: 3px 5px 8px rgba(74, 86, 226, 0.5),
     -3px 5px 8px rgba(74, 86, 226, 0.5);
-}
+} */
 
-.listItem {
+.listItem,
+.dollarIcon {
   cursor: pointer;
 }
 
-.activeText {
+/* .activeText {
   font-weight: 700;
-}
+} */
 
 .nav {
   list-style: none;
@@ -39,6 +46,7 @@
 
 .navTitle {
   display: none;
+  color: inherit;
 }
 
 @media screen and (min-width: 768px) {
@@ -64,15 +72,18 @@
     display: block;
     font-family: "Poppins";
     font-size: 18px;
-    color: rgba(0, 0, 0, 1);
+    color: inherit;
     line-height: 0.67;
     padding-left: 15px;
   }
   .navItem:active .navTitle {
     font-weight: 700;
   }
-  li {
+
+  li,
+  .linkLink {
     display: flex;
     align-items: center;
+    text-decoration: none;
   }
 }

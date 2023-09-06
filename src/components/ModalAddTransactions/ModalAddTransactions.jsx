@@ -8,12 +8,10 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
-
 import { MdDateRange } from "react-icons/md";
 import { BsPlusLg } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { RxSlash, RxCross1 } from "react-icons/rx";
-
 import css from "./ModalAddTransactions.module.css";
 import { colorStyles } from "./colorStyles.js";
 import { modalAddTransactionsSchema } from "./../../schemas/index";
@@ -49,6 +47,7 @@ function ModalAddTransactions({ type, handleClose, data }) {
           new Date().toLocaleDateString("pl-PL", dateLocaleFormatString)
         )
   );
+
   const month = useSelector(selectSelectedMonth);
   const year = useSelector(selectSelectedYear);
 
@@ -84,11 +83,14 @@ function ModalAddTransactions({ type, handleClose, data }) {
       checked && (initialValues.category = "Income");
 
       if (isType("edit")) {
-        dispatch(editTransaction(values));
+        dispatch(editTransaction(values)).then(() =>
+          dispatch(getTransactionsMonthlySummary({ month, year }))
+        );
       } else {
-        dispatch(addTransaction(values));
+        dispatch(addTransaction(values)).then(() =>
+          dispatch(getTransactionsMonthlySummary({ month, year }))
+        );
       }
-      dispatch(getTransactionsMonthlySummary({ month, year }));
     } catch (err) {
       console.log(err);
     }

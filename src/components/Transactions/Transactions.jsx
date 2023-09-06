@@ -21,6 +21,17 @@ const Transactions = () => {
     window.addEventListener("resize", handleResize);
   }, []);
 
+  const handleDeleteButton = () => {
+    dispatch(openModal("isModalDeleteTransactionsOpen"));
+  };
+
+  const handleOpen = () => {
+    dispatch(openModal("isModalEditTransactionsOpen"));
+  };
+
+  const handleClose = (modalName) => {
+    dispatch(closeModal(modalName));
+  };
   const handleDelete = (_id) => {
     const transactionToUpdate = transactions.transactions.find(
       (transaction) => transaction._id === _id
@@ -28,22 +39,14 @@ const Transactions = () => {
     let value = 0;
     if (transactionToUpdate) {
       if (transactionToUpdate.typeOfTransaction === "Income") {
-        value = transactionToUpdate.amountOfTransaction;
-      } else if (transactionToUpdate.typeOfTransaction === "Expense") {
         value = -transactionToUpdate.amountOfTransaction;
+      } else if (transactionToUpdate.typeOfTransaction === "Expense") {
+        value = transactionToUpdate.amountOfTransaction;
       }
     }
 
     dispatch(deleteTransaction({ _id, value }));
-    // dispatch(fetchCurrentUser());
-  };
-
-  const handleOpen = () => {
-    dispatch(openModal("isModalEditTransactionsOpen"));
-  };
-
-  const handleClose = () => {
-    dispatch(closeModal("isModalEditTransactionsOpen"));
+    handleClose("isModalDeleteTransactionsOpen");
   };
 
   return (
@@ -51,12 +54,14 @@ const Transactions = () => {
       {!isMobile ? (
         <TransactionsTable
           handleDelete={handleDelete}
+          handleDeleteButton={handleDeleteButton}
           handleOpen={handleOpen}
           handleClose={handleClose}
         />
       ) : (
         <TransactionsMobile
           handleDelete={handleDelete}
+          handleDeleteButton={handleDeleteButton}
           handleOpen={handleOpen}
           handleClose={handleClose}
         />

@@ -1,0 +1,15 @@
+.statisticsMobile {
+  width: 280px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-content: flex-start;
+  margin-bottom: 60px;
+}
+
+.statistics-header {
+  /* margin: 0 auto; */
+  width: fit-content;
+  color: black;
+} /* TODO To be removed */
