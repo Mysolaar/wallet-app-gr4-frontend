@@ -118,7 +118,14 @@
     scale: 0.9;
   }
 } */
-
+.layout,
+.container,
+.logo_container,
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body {
   background: linear-gradient(90deg, #e7eaf2 40%, #f0f0f0 40%);
   width: 100%;
@@ -126,13 +133,8 @@ body {
   margin: 0;
   padding: 0;
 }
-.layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .container {
-  display: flex;
   width: 100%;
   height: 100vh;
   background-image: url(../../img/Ellipse1.png),
@@ -142,9 +144,6 @@ body {
   background-size: 33%, 40%;
 }
 .logo_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 40vw;
 }
 .logo {
@@ -165,9 +164,6 @@ body {
   bottom: 0px;
 }
 .form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 60vw;
 }
 @media (max-width: 767px) {
@@ -187,7 +183,6 @@ body {
     background: #e7eaf2;
   }
   .layout {
-    display: flex;
     flex-direction: column;
     width: 768px;
     height: 950px;
