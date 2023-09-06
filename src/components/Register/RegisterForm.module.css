@@ -1,20 +1,38 @@
-.container {
-  width: 533px;
-  min-height: 615px;
-  background-color: var(--white);
-  border-radius: 5%;
+.container,
+.logo__container,
+.form,
+.label,
+.link {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.form,
+.label,
+.iconWallet,
+.link {
+  width: 100%;
+}
+.container,
+.form,
+.label {
+  flex-direction: column;
+}
+.title,
+.input {
+  color: var(--black);
+}
+
+.container {
+  width: 533px;
+  max-height: 615px;
+  background-color: var(--white);
+  border-radius: 5%;
   gap: 30px;
   margin: 0;
 }
 
 .logo__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 15px;
 }
 
@@ -25,44 +43,51 @@
 }
 
 .form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   gap: 25px;
   margin-bottom: 50px;
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   position: relative;
-  align-items: center;
-  justify-content: center;
+  width: 80%;
+  height: 50px;
+  border-radius: 5px;
 }
 
 .iconWallet {
   height: 30px;
-  width: 100%;
 }
 
 .title {
   font-family: Poppins;
   font-weight: 700;
   font-size: 22px;
-  color: var(--black);
 }
 
 .input {
+  position: relative;
   border: none;
   border-bottom: 1px solid var(--gray300);
+  background-color: transparent;
   height: 50px;
-  width: 80%;
+  width: 100%;
   padding-left: 60px;
-  color: var(--black);
   font-size: 18px;
+}
+.inputLabelError {
+  position: relative;
+  color: var(--red700);
+  font-weight: 400;
+  border-bottom: 2px solid var(--red700);
+  background-color: var(--red700-transparent05);
+}
+.inputLabelError::after {
+  content: "This field is required";
+  color: var(--red700);
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
 }
 
 .input:is(:focus, :active) {
@@ -73,51 +98,58 @@
 .envelope__svg,
 .portrait__svg {
   position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
   width: 25px;
   height: auto;
-  z-index: 1;
 }
 
 .padlock__svg {
-  left: 39px;
-  top: 12px;
+  left: 30px;
 }
 
 .envelope__svg {
-  left: 36px;
-  top: 17px;
+  left: 28.5px;
 }
 .portrait__svg {
-  left: 35px;
-  top: 10px;
+  left: 27px;
   width: 30px;
 }
 .link {
-  width: 100%;
-  display: flex;
   text-decoration: none;
-  justify-content: center;
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .container {
     width: 320px;
     height: 568px;
     margin: 0 auto;
-    /* margin-top: 80px; */
+  }
+} */
+
+@media (max-width: 767px) {
+  .iconWallet {
+    height: 50px;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 32px;
+  }
+  .container {
+    width: auto;
+    margin: 0 auto;
   }
 
   .input {
     padding-left: 50px;
     font-size: 16px;
   }
+  .label {
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) {
-  .container {
-    position: absolute;
-    bottom: 50px;
-  }
   .logo__container {
     gap: 20px;
   }
@@ -127,32 +159,6 @@
   }
   .title {
     font-size: 30px;
-  }
-
-  .input {
-    padding-left: 60px;
-    font-size: 18px;
-  }
-  .padlock__svg {
-    left: 67px;
-    top: 12px;
-  }
-
-  .envelope__svg {
-    left: 64px;
-    top: 17px;
-  }
-  .portrait__svg {
-    left: 62px;
-    top: 10px;
-    width: 30px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    position: absolute;
-    bottom: 50px;
   }
 
   .input {

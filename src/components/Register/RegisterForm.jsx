@@ -57,7 +57,12 @@ const RegistrationForm = () => {
             <p className={css.title}>Wallet</p>
           </div>
           <Form className={css.form}>
-            <label htmlFor="email" className={css.label}>
+            <label
+              htmlFor="email"
+              className={`${css.label} ${
+                touched.email && errors.email ? css.inputLabelError : ""
+              }`}
+            >
               <img
                 src={ReactEnvelope}
                 alt="Envelope icon"
@@ -74,10 +79,14 @@ const RegistrationForm = () => {
                 placeholder="E-mail"
                 className={css.input}
               />
-              {touched.email && errors.email ? <div>{errors.email}</div> : null}
             </label>
 
-            <label htmlFor="password" className={css.label}>
+            <label
+              htmlFor="password"
+              className={`${css.label} ${
+                touched.password && errors.password ? css.inputLabelError : ""
+              }`}
+            >
               <img
                 src={ReactPadlock}
                 alt="Padlock icon"
@@ -94,12 +103,16 @@ const RegistrationForm = () => {
                 placeholder="Password"
                 className={css.input}
               />
-              {touched.password && errors.password ? (
-                <div>{errors.password}</div>
-              ) : null}
             </label>
 
-            <label htmlFor="confirmPassword" className={css.label}>
+            <label
+              htmlFor="confirmPassword"
+              className={`${css.label} ${
+                touched.confirmPassword && errors.confirmPassword
+                  ? css.inputLabelError
+                  : ""
+              }`}
+            >
               <img
                 src={ReactPadlock}
                 alt="Padlock icon"
@@ -120,12 +133,14 @@ const RegistrationForm = () => {
                 className={css.strenght}
                 password={values.password}
               />
-              {touched.confirmPassword && errors.confirmPassword ? (
-                <div>{errors.confirmPassword}</div>
-              ) : null}
             </label>
 
-            <label htmlFor="name" className={css.label}>
+            <label
+              htmlFor="name"
+              className={`${css.label} ${
+                touched.name && errors.name ? css.inputLabelError : ""
+              }`}
+            >
               <img
                 src={ReactPortrait}
                 alt="Portrait icon"
@@ -142,7 +157,6 @@ const RegistrationForm = () => {
                 placeholder="First Name"
                 className={css.input}
               />
-              {touched.name && errors.name ? <div>{errors.name}</div> : null}
             </label>
 
             <PrimaryButton text={"REGISTER"} />
