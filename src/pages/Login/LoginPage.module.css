@@ -127,7 +127,11 @@
   justify-content: center;
 }
 body {
-  background: linear-gradient(90deg, #e7eaf2 40%, #f0f0f0 40%);
+  background: linear-gradient(
+    90deg,
+    var(--background-gray) 40%,
+    var(--background-light-gray) 40%
+  );
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -171,7 +175,7 @@ body {
     display: none;
   }
   .container {
-    background: white;
+    background: var(--white);
   }
   .form {
     width: 100vw;
@@ -180,7 +184,7 @@ body {
 
 @media (max-width: 1279px) {
   body {
-    background: #e7eaf2;
+    background: var(--background-gray);
   }
   .layout {
     flex-direction: column;
