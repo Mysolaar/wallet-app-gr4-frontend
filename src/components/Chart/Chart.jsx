@@ -7,6 +7,18 @@ import PropTypes from "prop-types";
 ChartJS.register(ArcElement);
 
 function Chart({ statistics }) {
+  const formatBalance = (statistics) => {
+    const formatedBalance = statistics.toLocaleString("pl-PL", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      useGrouping: true,
+      style: "currency",
+      currency: "PLN",
+    });
+
+    return formatedBalance.replace(",", ".");
+  };
+
   const noDataCheck = () => {
     return (
       !statistics ||
@@ -31,22 +43,9 @@ function Chart({ statistics }) {
           ? [COLORS.white]
           : [...statistics.categoryColors],
         borderWidth: noDataCheck() ? 1 : 0,
-
         cutout: "70%",
       },
     ],
-  };
-
-  const formatBalance = (statistics) => {
-    const formatedBalance = statistics.toLocaleString("pl-PL", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-      useGrouping: true,
-      style: "currency",
-      currency: "PLN",
-    });
-
-    return formatedBalance.replace(",", ".");
   };
 
   const hoverLabel = {
@@ -58,7 +57,6 @@ function Chart({ statistics }) {
         ctx,
         chartArea: { width, height },
       } = chart;
-      ctx.save();
 
       ctx.font = "700 18px Circe";
       ctx.textBaseLine = "center";
@@ -85,7 +83,6 @@ function Chart({ statistics }) {
           height / 1.8
         );
       } else {
-        ctx.save();
         ctx.fillStyle = COLORS.black;
         chart.update();
 
@@ -110,6 +107,7 @@ function Chart({ statistics }) {
         data={data}
         key={statistics.balanceForMonth}
         plugins={[hoverLabel]}
+        options={{ resizable: false, maintainAspectRatio: true }}
       />
     </div>
   );
